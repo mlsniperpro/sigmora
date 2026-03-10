@@ -67,7 +67,7 @@ export default async function WorkspaceJobsPage({ params, searchParams }: JobsPa
               <span>Job type</span>
               <select name="jobType" defaultValue="library-analysis">
                 <option value="library-analysis">Library analysis</option>
-                <option value="benchmark-analysis">Benchmark analysis</option>
+                <option value="benchmark-analysis">Viral Reference Analysis</option>
                 <option value="competitor-scan">Competitor scan</option>
               </select>
             </label>
@@ -81,7 +81,7 @@ export default async function WorkspaceJobsPage({ params, searchParams }: JobsPa
           <div className="table-header">
             <div>
               <h2>Create remix job</h2>
-              <p>Generate scripts, scene plans, or creative briefs from benchmark patterns.</p>
+              <p>Generate scripts, scene plans, or creative briefs from viral reference patterns.</p>
             </div>
             {!hasAdminConfig ? <p className="warning-inline">Create actions require Admin SDK configuration.</p> : null}
           </div>
@@ -89,7 +89,7 @@ export default async function WorkspaceJobsPage({ params, searchParams }: JobsPa
           <form action={remixAction} className="entity-form">
             <input type="hidden" name="workspaceId" value={workspace.id} />
             <label>
-              <span>Benchmark collection</span>
+              <span>Reference collection</span>
               <select name="benchmarkCollectionId" defaultValue={benchmarkCollectionId || benchmarkCollections[0]?.id}>
                 {benchmarkCollections.map((collection) => (
                   <option key={collection.id} value={collection.id}>
@@ -168,7 +168,7 @@ export default async function WorkspaceJobsPage({ params, searchParams }: JobsPa
           },
           { key: 'status', header: 'Status', render: (job) => <span className={`status-pill status-${job.status}`}>{job.status}</span> },
           { key: 'type', header: 'Output Type', render: (job) => job.outputType },
-          { key: 'benchmark', header: 'Benchmark', render: (job) => job.benchmarkCollectionId },
+          { key: 'benchmark', header: 'Reference', render: (job) => job.benchmarkCollectionId },
         ]}
       />
     </AppShell>

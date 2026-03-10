@@ -1,6 +1,7 @@
 'use client';
 
 import { startTransition, useState } from 'react';
+import { getClientAuthHeaders } from '@/lib/client-auth';
 
 type AssetUploadPanelProps = {
   workspaceSlug: string;
@@ -27,9 +28,11 @@ export function AssetUploadPanel({ workspaceSlug }: AssetUploadPanelProps) {
     setStatus('Preparing upload...');
 
     try {
+      const authHeaders = await getClientAuthHeaders();
+
       const initResponse = await fetch(`/api/workspaces/${workspaceSlug}/assets/upload-init`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...authHeaders },
         body: JSON.stringify({
           fileName: file.name,
           mimeType: file.type || 'video/mp4',
@@ -64,7 +67,7 @@ export function AssetUploadPanel({ workspaceSlug }: AssetUploadPanelProps) {
 
       const confirmResponse = await fetch(`/api/workspaces/${workspaceSlug}/assets/upload-confirm`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...authHeaders },
         body: JSON.stringify({
           contentId: initPayload.data.upload.id,
         }),

@@ -14,6 +14,7 @@ export const groupedNavigation: AppNavGroup[] = [
   {
     title: 'Main',
     items: [
+      { href: '/activate', label: 'Activate', description: 'Reach first value.', icon: 'rocket' },
       { href: '/dashboard', label: 'Dashboard', description: 'Overview and priorities.', icon: 'home' },
       { href: '/library', label: 'Library', description: 'Assets and uploads.', icon: 'library' },
     ]
@@ -21,7 +22,7 @@ export const groupedNavigation: AppNavGroup[] = [
   {
     title: 'Strategy & Research',
     items: [
-      { href: '/benchmarks', label: 'Benchmarks', description: 'Viral reference database.', icon: 'database' },
+      { href: '/benchmarks', label: 'Viral Database', description: 'Curated viral references.', icon: 'database' },
       { href: '/trends', label: 'Trends', description: 'Emerging patterns.', icon: 'trending' },
       { href: '/competitors', label: 'Competitors', description: 'Account watchlists.', icon: 'users' },
       { href: '/automation', label: 'Automation', description: 'Autopilot research.', icon: 'zap' },
@@ -34,7 +35,6 @@ export const groupedNavigation: AppNavGroup[] = [
       { href: '/playbooks', label: 'Playbooks', description: 'Creative workflows.', icon: 'book' },
       { href: '/jobs', label: 'Jobs', description: 'Remix and analysis.', icon: 'cpu' },
       { href: '/compare', label: 'Compare', description: 'Variant comparison.', icon: 'layers' },
-      { href: '/originality', label: 'Originality', description: 'Brand-fit checks.', icon: 'shield' },
     ]
   },
   {

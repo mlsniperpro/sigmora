@@ -1,13 +1,20 @@
 import { NextResponse } from 'next/server';
 import { confirmContentUpload } from '@/lib/content-engine';
-import { getAssetByContentId, getWorkspaceBySlug, updateAsset } from '@/lib/repositories';
+import { getAssetByContentId, updateAsset } from '@/lib/repositories';
+import { requireWorkspaceMember } from '@/lib/server-auth';
 
 export async function POST(
   request: Request,
   context: { params: Promise<{ workspaceSlug: string }> },
 ) {
   const { workspaceSlug } = await context.params;
-  const workspace = await getWorkspaceBySlug(workspaceSlug);
+  const access = await requireWorkspaceMember(request, workspaceSlug);
+
+  if (access instanceof NextResponse) {
+    return access;
+  }
+
+  const { workspace } = access;
   const body = await request.json().catch(() => null);
 
   if (!body || typeof body.contentId !== 'string') {

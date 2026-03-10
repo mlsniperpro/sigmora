@@ -5,6 +5,7 @@ import {
   type AnalysisJob,
   type AnalysisResult,
   type ApprovalRecord,
+  type ActivationEvent,
   type Asset,
   type AssetFolder,
   type BenchmarkCollection,
@@ -52,6 +53,7 @@ type RepositoryCollectionMap = {
   [collections.cmsConnections]: CmsConnection;
   [collections.blogDrafts]: BlogDraft;
   [collections.assetFolders]: AssetFolder;
+  [collections.activationEvents]: ActivationEvent;
 };
 
 type EntityWithWorkspace = {
@@ -347,6 +349,13 @@ export const getBlogDraftsByConnection = cache(async (workspaceId: string, conne
 export const getAssetFolders = cache(async (workspaceId: string): Promise<AssetFolder[]> => {
   const folders = await getCollectionRecords(collections.assetFolders);
   return byWorkspace(folders, workspaceId);
+});
+
+// ── Activation queries ──
+
+export const getActivationEvents = cache(async (workspaceId: string): Promise<ActivationEvent[]> => {
+  const events = await getCollectionRecords(collections.activationEvents);
+  return byWorkspace(events, workspaceId).sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 });
 
 // ── Dashboard ──
@@ -704,4 +713,9 @@ export async function updateBlogDraft(id: string, patch: Partial<Omit<BlogDraft,
 export async function createAssetFolder(input: Omit<AssetFolder, 'id' | 'createdAt' | 'updatedAt'>) {
   const timestamp = new Date().toISOString();
   return createFirestoreRecord(collections.assetFolders, { ...input, createdAt: timestamp, updatedAt: timestamp });
+}
+
+export async function createActivationEvent(input: Omit<ActivationEvent, 'id' | 'createdAt' | 'updatedAt'>) {
+  const timestamp = new Date().toISOString();
+  return createFirestoreRecord(collections.activationEvents, { ...input, createdAt: timestamp, updatedAt: timestamp });
 }

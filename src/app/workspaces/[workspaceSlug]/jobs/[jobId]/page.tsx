@@ -39,7 +39,7 @@ export default async function JobDetailPage({ params }: JobDetailParams) {
     <AppShell
       workspace={workspace}
       title={`Remix: ${job.targetOffer}`}
-      description={`${job.outputType} output generated from benchmark collection. Status: ${job.status}.`}
+      description={`${job.outputType} output generated from viral reference collection. Status: ${job.status}.`}
     >
       <section className="panel detail-grid">
         <div>
@@ -55,7 +55,7 @@ export default async function JobDetailPage({ params }: JobDetailParams) {
           <div><span>Output type</span><strong>{job.outputType}</strong></div>
           <div><span>Status</span><strong>{job.status}</strong></div>
           <div>
-            <span>Benchmark</span>
+            <span>Reference</span>
             <strong>
               {benchmark ? (
                 <Link href={workspaceBenchmarkPath(workspace.slug, benchmark.id)} className="inline-link">

@@ -23,6 +23,7 @@ export const collections = {
   paymentCustomers: 'paymentCustomers',
   paymentAttempts: 'paymentAttempts',
   subscriptions: 'subscriptions',
+  activationEvents: 'activationEvents',
 } as const;
 
 export type CollectionName = (typeof collections)[keyof typeof collections];
@@ -47,6 +48,8 @@ export type PaymentAttemptStatus =
   | 'failed'
   | 'canceled';
 export type SubscriptionStatus = 'trialing' | 'active' | 'past_due' | 'canceled' | 'incomplete';
+export type ActivationStage = 'started' | 'asset' | 'analysis' | 'remix' | 'activated';
+export type ActivationEventType = 'activation_page_viewed' | 'asset_created' | 'analysis_completed' | 'remix_created';
 export type TrendCategory = 'hook-format' | 'audio-trend' | 'visual-style' | 'narrative-pattern' | 'cta-technique';
 export type PlatformType = 'tiktok' | 'instagram' | 'youtube' | 'x' | 'linkedin' | 'threads';
 
@@ -380,4 +383,15 @@ export type SubscriptionRecord = BaseRecord & {
   interval: PaymentInterval;
   amount: number;
   currency: string;
+};
+
+export type ActivationEvent = BaseRecord & {
+  workspaceId: string;
+  userId: string | null;
+  userEmail: string | null;
+  userName: string | null;
+  eventType: ActivationEventType;
+  stage: ActivationStage;
+  sourcePath: string;
+  metadata: Record<string, string>;
 };

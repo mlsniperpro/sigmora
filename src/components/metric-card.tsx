@@ -10,6 +10,7 @@ const getMetricColor = (label: string) => {
     'Workspace': '#fff',
     'Ready assets': '#d66428', // accent
     'Benchmarks': '#37b5ae',  // teal
+    'Viral Database': '#37b5ae',
     'Live jobs': '#ea8551',    // light orange
     'Rising trends': '#188a84', // dark teal
     'Competitors': '#fff',

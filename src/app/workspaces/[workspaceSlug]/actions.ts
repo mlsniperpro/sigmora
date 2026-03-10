@@ -2,6 +2,7 @@
 
 import { revalidatePath } from 'next/cache';
 import {
+  createActivationEvent,
   createAnalysisJob,
   createAnalysisResult,
   createAsset,
@@ -20,6 +21,8 @@ import {
   updatePromptRun,
   updatePromptTemplate,
   updateRemixJob,
+  getWorkspaceBySlug,
+  getWorkspaceUsers,
 } from '@/lib/repositories';
 import type { AnalysisResult, PlatformType, TrendCategory } from '@/lib/domain';
 import { workspacePath } from '@/lib/workspace-routing';
@@ -36,18 +39,54 @@ function getTags(formData: FormData, key: string) {
     .filter(Boolean);
 }
 
+async function recordActivationProgress(input: {
+  workspaceSlug: string;
+  workspaceId: string;
+  eventType: 'asset_created' | 'analysis_completed' | 'remix_created';
+  stage: 'asset' | 'analysis' | 'activated';
+  sourcePath: string;
+  metadata?: Record<string, string>;
+}) {
+  const workspace = await getWorkspaceBySlug(input.workspaceSlug);
+  const users = await getWorkspaceUsers(input.workspaceId || workspace.id);
+  const actor = users[0] ?? null;
+
+  await createActivationEvent({
+    workspaceId: input.workspaceId,
+    userId: actor?.id ?? null,
+    userEmail: actor?.email ?? null,
+    userName: actor?.displayName ?? null,
+    eventType: input.eventType,
+    stage: input.stage,
+    sourcePath: input.sourcePath,
+    metadata: input.metadata ?? {},
+  });
+}
+
 // ── Asset actions ──
 
 export async function createAssetAction(workspaceSlug: string, formData: FormData) {
   const workspaceId = getString(formData, 'workspaceId');
 
-  await createAsset({
+  const asset = await createAsset({
     workspaceId,
     title: getString(formData, 'title'),
     platform: getString(formData, 'platform') as 'tiktok' | 'instagram' | 'youtube',
     source: getString(formData, 'source') as 'upload' | 'import' | 'saved-benchmark',
     durationSeconds: Number(getString(formData, 'durationSeconds') || '0'),
     tags: getTags(formData, 'tags') as Array<'hook' | 'demo' | 'testimonial' | 'problem' | 'cta' | 'trend'>,
+  });
+
+  await recordActivationProgress({
+    workspaceSlug,
+    workspaceId,
+    eventType: 'asset_created',
+    stage: 'asset',
+    sourcePath: workspacePath(workspaceSlug, 'library'),
+    metadata: {
+      assetId: asset.id,
+      source: 'manual-create',
+    },
   });
 
   revalidatePath(workspacePath(workspaceSlug, 'dashboard'));
@@ -58,7 +97,7 @@ export async function importAssetFromUrlAction(workspaceSlug: string, formData: 
   const workspaceId = getString(formData, 'workspaceId');
   const sourceUrl = getString(formData, 'sourceUrl');
 
-  await createAsset({
+  const asset = await createAsset({
     workspaceId,
     title: getString(formData, 'title'),
     platform: getString(formData, 'platform') as 'tiktok' | 'instagram' | 'youtube',
@@ -71,6 +110,18 @@ export async function importAssetFromUrlAction(workspaceSlug: string, formData: 
   // In production this would trigger a background job to fetch metadata from the URL
   // and update the asset with duration, transcript, etc.
   void sourceUrl;
+
+  await recordActivationProgress({
+    workspaceSlug,
+    workspaceId,
+    eventType: 'asset_created',
+    stage: 'asset',
+    sourcePath: workspacePath(workspaceSlug, 'library'),
+    metadata: {
+      assetId: asset.id,
+      source: 'url-import',
+    },
+  });
 
   revalidatePath(workspacePath(workspaceSlug, 'dashboard'));
   revalidatePath(workspacePath(workspaceSlug, 'library'));
@@ -264,6 +315,18 @@ export async function runAssetAnalysisAction(workspaceSlug: string, formData: Fo
     outputSummary: resultPayload.summary,
   });
 
+  await recordActivationProgress({
+    workspaceSlug,
+    workspaceId,
+    eventType: 'analysis_completed',
+    stage: 'analysis',
+    sourcePath: `${workspacePath(workspaceSlug, 'library')}/${assetId}`,
+    metadata: {
+      assetId,
+      retentionRisk,
+    },
+  });
+
   revalidatePath(workspacePath(workspaceSlug, 'dashboard'));
   revalidatePath(workspacePath(workspaceSlug, 'jobs'));
   revalidatePath(`${workspacePath(workspaceSlug, 'library')}/${assetId}`);
@@ -299,6 +362,18 @@ export async function createRemixJobAction(workspaceSlug: string, formData: Form
   await updateRemixJob(job.id, {
     status: 'ready',
     updatedAt: new Date().toISOString(),
+  });
+
+  await recordActivationProgress({
+    workspaceSlug,
+    workspaceId,
+    eventType: 'remix_created',
+    stage: 'activated',
+    sourcePath: workspacePath(workspaceSlug, 'jobs'),
+    metadata: {
+      jobId: job.id,
+      outputType,
+    },
   });
 
   revalidatePath(workspacePath(workspaceSlug, 'dashboard'));

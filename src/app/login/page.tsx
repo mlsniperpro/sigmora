@@ -1,24 +1,30 @@
 'use client';
 
-import { useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { auth, isConfigValid } from '@/lib/firebase';
 import { useAuth } from '@/context/AuthContext';
 
-export default function LoginPage() {
+function LoginPageContent() {
     const router = useRouter();
+    const searchParams = useSearchParams();
     const { user, loading } = useAuth();
+    const nextPath = searchParams.get('next') || '/dashboard';
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMsg, setErrorMsg] = useState('');
     const [pending, setPending] = useState(false);
 
-    // If already logged in, redirect to dash
+    useEffect(() => {
+        if (!loading && user) {
+            router.replace(nextPath);
+        }
+    }, [loading, nextPath, router, user]);
+
     if (!loading && user) {
-        router.push('/dashboard'); // or workspace route if available, but /dashboard might map or redirect
         return null;
     }
 
@@ -32,9 +38,9 @@ export default function LoginPage() {
         setErrorMsg('');
         try {
             await signInWithEmailAndPassword(auth, email, password);
-            router.push('/dashboard');
-        } catch (err: any) {
-            setErrorMsg(err.message || 'Login failed.');
+            router.push(nextPath);
+        } catch (err: unknown) {
+            setErrorMsg(err instanceof Error ? err.message : 'Login failed.');
         } finally {
             setPending(false);
         }
@@ -50,9 +56,9 @@ export default function LoginPage() {
         const provider = new GoogleAuthProvider();
         try {
             await signInWithPopup(auth, provider);
-            router.push('/dashboard');
-        } catch (err: any) {
-            setErrorMsg(err.message || 'Google sign-in failed.');
+            router.push(nextPath);
+        } catch (err: unknown) {
+            setErrorMsg(err instanceof Error ? err.message : 'Google sign-in failed.');
         } finally {
             setPending(false);
         }
@@ -118,9 +124,17 @@ export default function LoginPage() {
                 </button>
 
                 <p style={{ textAlign: 'center', marginTop: '2.5rem', fontSize: '0.9rem', color: 'rgba(245, 241, 232, 0.72)' }}>
-                    Don't have an account? <Link href="/signup" style={{ color: '#fff', textDecoration: 'none', fontWeight: 600 }}>Create one</Link>
+                    Don&apos;t have an account? <Link href="/signup" style={{ color: '#fff', textDecoration: 'none', fontWeight: 600 }}>Create one</Link>
                 </p>
             </div>
         </main>
+    );
+}
+
+export default function LoginPage() {
+    return (
+        <Suspense fallback={null}>
+            <LoginPageContent />
+        </Suspense>
     );
 }

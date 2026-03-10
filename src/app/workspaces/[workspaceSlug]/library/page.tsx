@@ -60,7 +60,7 @@ export default async function WorkspaceLibraryPage({ params, searchParams }: Lib
         <MetricCard label="Total assets" value={String(allAssets.length)} detail="Across all sources." />
         <MetricCard label="Ready" value={String(readyCount)} detail="Available for analysis." />
         <MetricCard label="With transcript" value={String(withTranscript)} detail="Transcript extracted." />
-        <MetricCard label="Benchmark eligible" value={String(benchmarkEligible)} detail="Can be added to collections." />
+        <MetricCard label="Viral database ready" value={String(benchmarkEligible)} detail="Can be added to collections." />
       </section>
 
       <section className="panel">
@@ -203,7 +203,7 @@ export default async function WorkspaceLibraryPage({ params, searchParams }: Lib
           <input type="hidden" name="workspaceId" value={workspace.id} />
           <label>
             <span>Title</span>
-            <input name="title" placeholder="New benchmark candidate" required />
+            <input name="title" placeholder="New viral candidate" required />
           </label>
           <label>
             <span>Platform</span>
@@ -218,7 +218,7 @@ export default async function WorkspaceLibraryPage({ params, searchParams }: Lib
             <select name="source" defaultValue="upload">
               <option value="upload">Upload</option>
               <option value="import">Import</option>
-              <option value="saved-benchmark">Saved benchmark</option>
+              <option value="saved-benchmark">Viral Database Reference</option>
             </select>
           </label>
           <label>

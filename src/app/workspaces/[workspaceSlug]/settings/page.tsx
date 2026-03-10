@@ -1,6 +1,7 @@
 import { AppShell } from '@/components/app-shell';
 import { MetricCard } from '@/components/metric-card';
-import { getApprovalRecords, getConnectedAccounts, getWorkspaceBySlug, getWorkspaceUsers } from '@/lib/repositories';
+import { getActivationContactStatuses } from '@/lib/activation';
+import { getActivationEvents, getApprovalRecords, getConnectedAccounts, getWorkspaceBySlug, getWorkspaceUsers } from '@/lib/repositories';
 import { getPlatformStatus } from '@/lib/platform-status';
 import { platformCapabilities } from '@/lib/platform-capabilities';
 
@@ -9,31 +10,35 @@ type Params = { params: Promise<{ workspaceSlug: string }> };
 export default async function SettingsPage({ params }: Params) {
   const { workspaceSlug } = await params;
   const workspace = await getWorkspaceBySlug(workspaceSlug);
-  const [connectedAccounts, users, approvals] = await Promise.all([
+  const [connectedAccounts, users, approvals, activationEvents] = await Promise.all([
     getConnectedAccounts(workspace.id),
     getWorkspaceUsers(workspace.id),
     getApprovalRecords(workspace.id),
+    getActivationEvents(workspace.id),
   ]);
   const platformStatus = getPlatformStatus();
   const activeAccounts = connectedAccounts.filter((a) => a.status === 'connected');
   const pendingApprovals = approvals.filter((a) => a.state === 'pending');
+  const activationContacts = getActivationContactStatuses({ users, events: activationEvents });
+  const outreachCount = activationContacts.filter((contact) => contact.needsOutreach).length;
+  const activatedCount = activationContacts.filter((contact) => contact.stage === 'activated').length;
 
   return (
-    <AppShell workspace={workspace} title="Workspace settings" description="Manage team members, connected accounts, approvals, platform integrations, and workspace configuration.">
+    <AppShell workspace={workspace} title="Studio settings" description="Manage collaborators, connected accounts, approvals, platform integrations, and studio configuration.">
       <section className="panel detail-grid">
-        <div><p className="eyebrow">Workspace</p><h2>{workspace.name}</h2></div>
+        <div><p className="eyebrow">Studio</p><h2>{workspace.name}</h2></div>
         <div className="detail-pairs">
           <div><span>Plan</span><strong>{workspace.plan}</strong></div>
           <div><span>Members</span><strong>{workspace.members.length}</strong></div>
           <div><span>Billing state</span><strong>{workspace.billingState}</strong></div>
-          <div><span>Slug</span><strong>{workspace.slug}</strong></div>
+          <div><span>Studio slug</span><strong>{workspace.slug}</strong></div>
           <div><span>Created</span><strong>{new Date(workspace.createdAt).toLocaleDateString()}</strong></div>
           <div><span>Billing provider</span><strong>{workspace.billingProvider}</strong></div>
         </div>
       </section>
 
       <section className="panel">
-        <div className="table-header"><div><h2>Team members</h2><p>Users with access to this workspace.</p></div></div>
+        <div className="table-header"><div><h2>Collaborators</h2><p>Users with access to this studio.</p></div></div>
         <div className="data-table">
           <div className="data-table-row data-table-head"><span>Name</span><span>Email</span><span>Role</span><span>Joined</span></div>
           {users.map((user) => {
@@ -44,6 +49,44 @@ export default async function SettingsPage({ params }: Params) {
               </div>
             );
           })}
+        </div>
+      </section>
+
+      <section className="panel">
+        <div className="table-header"><div><h2>Retention operations</h2><p>Track who stalled during activation so you can follow up with the right message at the right step.</p></div></div>
+        <div className="metric-grid">
+          <MetricCard label="Need outreach" value={String(outreachCount)} detail="Inactive for 48+ hours before activation completed." />
+          <MetricCard label="Activated users" value={String(activatedCount)} detail="Completed asset, analysis, and remix." />
+          <MetricCard label="Tracked users" value={String(activationContacts.length)} detail="Workspace members with activation status." />
+          <MetricCard label="Raw events" value={String(activationEvents.length)} detail="Activation telemetry events recorded." />
+        </div>
+        <div className="data-table">
+          <div className="data-table-row data-table-head"><span>User</span><span>Stage</span><span>Last seen</span><span>Status</span></div>
+          {activationContacts.map((contact) => (
+            <div key={contact.key} className="data-table-row">
+              <span>
+                <strong>{contact.name}</strong>
+                <br />
+                <span style={{ fontSize: '0.8rem', opacity: 0.75 }}>{contact.email ?? 'No email captured'}</span>
+              </span>
+              <span>{contact.stage}</span>
+              <span>{contact.lastSeenAt ? new Date(contact.lastSeenAt).toLocaleString() : 'No activity yet'}</span>
+              <span>
+                <span className={`status-pill ${contact.needsOutreach ? 'status-later' : contact.stage === 'activated' ? 'status-foundation' : 'status-next'}`}>
+                  {contact.needsOutreach ? 'Reach out' : contact.stage === 'activated' ? 'Activated' : 'Monitoring'}
+                </span>
+                <p style={{ marginTop: '0.35rem', fontSize: '0.8rem', opacity: 0.8 }}>{contact.outreachReason}</p>
+                {contact.needsOutreach && contact.email ? (
+                  <a
+                    href={`mailto:${contact.email}?subject=${encodeURIComponent('Quick help getting value from Sigmora')}&body=${encodeURIComponent(`You stopped after ${contact.stage}. We can help you complete the next step in Sigmora.`)}`}
+                    className="inline-link"
+                  >
+                    Reach out
+                  </a>
+                ) : null}
+              </span>
+            </div>
+          ))}
         </div>
       </section>
 

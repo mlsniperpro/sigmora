@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from 'react';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { UserButton } from '@/components/user-button';
@@ -13,9 +14,19 @@ type AppSidebarProps = {
 };
 
 export function AppSidebar({ workspace }: AppSidebarProps) {
-    const [isCollapsed, setIsCollapsed] = useState(false);
+    const [isCollapsed, setIsCollapsed] = useState(() => {
+        if (typeof window === 'undefined') {
+            return false;
+        }
+
+        return window.localStorage.getItem('sigmora-sidebar-collapsed') === 'true';
+    });
 
     const pathname = usePathname();
+
+    useEffect(() => {
+        window.localStorage.setItem('sigmora-sidebar-collapsed', String(isCollapsed));
+    }, [isCollapsed]);
 
     return (
         <aside
@@ -40,7 +51,7 @@ export function AppSidebar({ workspace }: AppSidebarProps) {
             }}>
                 {!isCollapsed && (
                     <Link href={workspacePath(workspace.slug, 'dashboard')} className="brand-mark">
-                        <img src="/logo.png" alt="Sigmora Logo" className="logo" />
+                        <Image src="/logo.png" alt="Sigmora Logo" width={32} height={32} className="logo" />
                     </Link>
                 )}
                 <button
@@ -73,7 +84,7 @@ export function AppSidebar({ workspace }: AppSidebarProps) {
                     <p className="sidebar-copy" style={{ fontSize: '0.8rem' }}>Analyze, benchmark, and remix short-form video performance.</p>
                     <div className="workspace-badge" style={{ marginTop: '0.5rem' }}>
                         <span>{workspace.name}</span>
-                        <p>{workspace.plan} workspace</p>
+                        <p>{workspace.plan} studio</p>
                     </div>
                 </div>
             )}
@@ -141,8 +152,8 @@ export function AppSidebar({ workspace }: AppSidebarProps) {
                 </div>
             ))}
 
-            <div className="sidebar-footer" style={{ marginTop: 'auto', paddingTop: '1rem', display: 'flex', justifyContent: 'center' }}>
-                <UserButton />
+            <div className="sidebar-footer" style={{ marginTop: 'auto', paddingTop: '1rem', display: 'flex', justifyContent: 'center', width: '100%' }}>
+                <UserButton collapsed={isCollapsed} />
             </div>
         </aside>
     );
@@ -170,4 +181,3 @@ function NavIcon({ name, size = 18 }: { name: string; size?: number }) {
 
     return icons[name] || icons.home;
 }
-

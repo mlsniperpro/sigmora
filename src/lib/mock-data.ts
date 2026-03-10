@@ -16,6 +16,7 @@ import type {
   Playbook,
   PromptRun,
   PromptTemplate,
+  ActivationEvent,
   PublishingQueueItem,
   RemixJob,
   RemixOutput,
@@ -919,6 +920,52 @@ export const demoSubscriptions: SubscriptionRecord[] = [
   },
 ];
 
+export const demoActivationEvents: ActivationEvent[] = [
+  {
+    id: 'activation_1',
+    createdAt: '2026-03-10T07:45:00.000Z',
+    updatedAt: '2026-03-10T07:45:00.000Z',
+    workspaceId: demoWorkspace.id,
+    userId: 'user_1',
+    userEmail: 'owner@sigmora.ai',
+    userName: 'Workspace Owner',
+    eventType: 'remix_created',
+    stage: 'activated',
+    sourcePath: `/workspaces/${demoWorkspace.slug}/jobs`,
+    metadata: {
+      jobId: 'remix_1',
+    },
+  },
+  {
+    id: 'activation_2',
+    createdAt: '2026-03-06T10:00:00.000Z',
+    updatedAt: '2026-03-06T10:00:00.000Z',
+    workspaceId: demoWorkspace.id,
+    userId: 'user_2',
+    userEmail: 'editor@sigmora.ai',
+    userName: 'Creative Editor',
+    eventType: 'analysis_completed',
+    stage: 'analysis',
+    sourcePath: `/workspaces/${demoWorkspace.slug}/library/asset_1`,
+    metadata: {
+      assetId: 'asset_1',
+    },
+  },
+  {
+    id: 'activation_3',
+    createdAt: '2026-03-04T08:30:00.000Z',
+    updatedAt: '2026-03-04T08:30:00.000Z',
+    workspaceId: demoWorkspace.id,
+    userId: 'user_3',
+    userEmail: 'viewer@sigmora.ai',
+    userName: 'Analyst Reviewer',
+    eventType: 'activation_page_viewed',
+    stage: 'started',
+    sourcePath: `/workspaces/${demoWorkspace.slug}/activate`,
+    metadata: {},
+  },
+];
+
 export const mockDatabase: Record<CollectionName, unknown[]> = {
   [collections.users]: demoUsers,
   [collections.workspaces]: [demoWorkspace],
@@ -944,4 +991,5 @@ export const mockDatabase: Record<CollectionName, unknown[]> = {
   [collections.paymentCustomers]: demoPaymentCustomers,
   [collections.paymentAttempts]: demoPaymentAttempts,
   [collections.subscriptions]: demoSubscriptions,
+  [collections.activationEvents]: demoActivationEvents,
 };

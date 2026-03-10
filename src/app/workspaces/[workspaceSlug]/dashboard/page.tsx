@@ -1,8 +1,10 @@
 import Link from 'next/link';
+import { ActivationChecklist } from '@/components/activation-checklist';
 import { AppShell } from '@/components/app-shell';
 import { CollectionTable } from '@/components/collection-table';
 import { MetricCard } from '@/components/metric-card';
-import { getDashboardSnapshotBySlug } from '@/lib/repositories';
+import { getActivationSnapshot } from '@/lib/activation';
+import { getAnalysisResults, getDashboardSnapshotBySlug } from '@/lib/repositories';
 import { workspaceAssetPath, workspacePath, workspacePromptPath } from '@/lib/workspace-routing';
 
 type DashboardParams = {
@@ -12,16 +14,35 @@ type DashboardParams = {
 export default async function WorkspaceDashboardPage({ params }: DashboardParams) {
   const { workspaceSlug } = await params;
   const snapshot = await getDashboardSnapshotBySlug(workspaceSlug);
+  const analysisResults = await getAnalysisResults(snapshot.workspace.id);
+  const activation = getActivationSnapshot({
+    assets: snapshot.assets,
+    analysisResults,
+    remixJobs: snapshot.remixJobs,
+  });
   const readyAssets = snapshot.assets.filter((asset) => asset.status === 'ready').length;
   const liveJobs = snapshot.analysisJobs.filter((job) => job.status === 'running' || job.status === 'queued').length;
   const risingTrends = snapshot.trendSnapshots.filter((t) => t.velocity === 'rising').length;
+  const primaryAsset = snapshot.assets.find((asset) => asset.status === 'ready') ?? snapshot.assets[0];
+  const primaryBenchmark = snapshot.benchmarkCollections[0];
 
   return (
     <AppShell
       workspace={snapshot.workspace}
       title="Workspace dashboard"
-      description="Operating surface for the active workspace. Monitor asset throughput, benchmark coverage, prompt inventory, trend signals, and job execution."
+      description="Operating surface for the active workspace. Reach first value fast, then monitor asset throughput, reference database coverage, and generation performance."
     >
+      {!activation.isActivated ? (
+        <ActivationChecklist
+          title="Complete the first value loop"
+          description="Retention starts when a workspace imports one asset, runs one analysis, and turns that learning into one remix output."
+          snapshot={activation}
+          workspaceSlug={snapshot.workspace.slug}
+          primaryAssetId={primaryAsset?.id}
+          benchmarkCollectionId={primaryBenchmark?.id}
+        />
+      ) : null}
+
       <section className="metric-grid animate-fade-in-up delay-300">
         <MetricCard
           label="Workspace"
@@ -34,7 +55,7 @@ export default async function WorkspaceDashboardPage({ params }: DashboardParams
           detail="Available for benchmarking or remix."
         />
         <MetricCard
-          label="Benchmarks"
+          label="Viral Database"
           value={String(snapshot.benchmarkCollections.length)}
           detail="Curated reference sets."
         />
@@ -79,7 +100,7 @@ export default async function WorkspaceDashboardPage({ params }: DashboardParams
               View all trends
             </Link>
           </div>
-          <div className="recommendation-list" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
+          <div className="recommendation-list" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.5rem' }}>
             {snapshot.trendSnapshots
               .filter((t) => t.velocity === 'rising')
               .slice(0, 3)

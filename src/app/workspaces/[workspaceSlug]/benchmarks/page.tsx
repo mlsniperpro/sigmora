@@ -50,11 +50,11 @@ export default async function WorkspaceBenchmarksPage({ params, searchParams }: 
     <AppShell
       workspace={workspace}
       title="Viral Content Database"
-      subtitle="Benchmarks & References"
+      subtitle="Content References"
       description="Curated high-performing references and breakout hook patterns. Use these collections to accelerate your creative research and remix viral structures."
     >
       <section className="metric-grid">
-        <MetricCard label="Collections" value={String(allCollections.length)} detail="Total benchmark sets." />
+        <MetricCard label="Collections" value={String(allCollections.length)} detail="Total reference sets." />
         <MetricCard label="Total assets" value={String(allCollections.reduce((s, c) => s + c.assetIds.length, 0))} detail="Across all collections." />
         <MetricCard label="Analyzed" value={String(totalAnalyzed)} detail="Assets with analysis data." />
         <MetricCard label="Focus areas" value={String(new Set(allCollections.map((c) => c.focus)).size)} detail="Distinct focuses." />
@@ -63,7 +63,7 @@ export default async function WorkspaceBenchmarksPage({ params, searchParams }: 
       <section className="panel">
         <div className="table-header">
           <div>
-            <h2>Filter benchmarks</h2>
+            <h2>Filter references</h2>
             <p>Narrow by focus area, platform, or search by keyword.</p>
           </div>
         </div>
@@ -125,8 +125,8 @@ export default async function WorkspaceBenchmarksPage({ params, searchParams }: 
       <section className="panel form-panel">
         <div className="table-header">
           <div>
-            <h2>Create benchmark collection</h2>
-            <p>Use asset ids from the current library to seed a benchmark set for analysis and remix work.</p>
+            <h2>Create database collection</h2>
+            <p>Use asset ids from the current library to seed a reference set for analysis and remix work.</p>
           </div>
           {!hasAdminConfig ? <p className="warning-inline">Create actions require Admin SDK configuration.</p> : null}
         </div>
@@ -159,7 +159,7 @@ export default async function WorkspaceBenchmarksPage({ params, searchParams }: 
             />
           </label>
           <button type="submit" className="button" disabled={!hasAdminConfig}>
-            Create benchmark collection
+            Create database collection
           </button>
         </form>
       </section>

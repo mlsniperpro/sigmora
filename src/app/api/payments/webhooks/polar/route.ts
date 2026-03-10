@@ -1,21 +1,40 @@
 import { NextResponse } from 'next/server';
 import { processWebhookEvent } from '@/lib/billing';
+import { verifyPolarWebhookSignature } from '@/lib/webhook-verification';
 
 export async function POST(request: Request) {
-  const payload = await request.json().catch(() => null);
+  const rawBody = await request.text();
+  const payload = (() => {
+    try {
+      return JSON.parse(rawBody) as {
+        data?: { id?: string; checkout_id?: string; client_reference?: string; status?: string };
+        id?: string;
+        checkout_id?: string;
+        client_reference?: string;
+        status?: string;
+        type?: string;
+      };
+    } catch {
+      return null;
+    }
+  })();
 
   if (!payload) {
     return NextResponse.json({ success: false, error: 'Invalid JSON payload.' }, { status: 400 });
   }
 
-  const data = payload?.data ?? payload;
+  if (!verifyPolarWebhookSignature(rawBody, request.headers)) {
+    return NextResponse.json({ success: false, error: 'Invalid webhook signature.' }, { status: 401 });
+  }
+
+  const data = payload.data ?? payload;
   const reference =
-    data?.id ||
-    data?.checkout_id ||
-    data?.client_reference;
+    data.id ||
+    data.checkout_id ||
+    data.client_reference;
   const status =
-    data?.status ||
-    payload?.type ||
+    data.status ||
+    payload.type ||
     'unknown';
 
   if (!reference) {

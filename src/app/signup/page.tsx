@@ -33,8 +33,8 @@ export default function SignupPage() {
         try {
             await createUserWithEmailAndPassword(auth, email, password);
             router.push('/dashboard');
-        } catch (err: any) {
-            setErrorMsg(err.message || 'Signup failed.');
+        } catch (err: unknown) {
+            setErrorMsg(err instanceof Error ? err.message : 'Signup failed.');
         } finally {
             setPending(false);
         }
@@ -51,8 +51,8 @@ export default function SignupPage() {
         try {
             await signInWithPopup(auth, provider);
             router.push('/dashboard');
-        } catch (err: any) {
-            setErrorMsg(err.message || 'Google sign-in failed.');
+        } catch (err: unknown) {
+            setErrorMsg(err instanceof Error ? err.message : 'Google sign-in failed.');
         } finally {
             setPending(false);
         }
@@ -66,7 +66,7 @@ export default function SignupPage() {
 
                 <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
                     <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '2.4rem', marginBottom: '0.5rem', letterSpacing: '-0.02em' }}>Create an account</h1>
-                    <p style={{ color: 'rgba(245, 241, 232, 0.72)' }}>Join Sigmora to start building viral video systems.</p>
+                    <p style={{ color: 'rgba(245, 241, 232, 0.72)' }}>Start free with one asset, one analysis, and one remix before you decide how deeply to use Sigmora.</p>
                 </div>
 
                 {errorMsg && <div className="callout warning small" style={{ marginBottom: '1.5rem', textAlign: 'center' }}>{errorMsg}</div>}

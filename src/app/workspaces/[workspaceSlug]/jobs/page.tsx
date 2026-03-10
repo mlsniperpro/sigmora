@@ -136,9 +136,17 @@ export default async function WorkspaceJobsPage({ params }: JobsParams) {
         items={analysisJobs}
         columns={[
           { key: 'type', header: 'Type', render: (job) => job.jobType },
-          { key: 'status', header: 'Status', render: (job) => job.status },
+          { key: 'status', header: 'Status', render: (job) => <span className={`status-pill status-${job.status}`}>{job.status}</span> },
           { key: 'asset', header: 'Asset', render: (job) => job.assetId },
-          { key: 'summary', header: 'Output', render: (job) => job.outputSummary },
+          {
+            key: 'summary',
+            header: 'Output',
+            render: (job) => (
+              <Link href={workspaceRemixJobPath(workspace.slug, job.id)} className="inline-link">
+                {job.outputSummary || 'View Analysis'}
+              </Link>
+            )
+          },
         ]}
       />
 
@@ -156,7 +164,7 @@ export default async function WorkspaceJobsPage({ params }: JobsParams) {
               </Link>
             ),
           },
-          { key: 'status', header: 'Status', render: (job) => job.status },
+          { key: 'status', header: 'Status', render: (job) => <span className={`status-pill status-${job.status}`}>{job.status}</span> },
           { key: 'type', header: 'Output Type', render: (job) => job.outputType },
           { key: 'benchmark', header: 'Benchmark', render: (job) => job.benchmarkCollectionId },
         ]}

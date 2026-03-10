@@ -15,6 +15,12 @@ const getMetricColor = (label: string) => {
     'Competitors': '#fff',
     'Prompts': '#ea8551',
     'Remix jobs': '#37b5ae',
+    'Velocity': '#d66428',
+    'Momentum': '#37b5ae',
+    'Risk level': '#ea8551',
+    'Engagement': '#188a84',
+    'Originality': '#d66428',
+    'Revenue': '#37b5ae'
   };
   return map[label] || '#fff';
 };

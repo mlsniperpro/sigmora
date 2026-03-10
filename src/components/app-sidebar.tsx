@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { UserButton } from '@/components/user-button';
 import type { Workspace } from '@/lib/domain';
@@ -13,6 +14,8 @@ type AppSidebarProps = {
 
 export function AppSidebar({ workspace }: AppSidebarProps) {
     const [isCollapsed, setIsCollapsed] = useState(false);
+
+    const pathname = usePathname();
 
     return (
         <aside
@@ -76,32 +79,40 @@ export function AppSidebar({ workspace }: AppSidebarProps) {
             )}
 
             <nav className="nav-list" aria-label="Product Navigation" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                {appNavigation.map((item) => (
-                    <Link
-                        key={item.href}
-                        href={workspacePath(workspace.slug, item.href.replace('/', ''))}
-                        className="nav-card"
-                        style={{
-                            padding: isCollapsed ? '0.75rem' : '0.85rem 1rem',
-                            borderRadius: '0.75rem',
-                            transition: 'background 0.2s',
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: isCollapsed ? 'center' : 'flex-start',
-                            textAlign: isCollapsed ? 'center' : 'left'
-                        }}
-                        title={isCollapsed ? item.label : ""}
-                    >
-                        {isCollapsed ? (
-                            <span style={{ fontSize: '1.2rem' }}>{item.label[0]}</span>
-                        ) : (
-                            <>
-                                <span style={{ fontSize: '0.95rem' }}>{item.label}</span>
-                                <p style={{ fontSize: '0.75rem', marginTop: '0.2rem', opacity: 0.7 }}>{item.description}</p>
-                            </>
-                        )}
-                    </Link>
-                ))}
+                {appNavigation.map((item) => {
+                    const fullHref = workspacePath(workspace.slug, item.href.replace('/', ''));
+                    const isActive = pathname === fullHref || pathname.startsWith(fullHref + '/');
+
+                    return (
+                        <Link
+                            key={item.href}
+                            href={fullHref}
+                            className="nav-card"
+                            style={{
+                                padding: isCollapsed ? '0.75rem' : '0.85rem 1rem',
+                                borderRadius: '0.75rem',
+                                transition: 'all 0.2s',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: isCollapsed ? 'center' : 'flex-start',
+                                textAlign: isCollapsed ? 'center' : 'left',
+                                background: isActive ? 'rgba(214,100,40,0.1)' : 'transparent',
+                                border: `1px solid ${isActive ? 'rgba(214,100,40,0.2)' : 'transparent'}`,
+                                color: isActive ? 'var(--color-paper-100)' : 'var(--color-paper-200)'
+                            }}
+                            title={isCollapsed ? item.label : ""}
+                        >
+                            {isCollapsed ? (
+                                <span style={{ fontSize: '1.2rem', color: isActive ? 'var(--color-accent-400)' : 'inherit' }}>{item.label[0]}</span>
+                            ) : (
+                                <>
+                                    <span style={{ fontSize: '0.95rem', color: isActive ? 'var(--color-accent-400)' : 'inherit' }}>{item.label}</span>
+                                    <p style={{ fontSize: '0.75rem', marginTop: '0.2rem', opacity: isActive ? 0.9 : 0.7 }}>{item.description}</p>
+                                </>
+                            )}
+                        </Link>
+                    );
+                })}
             </nav>
 
             <div className="sidebar-footer" style={{ marginTop: 'auto', paddingTop: '1rem', display: 'flex', justifyContent: 'center' }}>

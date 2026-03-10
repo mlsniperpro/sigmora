@@ -30,9 +30,7 @@ export function AppShell({ workspace, title, description, children }: AppShellPr
 
         <nav className="nav-list" aria-label="Product Navigation" style={{ marginTop: '1rem' }}>
           {appNavigation.map((item) => (
-            <Link key={item.href} href={workspacePath(workspace.slug, item.href.replace('/', ''))} className="nav-card" style={{ padding: '0.85rem 1rem', borderRadius: '0.75rem', transition: 'background 0.2s' }}
-              onMouseOver={(e) => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)')}
-              onMouseOut={(e) => (e.currentTarget.style.background = 'transparent')}>
+            <Link key={item.href} href={workspacePath(workspace.slug, item.href.replace('/', ''))} className="nav-card" style={{ padding: '0.85rem 1rem', borderRadius: '0.75rem', transition: 'background 0.2s' }}>
               <span style={{ fontSize: '0.95rem' }}>{item.label}</span>
               <p style={{ fontSize: '0.8rem', marginTop: '0.2rem' }}>{item.description}</p>
             </Link>

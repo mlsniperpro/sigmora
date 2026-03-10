@@ -41,9 +41,8 @@ export function CollectionTable<T>({
             borderRadius: '8px',
             borderBottom: '1px solid rgba(255, 255, 255, 0.03)'
           }}
-            // Basic inline hover effect simulation via global CSS
-            onMouseOver={(e) => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.03)')}
-            onMouseOut={(e) => (e.currentTarget.style.background = 'transparent')}
+          // Basic inline hover effect simulation via global CSS
+
           >
             {columns.map((column) => (
               <span key={column.key} style={{ fontSize: '0.95rem', display: 'flex', alignItems: 'center' }}>{column.render(item)}</span>

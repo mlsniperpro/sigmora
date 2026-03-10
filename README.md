@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sigmora
 
-## Getting Started
+Sigmora is a quantitative UGC intelligence and remix platform for short-form video teams. It ingests benchmark videos, extracts multimodal performance signals, turns those signals into structured edit guidance, and helps teams generate, track, and iterate on better variants.
 
-First, run the development server:
+## Product Scope
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Viral UGC benchmark database
+- Personal and team content libraries with transcripts and scene analysis
+- Competitor account intelligence and watchlist monitoring
+- Trend intelligence across platforms
+- Prompt management with versioning and outcome analytics
+- Creative analytics and outcome tracking
+- Remix and script generation workflows (scripts, scene plans, creative briefs)
+- Brand-fit and originality guardrails via playbooks
+- Team playbooks and collaboration
+- Connected accounts and workspace settings
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technical Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Next.js App Router (v16)
+- React 19
+- TypeScript
+- Firebase client SDK (auth) and Admin SDK (Firestore)
+- Content Engine API for media storage and upload orchestration
+- Paystack (primary) and Polar (fallback) for billing
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Service Split
 
-## Learn More
+- Firebase Auth: user identity and session management
+- Firestore: users, workspaces, assets, prompts, jobs, billing metadata, trends, competitors, playbooks
+- Billing: Paystack primary checkout, Polar fallback for global coverage
+- Content Engine: upload orchestration, media storage, large file handling
 
-To learn more about Next.js, take a look at the following resources:
+## Route Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `/` — Landing page
+- `/workspaces` — Workspace selector
+- `/workspaces/[slug]/dashboard` — Workspace overview with metrics and trend signals
+- `/workspaces/[slug]/library` — Asset library with filtering, upload, and transcript display
+- `/workspaces/[slug]/library/[id]` — Asset detail with timeline, transcript, analysis, and recommendations
+- `/workspaces/[slug]/benchmarks` — Benchmark collections
+- `/workspaces/[slug]/benchmarks/[id]` — Benchmark detail with comparative analysis and pattern extraction
+- `/workspaces/[slug]/trends` — Trend intelligence with velocity and saturation tracking
+- `/workspaces/[slug]/competitors` — Competitor watchlist and account intelligence
+- `/workspaces/[slug]/competitors/[id]` — Competitor detail with content pattern analysis
+- `/workspaces/[slug]/prompts` — Prompt template management
+- `/workspaces/[slug]/prompts/[id]` — Prompt detail with body, run history, and outcome analytics
+- `/workspaces/[slug]/playbooks` — Creative workflow playbooks
+- `/workspaces/[slug]/playbooks/[id]` — Playbook detail with linked benchmarks, prompts, and guardrails
+- `/workspaces/[slug]/jobs` — Analysis and remix job queues
+- `/workspaces/[slug]/jobs/[id]` — Remix job detail with generated output (scenes, scripts, briefs)
+- `/workspaces/[slug]/analytics` — Creative analytics dashboard
+- `/workspaces/[slug]/settings` — Workspace config, team members, connected accounts
+- `/workspaces/[slug]/billing` — Plans, checkout, and subscription management
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Reference Material
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Detailed product specification: `backup/README.md`
+- Monetization and marketing strategy: `backup/monetization_marketing.md`

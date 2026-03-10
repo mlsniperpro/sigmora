@@ -61,10 +61,12 @@ export default async function Home() {
               </p>
               <Link href="/signup" className="button button-secondary">Try the Remixer</Link>
             </div>
-            <div className="panel" style={{ height: '350px', background: 'linear-gradient(135deg, rgba(214, 100, 40, 0.1), rgba(255,255,255,0.02))', position: 'relative', overflow: 'hidden' }}>
-              <div style={{ position: 'absolute', top: '10%', left: '10%', right: '10%', bottom: '-10%', background: '#0a0c10', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px 12px 0 0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <p className="eyebrow">Remixer UI Simulation</p>
-              </div>
+            <div className="panel" style={{ height: '400px', background: 'rgba(255,255,255,0.02)', position: 'relative', overflow: 'hidden', padding: 0 }}>
+              <img
+                src="/ai-remixer-preview.png"
+                alt="AI Remixer UI Preview"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.9 }}
+              />
             </div>
           </div>
 
@@ -77,10 +79,12 @@ export default async function Home() {
               </p>
               <Link href="/signup" className="button button-secondary">Explore Database</Link>
             </div>
-            <div className="panel" style={{ height: '350px', background: 'linear-gradient(135deg, rgba(24, 138, 132, 0.1), rgba(255,255,255,0.02))', position: 'relative', overflow: 'hidden' }}>
-              <div style={{ position: 'absolute', top: '10%', left: '10%', right: '10%', bottom: '-10%', background: '#0a0c10', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '12px 12px 0 0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <p className="eyebrow">Database UI Simulation</p>
-              </div>
+            <div className="panel" style={{ height: '400px', background: 'rgba(255,255,255,0.02)', position: 'relative', overflow: 'hidden', padding: 0 }}>
+              <img
+                src="/viral-database-preview.png"
+                alt="Viral Database UI Preview"
+                style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.9 }}
+              />
             </div>
           </div>
 

@@ -607,6 +607,14 @@
   .app-shell {
     grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
     gap: 1.5rem;
+    align-items: start;
+  }
+
+  .workspace-sidebar {
+    position: sticky;
+    top: 2rem;
+    height: calc(100vh - 4rem);
+    overflow-y: auto;
   }
 
   .hero {
@@ -788,4 +796,7 @@
 .delay-500 {
   animation-delay: 500ms;
 }
-button:hover svg { stroke: var(--color-accent-400); }
+
+button:hover svg {
+  stroke: var(--color-accent-400);
+}

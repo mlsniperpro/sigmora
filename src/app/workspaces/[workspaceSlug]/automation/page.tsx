@@ -1,6 +1,7 @@
 import { AppShell } from '@/components/app-shell';
 import { CollectionTable } from '@/components/collection-table';
 import { MetricCard } from '@/components/metric-card';
+import { AutomationPanel } from '@/components/automation-panel';
 import { getWatchlistAccounts, getWorkspaceBySlug } from '@/lib/repositories';
 
 type Params = { params: Promise<{ workspaceSlug: string }> };
@@ -61,6 +62,8 @@ export default async function AutomationPage({ params }: Params) {
           <button type="submit" className="button" disabled>Add to watchlist</button>
         </form>
       </section>
+
+      <AutomationPanel />
 
       <CollectionTable
         title="Inspiration watchlist"

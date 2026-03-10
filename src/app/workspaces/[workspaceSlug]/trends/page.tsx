@@ -1,5 +1,6 @@
 import { AppShell } from '@/components/app-shell';
 import { createTrendSnapshotAction } from '@/app/workspaces/[workspaceSlug]/actions';
+import { TrendChart } from '@/components/trend-chart';
 import { hasAdminConfig } from '@/lib/firebase-admin';
 import { getTrendSnapshots, getWorkspaceBySlug } from '@/lib/repositories';
 
@@ -57,6 +58,8 @@ export default async function TrendsPage({ params }: TrendsParams) {
           <p>Tracked across all platforms.</p>
         </div>
       </section>
+
+      <TrendChart />
 
       <section className="panel form-panel">
         <div className="table-header">

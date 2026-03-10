@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { AppShell } from '@/components/app-shell';
+import { VideoPlayer } from '@/components/video-player';
+import { RetentionTimeline } from '@/components/retention-timeline';
 import { getRemixJobs, getRemixOutputsByJobId, getWorkspaceBySlug, getBenchmarkCollectionById } from '@/lib/repositories';
 import { workspaceBenchmarkPath, workspacePath } from '@/lib/workspace-routing';
 
@@ -79,69 +81,47 @@ export default async function JobDetailPage({ params }: JobDetailParams) {
 
           {output.scenes && output.scenes.length > 0 ? (
             <>
-              {/* Visual storyboard timeline */}
-              <div style={{ display: 'flex', borderRadius: '0.75rem', overflow: 'hidden', height: '3.5rem', marginBottom: '0.5rem' }}>
-                {output.scenes.map((scene) => {
-                  const purposeKey = scene.purpose.split(' ')[0].toLowerCase();
-                  const color = storyboardColors[purposeKey] ?? '#666';
-                  return (
-                    <div
-                      key={scene.sceneNumber}
-                      title={`Scene ${scene.sceneNumber}: ${scene.purpose} (${scene.duration})`}
-                      style={{
-                        flex: 1,
-                        background: `linear-gradient(180deg, ${color}55, ${color}22)`,
-                        borderRight: '1px solid rgba(0,0,0,0.4)',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        gap: '0.15rem',
-                        padding: '0.25rem',
-                      }}
-                    >
-                      <span style={{ fontSize: '0.6rem', fontWeight: 700, color, textTransform: 'uppercase', letterSpacing: '0.08em' }}>
-                        {purposeKey}
-                      </span>
-                      <span style={{ fontSize: '0.65rem', color: 'rgba(245,241,232,0.6)' }}>
-                        {scene.duration}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
+              {/* Rich Video Player & Timeline Grid */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(360px, 400px)', gap: '1.5rem', marginBottom: '1.5rem', alignItems: 'start' }}>
+                <div style={{ display: 'grid', gap: '1.5rem' }}>
+                  <VideoPlayer
+                    title={output.title}
+                    duration={output.scenes.reduce((acc, s) => {
+                      const match = s.duration.match(/(\d+)/g);
+                      return match ? acc + parseInt(match.pop() || '0') : acc;
+                    }, 0) + 's'}
+                  />
+                  <RetentionTimeline />
+                </div>
 
-              {/* Storyboard cards */}
-              <div style={{ display: 'grid', gridTemplateColumns: `repeat(${output.scenes.length}, minmax(0, 1fr))`, gap: '0.75rem' }}>
-                {output.scenes.map((scene) => {
-                  const purposeKey = scene.purpose.split(' ')[0].toLowerCase();
-                  const color = storyboardColors[purposeKey] ?? '#666';
-                  return (
-                    <div
-                      key={scene.sceneNumber}
-                      style={{
-                        padding: '1rem',
-                        borderRadius: '1rem',
-                        background: `linear-gradient(180deg, ${color}18, rgba(255,255,255,0.02))`,
-                        border: `1px solid ${color}33`,
-                        display: 'grid',
-                        gap: '0.5rem',
-                      }}
-                    >
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <span style={{ fontSize: '0.7rem', fontWeight: 700, color, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-                          Scene {scene.sceneNumber}
-                        </span>
-                        <span style={{ fontSize: '0.65rem', color: 'rgba(245,241,232,0.5)' }}>{scene.duration}</span>
+                {/* Scene Script List Next to Player */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', maxHeight: '600px', overflowY: 'auto', paddingRight: '0.5rem' }}>
+                  {output.scenes.map((scene) => {
+                    const purposeKey = scene.purpose.split(' ')[0].toLowerCase();
+                    const color = storyboardColors[purposeKey] ?? '#666';
+                    return (
+                      <div
+                        key={scene.sceneNumber}
+                        style={{
+                          padding: '0.75rem',
+                          borderRadius: '0.75rem',
+                          background: `linear-gradient(180deg, ${color}10, rgba(255,255,255,0.01))`,
+                          border: `1px solid ${color}20`,
+                          display: 'grid',
+                          gap: '0.25rem',
+                        }}
+                      >
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                          <span style={{ fontSize: '0.7rem', fontWeight: 700, color, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+                            {scene.purpose}
+                          </span>
+                          <span style={{ fontSize: '0.65rem', color: 'rgba(245,241,232,0.5)', fontFamily: 'monospace' }}>{scene.duration}</span>
+                        </div>
+                        <p style={{ fontSize: '0.8rem', color: 'var(--color-paper-100)', marginTop: '0.25rem' }}>"{scene.text}"</p>
                       </div>
-                      <p style={{ fontSize: '0.85rem', fontStyle: 'italic', color: 'var(--color-paper-100)' }}>{scene.text}</p>
-                      <div style={{ fontSize: '0.75rem', color: 'rgba(245,241,232,0.6)', display: 'grid', gap: '0.25rem' }}>
-                        <span>Visual: {scene.visual}</span>
-                        <span>Audio: {scene.audio}</span>
-                      </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
 
               {/* Detailed breakdown */}

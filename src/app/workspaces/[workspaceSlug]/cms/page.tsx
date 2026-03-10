@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { AppShell } from '@/components/app-shell';
 import { CollectionTable } from '@/components/collection-table';
 import { MetricCard } from '@/components/metric-card';
+import { CmsConnector } from '@/components/cms-connector';
 import { getBlogDrafts, getCmsConnections, getWorkspaceBySlug } from '@/lib/repositories';
 import { platformCapabilities } from '@/lib/platform-capabilities';
 import { workspacePath } from '@/lib/workspace-routing';
@@ -29,53 +30,7 @@ export default async function CmsPage({ params }: Params) {
         <MetricCard label="Published" value={String(publishedDrafts.length)} detail="Articles live." />
       </section>
 
-      <section className="panel form-panel">
-        <div className="table-header">
-          <div>
-            <h2>Connect a CMS</h2>
-            <p>Link a blog or CMS platform to publish content from Sigmora.</p>
-          </div>
-        </div>
-        <form className="entity-form">
-          <input type="hidden" name="workspaceId" value={workspace.id} />
-          <label><span>Name</span><input name="name" placeholder="Company Blog" required /></label>
-          <label>
-            <span>Provider</span>
-            <select name="provider" defaultValue="wordpress">
-              <option value="wordpress">WordPress</option>
-              <option value="ghost">Ghost</option>
-              <option value="webflow">Webflow</option>
-              <option value="shopify">Shopify</option>
-              <option value="notion">Notion</option>
-              <option value="sanity">Sanity</option>
-              <option value="contentful">Contentful</option>
-              <option value="custom">Custom endpoint</option>
-            </select>
-          </label>
-          <label className="form-span-full"><span>Base URL</span><input name="baseUrl" placeholder="https://blog.example.com" required /></label>
-          <button type="submit" className="button" disabled>Connect CMS</button>
-        </form>
-      </section>
-
-      <section className="panel">
-        <div className="table-header"><div><h2>Connected destinations</h2><p>CMS and blog platforms linked to this workspace.</p></div></div>
-        <div className="recommendation-list">
-          {connections.map((conn) => (
-            <article key={conn.id} className="recommendation-card">
-              <div className="tag-row">
-                <span className={`status-pill ${conn.status === 'connected' ? 'status-foundation' : 'status-later'}`}>{conn.status}</span>
-                <span className="status-pill status-later">{conn.provider}</span>
-              </div>
-              <h3 style={{ marginTop: '0.5rem' }}>
-                <Link href={`${workspacePath(workspace.slug, 'cms')}/${conn.id}`} className="inline-link">{conn.name}</Link>
-              </h3>
-              <p>{conn.baseUrl}</p>
-              <p style={{ fontSize: '0.85rem', opacity: 0.7 }}>Capabilities: {conn.capabilities.join(', ')}</p>
-            </article>
-          ))}
-          {connections.length === 0 && <p>No CMS connections yet.</p>}
-        </div>
-      </section>
+      <CmsConnector />
 
       <section className="panel form-panel">
         <div className="table-header">

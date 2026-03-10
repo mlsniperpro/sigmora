@@ -48,51 +48,66 @@ export default async function BenchmarkDetailPage({ params }: BenchmarkDetailPar
     <AppShell
       workspace={workspace}
       title={benchmark.title}
+      subtitle="Benchmark Collection"
       description={benchmark.description}
     >
       <section className="panel detail-grid">
-        <div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           <div className="tag-row">
-            <span className="status-pill status-foundation">{benchmark.focus}</span>
+            <span className="status-pill status-foundation">{benchmark.focus.toUpperCase()}</span>
             <span className="status-pill status-later">{benchmark.assetIds.length} assets</span>
           </div>
           <h2>Collection overview</h2>
+          <p style={{ fontSize: '1.1rem', color: 'var(--color-paper-200)', lineHeight: 1.6 }}>{benchmark.description}</p>
         </div>
-        <p>{benchmark.description}</p>
+        <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start', gap: '1rem', borderLeft: '1px solid rgba(255,255,255,0.05)', paddingLeft: '2rem' }}>
+          <p className="eyebrow" style={{ color: 'var(--color-accent-400)' }}>Ready to innovate?</p>
+          <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Remix this collection</h3>
+          <p style={{ fontSize: '0.9rem', marginBottom: '1rem', opacity: 0.7 }}>Generate new scripts or creative briefs directly from these validated patterns.</p>
+          <Link
+            href={`/workspaces/${workspaceSlug}/jobs?benchmarkCollectionId=${benchmarkId}`}
+            className="button"
+            style={{ width: '100%', textAlign: 'center' }}
+          >
+            Start Remix Workflow
+          </Link>
+        </div>
       </section>
 
-      {analyzedAssets.length > 0 && (
-        <section className="panel">
-          <div className="table-header">
-            <div>
-              <h2>Benchmark averages</h2>
-              <p>Aggregated scores across {analyzedAssets.length} analyzed asset{analyzedAssets.length > 1 ? 's' : ''} in this collection.</p>
+      {
+        analyzedAssets.length > 0 && (
+          <section className="panel">
+            <div className="table-header">
+              <div>
+                <h2>Benchmark averages</h2>
+                <p>Aggregated scores across {analyzedAssets.length} analyzed asset{analyzedAssets.length > 1 ? 's' : ''} in this collection.</p>
+              </div>
             </div>
-          </div>
-          <div className="metric-grid">
-            <div className="panel metric-card">
-              <p className="metric-label">Hook</p>
-              <h2>{avgHook}</h2>
-              <p>Avg hook score</p>
+            <div className="metric-grid">
+              <div className="panel metric-card">
+                <p className="metric-label">Hook</p>
+                <h2>{avgHook}</h2>
+                <p>Avg hook score</p>
+              </div>
+              <div className="panel metric-card">
+                <p className="metric-label">Pacing</p>
+                <h2>{avgPacing}</h2>
+                <p>Avg pacing score</p>
+              </div>
+              <div className="panel metric-card">
+                <p className="metric-label">Proof</p>
+                <h2>{avgProof}</h2>
+                <p>Avg proof score</p>
+              </div>
+              <div className="panel metric-card">
+                <p className="metric-label">CTA</p>
+                <h2>{avgCta}</h2>
+                <p>Avg CTA score</p>
+              </div>
             </div>
-            <div className="panel metric-card">
-              <p className="metric-label">Pacing</p>
-              <h2>{avgPacing}</h2>
-              <p>Avg pacing score</p>
-            </div>
-            <div className="panel metric-card">
-              <p className="metric-label">Proof</p>
-              <h2>{avgProof}</h2>
-              <p>Avg proof score</p>
-            </div>
-            <div className="panel metric-card">
-              <p className="metric-label">CTA</p>
-              <h2>{avgCta}</h2>
-              <p>Avg CTA score</p>
-            </div>
-          </div>
-        </section>
-      )}
+          </section>
+        )
+      }
 
       <section className="panel">
         <div className="table-header">
@@ -142,39 +157,41 @@ export default async function BenchmarkDetailPage({ params }: BenchmarkDetailPar
         </div>
       </section>
 
-      {analyzedAssets.length > 0 && (
-        <section className="panel">
-          <div className="table-header">
-            <div>
-              <h2>Common patterns</h2>
-              <p>Structural patterns observed across analyzed assets in this collection.</p>
+      {
+        analyzedAssets.length > 0 && (
+          <section className="panel">
+            <div className="table-header">
+              <div>
+                <h2>Common patterns</h2>
+                <p>Structural patterns observed across analyzed assets in this collection.</p>
+              </div>
             </div>
-          </div>
-          <div className="recommendation-list">
-            <article className="recommendation-card">
-              <h3>Hook timing</h3>
-              <p>
-                Average recommended hook window: {Math.round(analyzedAssets.reduce((sum, a) => sum + (a.analysis?.recommendedHookWindowSeconds ?? 0), 0) / analyzedAssets.length)}s.
-                {avgHook >= 80 ? ' Strong opener patterns across this collection.' : avgHook >= 65 ? ' Moderate hook strength. Consider testing faster openers.' : ' Hooks need strengthening across this collection.'}
-              </p>
-            </article>
-            <article className="recommendation-card">
-              <h3>Proof density</h3>
-              <p>
-                Average proof score: {avgProof}/100.
-                {avgProof >= 75 ? ' Good proof density. Assets in this collection demonstrate strong evidence moments.' : ' Proof sections could be stronger. Consider earlier or more visual proof elements.'}
-              </p>
-            </article>
-            <article className="recommendation-card">
-              <h3>CTA structure</h3>
-              <p>
-                Average CTA score: {avgCta}/100. Average CTA window starts at {Math.round(analyzedAssets.reduce((sum, a) => sum + (a.analysis?.recommendedCtaWindowSeconds ?? 0), 0) / analyzedAssets.length)}s.
-                {avgCta >= 70 ? ' CTAs in this collection are well-structured.' : ' CTA timing or intensity could be improved across this collection.'}
-              </p>
-            </article>
-          </div>
-        </section>
-      )}
-    </AppShell>
+            <div className="recommendation-list">
+              <article className="recommendation-card">
+                <h3>Hook timing</h3>
+                <p>
+                  Average recommended hook window: {Math.round(analyzedAssets.reduce((sum, a) => sum + (a.analysis?.recommendedHookWindowSeconds ?? 0), 0) / analyzedAssets.length)}s.
+                  {avgHook >= 80 ? ' Strong opener patterns across this collection.' : avgHook >= 65 ? ' Moderate hook strength. Consider testing faster openers.' : ' Hooks need strengthening across this collection.'}
+                </p>
+              </article>
+              <article className="recommendation-card">
+                <h3>Proof density</h3>
+                <p>
+                  Average proof score: {avgProof}/100.
+                  {avgProof >= 75 ? ' Good proof density. Assets in this collection demonstrate strong evidence moments.' : ' Proof sections could be stronger. Consider earlier or more visual proof elements.'}
+                </p>
+              </article>
+              <article className="recommendation-card">
+                <h3>CTA structure</h3>
+                <p>
+                  Average CTA score: {avgCta}/100. Average CTA window starts at {Math.round(analyzedAssets.reduce((sum, a) => sum + (a.analysis?.recommendedCtaWindowSeconds ?? 0), 0) / analyzedAssets.length)}s.
+                  {avgCta >= 70 ? ' CTAs in this collection are well-structured.' : ' CTA timing or intensity could be improved across this collection.'}
+                </p>
+              </article>
+            </div>
+          </section>
+        )
+      }
+    </AppShell >
   );
 }

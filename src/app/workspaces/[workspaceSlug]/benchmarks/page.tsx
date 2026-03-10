@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { AppShell } from '@/components/app-shell';
 import { CollectionTable } from '@/components/collection-table';
 import { MetricCard } from '@/components/metric-card';
+import { ContentGallery } from '@/components/content-gallery';
 import { createBenchmarkCollectionAction } from '@/app/workspaces/[workspaceSlug]/actions';
 import { hasAdminConfig } from '@/lib/firebase-admin';
 import { getAssets, getBenchmarkCollections, getAnalysisResults, getWorkspaceBySlug } from '@/lib/repositories';
@@ -48,8 +49,9 @@ export default async function WorkspaceBenchmarksPage({ params, searchParams }: 
   return (
     <AppShell
       workspace={workspace}
-      title="Benchmark collections"
-      description="Curated reference sets for analysis and remix work. Filter by focus area, platform, or search by name."
+      title="Viral Content Database"
+      subtitle="Benchmarks & References"
+      description="Curated high-performing references and breakout hook patterns. Use these collections to accelerate your creative research and remix viral structures."
     >
       <section className="metric-grid">
         <MetricCard label="Collections" value={String(allCollections.length)} detail="Total benchmark sets." />
@@ -162,25 +164,15 @@ export default async function WorkspaceBenchmarksPage({ params, searchParams }: 
         </form>
       </section>
 
-      <CollectionTable
-        title={`Saved collections${collections.length !== allCollections.length ? ` (${collections.length} of ${allCollections.length})` : ''}`}
-        description="Collection detail pages can act as the anchor for compare, analyze, and remix flows."
-        items={collections}
-        columns={[
-          {
-            key: 'title',
-            header: 'Collection',
-            render: (collection) => (
-              <Link href={workspaceBenchmarkPath(workspace.slug, collection.id)} className="inline-link">
-                {collection.title}
-              </Link>
-            ),
-          },
-          { key: 'focus', header: 'Focus', render: (collection) => collection.focus },
-          { key: 'assets', header: 'Assets', render: (collection) => String(collection.assetIds.length) },
-          { key: 'description', header: 'Description', render: (collection) => collection.description },
-        ]}
-      />
+      <section>
+        <div className="table-header" style={{ marginBottom: '2rem' }}>
+          <div>
+            <h2 style={{ fontSize: '1.8rem' }}>Saved collections</h2>
+            <p>Collection detail pages act as the anchor for comparison, analysis, and remixing viral patterns.</p>
+          </div>
+        </div>
+        <ContentGallery collections={collections} workspaceSlug={workspaceSlug} />
+      </section>
     </AppShell>
   );
 }

@@ -18,10 +18,12 @@ import { workspaceRemixJobPath } from '@/lib/workspace-routing';
 
 type JobsParams = {
   params: Promise<{ workspaceSlug: string }>;
+  searchParams: Promise<{ benchmarkCollectionId?: string }>;
 };
 
-export default async function WorkspaceJobsPage({ params }: JobsParams) {
+export default async function WorkspaceJobsPage({ params, searchParams }: JobsParams) {
   const { workspaceSlug } = await params;
+  const { benchmarkCollectionId } = await searchParams;
   const workspace = await getWorkspaceBySlug(workspaceSlug);
   const [analysisJobs, remixJobs, assets, benchmarkCollections, prompts] = await Promise.all([
     getAnalysisJobs(workspace.id),
@@ -88,7 +90,7 @@ export default async function WorkspaceJobsPage({ params }: JobsParams) {
             <input type="hidden" name="workspaceId" value={workspace.id} />
             <label>
               <span>Benchmark collection</span>
-              <select name="benchmarkCollectionId" defaultValue={benchmarkCollections[0]?.id}>
+              <select name="benchmarkCollectionId" defaultValue={benchmarkCollectionId || benchmarkCollections[0]?.id}>
                 {benchmarkCollections.map((collection) => (
                   <option key={collection.id} value={collection.id}>
                     {collection.title}

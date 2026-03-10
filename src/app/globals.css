@@ -27,9 +27,10 @@
   html {
     min-height: 100%;
     background:
-      radial-gradient(circle at top left, rgba(196, 104, 50, 0.18), transparent 28%),
-      radial-gradient(circle at 80% 20%, rgba(29, 127, 122, 0.22), transparent 24%),
-      linear-gradient(180deg, #12141a 0%, #0b0d11 100%);
+      radial-gradient(circle at -10% -10%, rgba(214, 100, 40, 0.3), transparent 45%),
+      radial-gradient(circle at 110% 90%, rgba(24, 138, 132, 0.25), transparent 45%),
+      radial-gradient(circle at 50% 50%, rgba(10, 12, 16, 0) 0%, #06070a 100%),
+      #080a0f;
   }
 
   body {
@@ -135,11 +136,13 @@
 
   .principle-card:hover,
   .module-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-6px);
     box-shadow:
-      0 12px 32px -4px rgba(0, 0, 0, 0.4),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    border-color: rgba(255, 255, 255, 0.15);
+      0 24px 48px -12px rgba(0, 0, 0, 0.6),
+      0 0 24px -4px rgba(223, 131, 81, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.2);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
   }
 
   .principle-card,
@@ -343,12 +346,32 @@
     box-shadow:
       0 4px 14px 0 rgba(214, 100, 40, 0.39),
       inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(255, 255, 255, 0.2), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .button:hover::after {
+    opacity: 1;
   }
 
   .button:hover {
     box-shadow:
-      0 6px 20px rgba(214, 100, 40, 0.25),
+      0 8px 24px rgba(214, 100, 40, 0.5),
+      0 0 20px rgba(214, 100, 40, 0.3),
       inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px) scale(1.02);
   }
 
   .button-secondary {
@@ -597,9 +620,34 @@
     grid-template-columns: repeat(2, max-content);
   }
 
-  .principles-grid,
+  .principles-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Bento Grid specific to module section */
   .module-grid {
+    display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-auto-rows: minmax(180px, auto);
+    gap: 1.5rem;
+  }
+
+  .module-card:nth-child(1) {
+    grid-column: span 2;
+    background: linear-gradient(135deg, rgba(214, 100, 40, 0.1), rgba(255, 255, 255, 0.02));
+  }
+
+  .module-card:nth-child(2) {
+    grid-column: span 1;
+    background: linear-gradient(135deg, rgba(24, 138, 132, 0.08), rgba(255, 255, 255, 0.02));
+  }
+
+  .module-card:nth-child(3) {
+    grid-column: span 1;
+  }
+
+  .module-card:nth-child(4) {
+    grid-column: span 2;
   }
 
   .phase-list {
@@ -635,10 +683,108 @@
   .tag-row {
     grid-template-columns: repeat(auto-fit, minmax(120px, max-content));
   }
+
+  /* New restructuring grids */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .pricing-card.best-value {
+    transform: scale(1.05);
+    border-color: rgba(214, 100, 40, 0.4);
+    box-shadow:
+      0 0 40px rgba(214, 100, 40, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+
+  .feature-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .feature-split.reversed {
+    direction: rtl;
+  }
+
+  .feature-split.reversed>* {
+    direction: ltr;
+  }
 }
 
 @keyframes spin {
   to {
     transform: rotate(360deg);
   }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.delay-100 {
+  animation-delay: 100ms;
+}
+
+.delay-200 {
+  animation-delay: 200ms;
+}
+
+.delay-300 {
+  animation-delay: 300ms;
+}
+
+.delay-400 {
+  animation-delay: 400ms;
+}
+
+.delay-500 {
+  animation-delay: 500ms;
 }

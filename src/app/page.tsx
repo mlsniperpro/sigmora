@@ -34,7 +34,11 @@ export default async function Home() {
               Go to Workspace
             </Link>
           </div>
-          <p className="animate-fade-in-up delay-400" style={{ marginTop: '1.5rem', fontSize: '0.85rem', color: 'rgba(245, 241, 232, 0.5)' }}>
+          <div className="animate-fade-in-up delay-400" style={{ marginTop: '1rem', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', color: 'rgba(245, 241, 232, 0.7)' }}>
+            <span style={{ fontSize: '1.2rem' }}>🌐</span>
+            <span style={{ fontSize: '0.85rem' }}>Available in English, Korean, Hindi, and German</span>
+          </div>
+          <p className="animate-fade-in-up delay-500" style={{ marginTop: '1rem', fontSize: '0.85rem', color: 'rgba(245, 241, 232, 0.4)' }}>
             300M+ impressions generated for creators and brands
           </p>
         </div>

@@ -37,6 +37,30 @@ export async function Navbar() {
                 </nav>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+                <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+                    <select
+                        style={{
+                            appearance: 'none',
+                            background: 'rgba(255, 255, 255, 0.05)',
+                            color: 'rgba(245, 241, 232, 0.9)',
+                            border: '1px solid rgba(255, 255, 255, 0.1)',
+                            borderRadius: '8px',
+                            padding: '0.4rem 2rem 0.4rem 1rem',
+                            fontSize: '0.85rem',
+                            cursor: 'pointer',
+                            outline: 'none'
+                        }}
+                        defaultValue="en"
+                    >
+                        <option value="en" style={{ background: '#0a0c10' }}>🇺🇸 English</option>
+                        <option value="ko" style={{ background: '#0a0c10' }}>🇰🇷 한국어</option>
+                        <option value="hi" style={{ background: '#0a0c10' }}>🇮🇳 हिन्दी</option>
+                        <option value="de" style={{ background: '#0a0c10' }}>🇩🇪 Deutsch</option>
+                    </select>
+                    <svg style={{ position: 'absolute', right: '0.6rem', pointerEvents: 'none' }} width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </div>
                 <Link href="/login" style={{ fontSize: '0.95rem', color: 'rgba(245, 241, 232, 0.9)', textDecoration: 'none', fontWeight: 500 }}>Log in</Link>
                 <Link href={workspace ? workspacePath(workspace.slug, 'dashboard') : '/signup'} className="button" style={{ padding: '0.6rem 1.5rem', fontSize: '0.95rem' }}>
                     {workspace ? 'Dashboard' : 'Get Started'}

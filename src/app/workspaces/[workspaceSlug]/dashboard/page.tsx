@@ -22,7 +22,7 @@ export default async function WorkspaceDashboardPage({ params }: DashboardParams
       title="Workspace dashboard"
       description="Operating surface for the active workspace. Monitor asset throughput, benchmark coverage, prompt inventory, trend signals, and job execution."
     >
-      <section className="metric-grid">
+      <section className="metric-grid animate-fade-in-up delay-300">
         <MetricCard
           label="Workspace"
           value={snapshot.workspace.name}
@@ -45,7 +45,7 @@ export default async function WorkspaceDashboardPage({ params }: DashboardParams
         />
       </section>
 
-      <section className="metric-grid">
+      <section className="metric-grid animate-fade-in-up delay-400">
         <MetricCard
           label="Rising trends"
           value={String(risingTrends)}
@@ -68,77 +68,79 @@ export default async function WorkspaceDashboardPage({ params }: DashboardParams
         />
       </section>
 
-
-
       {risingTrends > 0 && (
-        <section className="panel">
-          <div className="table-header">
+        <section className="panel animate-fade-in-up delay-500" style={{ padding: '2rem' }}>
+          <div className="table-header" style={{ marginBottom: '2rem' }}>
             <div>
-              <h2>Rising trends</h2>
-              <p>Emerging patterns with low saturation. Act on these before they peak.</p>
+              <h2 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Rising trends</h2>
+              <p style={{ fontSize: '0.95rem' }}>Emerging patterns with low saturation. Act on these before they peak.</p>
             </div>
             <Link href={workspacePath(snapshot.workspace.slug, 'trends')} className="button button-secondary">
               View all trends
             </Link>
           </div>
-          <div className="recommendation-list">
+          <div className="recommendation-list" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1.5rem' }}>
             {snapshot.trendSnapshots
               .filter((t) => t.velocity === 'rising')
               .slice(0, 3)
               .map((trend) => (
-                <article key={trend.id} className="recommendation-card">
-                  <div className="tag-row">
-                    <span className="status-pill status-foundation">rising</span>
-                    <span className="status-pill status-later">{trend.platform}</span>
-                    <span className="status-pill status-later">{trend.category}</span>
+                <article key={trend.id} className="recommendation-card" style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column' }}>
+                  <div className="tag-row" style={{ marginBottom: '1rem', display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                    <span className="status-pill status-foundation" style={{ background: 'rgba(24, 138, 132, 0.2)', border: '1px solid rgba(24, 138, 132, 0.4)' }}>{trend.velocity}</span>
+                    <span className="status-pill status-later" style={{ background: 'rgba(255,255,255,0.05)' }}>{trend.platform}</span>
+                    <span className="status-pill status-later" style={{ background: 'rgba(255,255,255,0.05)' }}>{trend.category}</span>
                   </div>
-                  <h3 style={{ marginTop: '0.5rem' }}>{trend.title}</h3>
-                  <p>{trend.recommendedAction}</p>
+                  <h3 style={{ fontSize: '1.15rem', color: '#fff', marginBottom: '0.75rem' }}>{trend.title}</h3>
+                  <p style={{ fontSize: '0.9rem', color: 'rgba(245, 241, 232, 0.8)', flex: 1 }}>{trend.recommendedAction}</p>
                 </article>
               ))}
           </div>
         </section>
       )}
 
-      <CollectionTable
-        title="Recent assets"
-        description="Latest assets in the library. Click to view detail, transcript, and analysis."
-        items={snapshot.assets}
-        columns={[
-          {
-            key: 'title',
-            header: 'Asset',
-            render: (asset) => (
-              <Link href={workspaceAssetPath(snapshot.workspace.slug, asset.id)} className="inline-link">
-                {asset.title}
-              </Link>
-            ),
-          },
-          { key: 'platform', header: 'Platform', render: (asset) => asset.platform },
-          { key: 'status', header: 'Status', render: (asset) => asset.status },
-          { key: 'duration', header: 'Duration', render: (asset) => `${asset.durationSeconds}s` },
-        ]}
-      />
+      <div className="animate-fade-in-up delay-[600ms]">
+        <CollectionTable
+          title="Recent assets"
+          description="Latest assets in the library. Click to view detail, transcript, and analysis."
+          items={snapshot.assets}
+          columns={[
+            {
+              key: 'title',
+              header: 'Asset',
+              render: (asset) => (
+                <Link href={workspaceAssetPath(snapshot.workspace.slug, asset.id)} className="inline-link" style={{ fontWeight: 500 }}>
+                  {asset.title}
+                </Link>
+              ),
+            },
+            { key: 'platform', header: 'Platform', render: (asset) => <span style={{ color: 'rgba(245, 241, 232, 0.7)' }}>{asset.platform}</span> },
+            { key: 'status', header: 'Status', render: (asset) => <span className={`status-pill status-${asset.status}`}>{asset.status}</span> },
+            { key: 'duration', header: 'Duration', render: (asset) => <span style={{ fontFamily: 'var(--font-mono)' }}>{asset.durationSeconds}s</span> },
+          ]}
+        />
+      </div>
 
-      <CollectionTable
-        title="Prompt templates"
-        description="Generation formulas with version tracking and outcome analytics."
-        items={snapshot.promptTemplates}
-        columns={[
-          {
-            key: 'title',
-            header: 'Prompt',
-            render: (prompt) => (
-              <Link href={workspacePromptPath(snapshot.workspace.slug, prompt.id)} className="inline-link">
-                {prompt.title}
-              </Link>
-            ),
-          },
-          { key: 'objective', header: 'Objective', render: (prompt) => prompt.objective },
-          { key: 'version', header: 'Version', render: (prompt) => `v${prompt.version}` },
-          { key: 'outcome', header: 'Last Outcome', render: (prompt) => prompt.lastOutcome },
-        ]}
-      />
+      <div className="animate-fade-in-up delay-[700ms]">
+        <CollectionTable
+          title="Prompt templates"
+          description="Generation formulas with version tracking and outcome analytics."
+          items={snapshot.promptTemplates}
+          columns={[
+            {
+              key: 'title',
+              header: 'Prompt',
+              render: (prompt) => (
+                <Link href={workspacePromptPath(snapshot.workspace.slug, prompt.id)} className="inline-link" style={{ fontWeight: 500 }}>
+                  {prompt.title}
+                </Link>
+              ),
+            },
+            { key: 'objective', header: 'Objective', render: (prompt) => <span style={{ color: 'rgba(245, 241, 232, 0.7)' }}>{prompt.objective}</span> },
+            { key: 'version', header: 'Version', render: (prompt) => <span style={{ fontFamily: 'var(--font-mono)' }}>v{prompt.version}</span> },
+            { key: 'outcome', header: 'Last Outcome', render: (prompt) => <span>{prompt.lastOutcome}</span> },
+          ]}
+        />
+      </div>
     </AppShell>
   );
 }

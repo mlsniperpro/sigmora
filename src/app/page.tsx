@@ -3,12 +3,14 @@ import { getCurrentWorkspace } from '@/lib/repositories';
 import { workspacePath } from '@/lib/workspace-routing';
 import { FAQSection } from '@/components/faq-section';
 import { PricingSection } from '@/components/pricing-section';
+import { Navbar } from '@/components/navbar';
 
 export default async function Home() {
   const workspace = await getCurrentWorkspace();
 
   return (
     <main className="sigmora-shell" style={{ padding: '0 0 6rem' }}>
+      <Navbar />
       {/* 1. Enhanced Hero Section */}
       <section className="hero" style={{ paddingTop: '6rem', paddingBottom: '4rem', display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
         <div className="hero-copy" style={{ maxWidth: '800px', alignItems: 'center' }}>

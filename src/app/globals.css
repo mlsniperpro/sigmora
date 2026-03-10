@@ -196,7 +196,7 @@
 
 
   .app-shell {
-    width: min(1280px, calc(100% - 2rem));
+    width: min(1920px, calc(100% - 4rem));
     margin: 0 auto;
     padding: 2rem 0 4rem;
     display: grid;

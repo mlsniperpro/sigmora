@@ -108,7 +108,7 @@ export default async function WorkspaceBenchmarksPage({ params, searchParams }: 
               flex: 1,
               padding: '0.75rem 1rem',
               borderRadius: '1rem',
-              border: '1px solid rgba(245, 241, 232, 0.12)',
+              border: '1px solid var(--panel-border)',
               background: 'rgba(255, 255, 255, 0.04)',
               color: 'var(--color-paper-100)',
               fontFamily: 'inherit',

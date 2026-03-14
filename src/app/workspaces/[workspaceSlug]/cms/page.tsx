@@ -59,7 +59,7 @@ export default async function CmsPage({ params }: Params) {
           </label>
           <label className="form-span-full">
             <span>Body</span>
-            <textarea name="body" rows={6} placeholder="Write or paste article content..." style={{ width: '100%', padding: '0.95rem 1rem', borderRadius: '1rem', border: '1px solid rgba(245, 241, 232, 0.12)', background: 'rgba(255, 255, 255, 0.04)', color: 'var(--color-paper-100)', fontFamily: 'inherit', fontSize: 'inherit', resize: 'vertical' }} />
+            <textarea name="body" rows={6} placeholder="Write or paste article content..." style={{ width: '100%', padding: '0.95rem 1rem', borderRadius: '1rem', border: '1px solid var(--panel-border)', background: 'rgba(255, 255, 255, 0.04)', color: 'var(--color-paper-100)', fontFamily: 'inherit', fontSize: 'inherit', resize: 'vertical' }} />
           </label>
           <button type="submit" className="button" disabled>Create draft</button>
         </form>

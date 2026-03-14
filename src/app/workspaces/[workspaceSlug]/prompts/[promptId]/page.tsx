@@ -132,7 +132,7 @@ export default async function PromptDetailPage({ params }: PromptDetailParams) {
                 width: '100%',
                 padding: '0.95rem 1rem',
                 borderRadius: '1rem',
-                border: '1px solid rgba(245, 241, 232, 0.12)',
+                border: '1px solid var(--panel-border)',
                 background: 'rgba(255, 255, 255, 0.04)',
                 color: 'var(--color-paper-100)',
                 fontFamily: 'inherit',
@@ -172,7 +172,7 @@ export default async function PromptDetailPage({ params }: PromptDetailParams) {
                 width: '100%',
                 padding: '0.95rem 1rem',
                 borderRadius: '1rem',
-                border: '1px solid rgba(245, 241, 232, 0.12)',
+                border: '1px solid var(--panel-border)',
                 background: 'rgba(255, 255, 255, 0.04)',
                 color: 'var(--color-paper-100)',
                 fontFamily: 'inherit',
@@ -222,7 +222,7 @@ export default async function PromptDetailPage({ params }: PromptDetailParams) {
                   <h3 style={{ marginTop: '0.5rem' }}>Input</h3>
                   <p>{run.input}</p>
                   <h3 style={{ marginTop: '0.75rem' }}>Output</h3>
-                  <pre style={{ whiteSpace: 'pre-wrap', fontFamily: 'inherit', margin: 0, color: 'rgba(245, 241, 232, 0.85)' }}>
+                  <pre style={{ whiteSpace: 'pre-wrap', fontFamily: 'inherit', margin: 0, color: 'var(--text-secondary)' }}>
                     {run.output}
                   </pre>
                   {run.outcome === 'pending' && (

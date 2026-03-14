@@ -102,7 +102,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
         <p className="eyebrow">{post.category}</p>
         <h1 style={{ fontSize: 'clamp(2.8rem, 5vw, 4.5rem)' }}>{post.title}</h1>
         <p className="hero-summary" style={{ fontSize: '1.15rem' }}>{post.description}</p>
-        <p style={{ fontSize: '0.9rem', color: 'rgba(245, 241, 232, 0.52)' }}>
+        <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>
           {post.publishedAt} · {post.readTime}
         </p>
         <Link href={`/blog/category/${post.category.toLowerCase()}`} className="inline-link" style={{ width: 'fit-content' }}>
@@ -120,7 +120,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               {relatedPosts.map((relatedPost) => (
                 <Link key={relatedPost.slug} href={`/blog/${relatedPost.slug}`} className="panel module-card" style={{ textDecoration: 'none' }}>
                   <p className="eyebrow">{relatedPost.category}</p>
-                  <h3 style={{ fontSize: '1.35rem', color: '#fff' }}>{relatedPost.title}</h3>
+                  <h3 style={{ fontSize: '1.35rem', color: 'var(--text-primary)' }}>{relatedPost.title}</h3>
                   <p>{relatedPost.description}</p>
                 </Link>
               ))}

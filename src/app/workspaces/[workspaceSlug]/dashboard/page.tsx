@@ -111,7 +111,7 @@ export default async function WorkspaceDashboardPage({ params }: DashboardParams
                     <span className="status-pill status-later" style={{ background: 'rgba(255,255,255,0.05)' }}>{trend.platform}</span>
                     <span className="status-pill status-later" style={{ background: 'rgba(255,255,255,0.05)' }}>{trend.category}</span>
                   </div>
-                  <h3 style={{ fontSize: '1.15rem', color: '#fff', marginBottom: '0.75rem' }}>{trend.title}</h3>
+                  <h3 style={{ fontSize: '1.15rem', color: 'var(--text-primary)', marginBottom: '0.75rem' }}>{trend.title}</h3>
                   <p style={{ fontSize: '0.9rem', color: 'rgba(245, 241, 232, 0.8)', flex: 1 }}>{trend.recommendedAction}</p>
                 </article>
               ))}

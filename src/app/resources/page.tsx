@@ -55,7 +55,7 @@ export default function ResourcesPage() {
           {resources.map((resource) => (
             <Link key={resource.href} href={resource.href} className="panel module-card" style={{ textDecoration: 'none' }}>
               <p className="eyebrow">{resource.category}</p>
-              <h2 style={{ fontSize: '1.5rem', color: '#fff' }}>{resource.title}</h2>
+              <h2 style={{ fontSize: '1.5rem', color: 'var(--text-primary)' }}>{resource.title}</h2>
               <p>{resource.description}</p>
             </Link>
           ))}

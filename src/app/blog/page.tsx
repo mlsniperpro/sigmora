@@ -45,11 +45,11 @@ export default function BlogPage() {
             <Link key={post.slug} href={`/blog/${post.slug}`} className="panel module-card" style={{ textDecoration: 'none' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap' }}>
                 <p className="eyebrow">{post.category}</p>
-                <p style={{ fontSize: '0.85rem', color: 'rgba(245, 241, 232, 0.52)' }}>
+                <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
                   {post.publishedAt} · {post.readTime}
                 </p>
               </div>
-              <h2 style={{ fontSize: '1.7rem', color: '#fff' }}>{post.title}</h2>
+              <h2 style={{ fontSize: '1.7rem', color: 'var(--text-primary)' }}>{post.title}</h2>
               <p>{post.description}</p>
             </Link>
           ))}

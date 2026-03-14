@@ -261,17 +261,17 @@ export default async function Home() {
         <div className="module-grid">
           <Link href="/retention-analysis" className="panel module-card" style={{ textDecoration: 'none' }}>
             <p className="eyebrow">Use Case</p>
-            <h3 style={{ fontSize: '1.5rem', color: '#fff' }}>Video Retention Analysis</h3>
+            <h3 style={{ fontSize: '1.5rem', color: 'var(--text-primary)' }}>Video Retention Analysis</h3>
             <p>Understand where attention drops and what to keep in the hook, proof, and CTA structure.</p>
           </Link>
           <Link href="/video-remixer" className="panel module-card" style={{ textDecoration: 'none' }}>
             <p className="eyebrow">Use Case</p>
-            <h3 style={{ fontSize: '1.5rem', color: '#fff' }}>AI Video Remixer</h3>
+            <h3 style={{ fontSize: '1.5rem', color: 'var(--text-primary)' }}>AI Video Remixer</h3>
             <p>Turn a winning reference into a new script or scene plan without starting from a blank page.</p>
           </Link>
           <Link href="/viral-database" className="panel module-card" style={{ textDecoration: 'none' }}>
             <p className="eyebrow">Use Case</p>
-            <h3 style={{ fontSize: '1.5rem', color: '#fff' }}>Viral Video Database</h3>
+            <h3 style={{ fontSize: '1.5rem', color: 'var(--text-primary)' }}>Viral Video Database</h3>
             <p>Research proven short-form content patterns and move directly into analysis and execution.</p>
           </Link>
         </div>
@@ -282,23 +282,23 @@ export default async function Home() {
         <div className="stats-grid">
           <div className="panel" style={{ textAlign: 'center', padding: '2rem' }}>
             <h3 style={{ fontSize: '3rem', fontFamily: 'var(--font-display)', color: '#d66428', marginBottom: '0.5rem' }}>300M+</h3>
-            <p className="eyebrow" style={{ color: '#fff' }}>Organic Impressions</p>
-            <p style={{ fontSize: '0.85rem', marginTop: '0.5rem', color: 'rgba(245, 241, 232, 0.6)' }}>generated for brands</p>
+            <p className="eyebrow" style={{ color: 'var(--text-primary)' }}>Organic Impressions</p>
+            <p style={{ fontSize: '0.85rem', marginTop: '0.5rem', color: 'var(--text-secondary)' }}>generated for brands</p>
           </div>
           <div className="panel" style={{ textAlign: 'center', padding: '2rem' }}>
             <h3 style={{ fontSize: '3rem', fontFamily: 'var(--font-display)', color: '#37b5ae', marginBottom: '0.5rem' }}>30x</h3>
-            <p className="eyebrow" style={{ color: '#fff' }}>Avg MRR Increase</p>
-            <p style={{ fontSize: '0.85rem', marginTop: '0.5rem', color: 'rgba(245, 241, 232, 0.6)' }}>delivered for clients</p>
+            <p className="eyebrow" style={{ color: 'var(--text-primary)' }}>Avg MRR Increase</p>
+            <p style={{ fontSize: '0.85rem', marginTop: '0.5rem', color: 'var(--text-secondary)' }}>delivered for clients</p>
           </div>
           <div className="panel" style={{ textAlign: 'center', padding: '2rem' }}>
             <h3 style={{ fontSize: '3rem', fontFamily: 'var(--font-display)', color: '#ea8551', marginBottom: '0.5rem' }}>7M+</h3>
-            <p className="eyebrow" style={{ color: '#fff' }}>Total Likes</p>
-            <p style={{ fontSize: '0.85rem', marginTop: '0.5rem', color: 'rgba(245, 241, 232, 0.6)' }}>across portfolios</p>
+            <p className="eyebrow" style={{ color: 'var(--text-primary)' }}>Total Likes</p>
+            <p style={{ fontSize: '0.85rem', marginTop: '0.5rem', color: 'var(--text-secondary)' }}>across portfolios</p>
           </div>
           <div className="panel" style={{ textAlign: 'center', padding: '2rem' }}>
             <h3 style={{ fontSize: '3rem', fontFamily: 'var(--font-display)', color: '#188a84', marginBottom: '0.5rem' }}>Top 5%</h3>
-            <p className="eyebrow" style={{ color: '#fff' }}>Content Expertise</p>
-            <p style={{ fontSize: '0.85rem', marginTop: '0.5rem', color: 'rgba(245, 241, 232, 0.6)' }}>elite vetted network</p>
+            <p className="eyebrow" style={{ color: 'var(--text-primary)' }}>Content Expertise</p>
+            <p style={{ fontSize: '0.85rem', marginTop: '0.5rem', color: 'var(--text-secondary)' }}>elite vetted network</p>
           </div>
         </div>
       </section>
@@ -316,8 +316,8 @@ export default async function Home() {
               <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginBottom: '1rem' }}>
                 <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'rgba(255,255,255,0.1)' }}></div>
                 <div>
-                  <h4 style={{ fontSize: '0.95rem', color: '#fff' }}>Marketing Manager</h4>
-                  <p style={{ fontSize: '0.8rem', color: 'rgba(245, 241, 232, 0.5)' }}>Tech Startup</p>
+                  <h4 style={{ fontSize: '0.95rem', color: 'var(--text-primary)' }}>Marketing Manager</h4>
+                  <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Tech Startup</p>
                 </div>
               </div>
               <p style={{ fontStyle: 'italic', fontSize: '0.95rem', lineHeight: 1.6, color: 'var(--text-secondary)' }}>

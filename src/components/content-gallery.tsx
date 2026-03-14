@@ -47,7 +47,7 @@ export function ContentGallery({ collections, workspaceSlug }: ContentGalleryPro
                                 backdropFilter: 'blur(4px)',
                                 fontSize: '0.75rem',
                                 fontWeight: 'bold',
-                                color: '#fff'
+                                color: 'var(--text-primary)'
                             }}>
                                 {String(collection.assetIds.length)} ASSETS
                             </div>

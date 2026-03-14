@@ -60,7 +60,7 @@ export function CmsConnector() {
                                 {activeConnection === provider.id ? 'Cancel' : 'Connect API'}
                             </button>
                         ) : (
-                            <div style={{ fontSize: '0.75rem', color: 'var(--color-paper-200)' }}>
+                            <div style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
                                 Syncing enabled. 12 drafts published this month.
                                 <button className="text-button" style={{ display: 'block', marginTop: '0.5rem', textDecoration: 'underline' }}>Configure mapping</button>
                             </div>

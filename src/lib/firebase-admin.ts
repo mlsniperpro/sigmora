@@ -8,15 +8,19 @@ const hasAdminConfig =
 let adminApp: admin.app.App | null = null;
 
 if (hasAdminConfig) {
-  adminApp =
-    admin.apps[0] ??
-    admin.initializeApp({
-      credential: admin.credential.cert({
-        projectId: process.env.FIREBASE_PROJECT_ID,
-        clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-        privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
-      }),
-    });
+  try {
+    adminApp =
+      admin.apps[0] ??
+      admin.initializeApp({
+        credential: admin.credential.cert({
+          projectId: process.env.FIREBASE_PROJECT_ID,
+          clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+          privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
+        }),
+      });
+  } catch (error) {
+    console.warn('Firebase admin initialization failed. Falling back to mock modes.', error);
+  }
 } else if (process.env.NODE_ENV !== 'production') {
   console.warn('Firebase admin config is incomplete. Server-side admin features are disabled.');
 }

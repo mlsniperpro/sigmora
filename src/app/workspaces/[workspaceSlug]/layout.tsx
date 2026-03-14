@@ -10,6 +10,8 @@ export const metadata: Metadata = {
     },
 };
 
+import { AuthProvider } from '@/context/AuthContext';
+
 export default async function WorkspaceLayout({
     children,
     params,
@@ -21,13 +23,15 @@ export default async function WorkspaceLayout({
     const workspace = await getWorkspaceBySlug(workspaceSlug);
 
     return (
-        <main className="app-shell animate-fade-in-up">
-            <RequireAuth>
-                <AppSidebar workspace={workspace} />
-                <section className="workspace-main animate-fade-in-up delay-200" style={{ paddingBottom: '4rem' }}>
-                    {children}
-                </section>
-            </RequireAuth>
-        </main>
+        <AuthProvider>
+            <main className="app-shell animate-fade-in-up">
+                <RequireAuth>
+                    <AppSidebar workspace={workspace} />
+                    <section className="workspace-main animate-fade-in-up delay-200" style={{ paddingBottom: '4rem' }}>
+                        {children}
+                    </section>
+                </RequireAuth>
+            </main>
+        </AuthProvider>
     );
 }

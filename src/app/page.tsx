@@ -52,11 +52,13 @@ export default async function Home() {
       <Navbar />
       
       {/* Premium Background Elements */}
-      <div className="mesh-gradient" />
+      <div className="mesh-gradient">
+        <div className="bg-grid" />
+      </div>
 
       {/* 1. Enhanced Hero Section */}
-      <section className="hero" style={{ paddingTop: '10rem', paddingBottom: '6rem', alignItems: 'center' }}>
-        <div className="hero-copy" style={{ maxWidth: '680px' }}>
+      <section className="hero" style={{ paddingTop: '8rem', paddingBottom: '6rem' }}>
+        <div className="hero-copy">
           <div className="animate-fade-in-up" style={{ marginBottom: '1.5rem' }}>
             <p className="eyebrow" style={{ 
               display: 'inline-flex', 
@@ -75,9 +77,9 @@ export default async function Home() {
           </div>
           
           <h1 className="animate-fade-in-up delay-100" style={{ 
-            fontSize: 'clamp(3.5rem, 6.5vw, 6rem)', 
+            fontSize: 'clamp(3rem, 5vw, 4.5rem)', 
             maxWidth: 'none', 
-            lineHeight: 1, 
+            lineHeight: 1.05, 
             marginTop: '0.5rem',
             letterSpacing: '-0.04em'
           }}>
@@ -91,8 +93,8 @@ export default async function Home() {
           </h1>
           
           <h2 className="hero-summary animate-fade-in-up delay-200" style={{ 
-            fontSize: '1.25rem', 
-            maxWidth: '580px', 
+            fontSize: '1.2rem', 
+            maxWidth: '540px', 
             margin: '1.5rem 0 2.5rem', 
             fontWeight: 400,
             lineHeight: 1.6,
@@ -101,11 +103,11 @@ export default async function Home() {
             Import one video, inspect the retention structure, and go from scripting to video generation before you spend on a subscription.
           </h2>
 
-          <div className="hero-actions animate-fade-in-up delay-300" style={{ display: 'flex', gap: '1.25rem', flexWrap: 'wrap' }}>
-            <Link href="/signup" className="button" style={{ padding: '1.1rem 2.8rem', fontSize: '1.1rem' }}>
+          <div className="hero-actions animate-fade-in-up delay-300" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+            <Link href="/signup" className="button" style={{ padding: '1rem 2.2rem', fontSize: '1.05rem' }}>
               Start Scripting Free
             </Link>
-            <Link href="/#how-it-works" className="button button-secondary" style={{ padding: '1.1rem 2.5rem', fontSize: '1.1rem' }}>
+            <Link href="/#how-it-works" className="button button-secondary" style={{ padding: '1rem 2rem', fontSize: '1.05rem' }}>
               Watch Demo
             </Link>
           </div>
@@ -121,12 +123,12 @@ export default async function Home() {
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <span style={{ color: '#37b5ae' }}>⚡</span>
-              <span>Script unlimited viral hooks for free.</span>
+              <span>Unlimited scripts free.</span>
             </div>
-            <div style={{ width: '1px', height: '14px', background: 'rgba(255,255,255,0.1)' }} className="hide-on-mobile" />
+            <div style={{ width: '1px', height: '14px', background: 'var(--panel-border)' }} className="hide-on-mobile" />
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <span style={{ color: '#37b5ae' }}>✨</span>
-              <span>Generate video variants instantly.</span>
+              <span style={{ color: '#ea8551' }}>✨</span>
+              <span>Instant video remixing.</span>
             </div>
           </div>
         </div>
@@ -137,7 +139,8 @@ export default async function Home() {
           border: '1px solid var(--panel-border)',
           boxShadow: '0 40px 100px -20px var(--glass-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.05)',
           position: 'relative',
-          overflow: 'visible'
+          overflow: 'visible',
+          width: '100%'
         }}>
           {/* Decorative Glow */}
           <div style={{ 
@@ -148,11 +151,11 @@ export default async function Home() {
             height: '100px', 
             background: 'var(--color-accent-500)', 
             filter: 'blur(60px)', 
-            opacity: 0.2,
+            opacity: 0.15,
             zIndex: -1 
           }} />
 
-          <div style={{ position: 'relative', overflow: 'hidden', borderRadius: '1.1rem', border: '1px solid rgba(255,255,255,0.08)' }}>
+          <div style={{ position: 'relative', overflow: 'hidden', borderRadius: '1.1rem', border: '1px solid var(--glass-border)' }}>
             <Image
               src="/hero-visual.png"
               alt="Sigmora workspace showing short-form video analysis and creative planning"
@@ -160,7 +163,7 @@ export default async function Home() {
               height={1200}
               priority
               className="hero-visual"
-              style={{ aspectRatio: '4 / 3', height: 'auto', border: 0, borderRadius: '1.1rem' }}
+              style={{ aspectRatio: '4 / 3', height: 'auto', border: 0, borderRadius: '1.1rem', filter: 'brightness(1.1)' }}
             />
             {/* Overlay Gradient */}
             <div style={{ 
@@ -169,17 +172,18 @@ export default async function Home() {
               left: 0, 
               right: 0, 
               bottom: 0, 
-              background: 'linear-gradient(to top, rgba(10,12,16,0.4) 0%, transparent 40%)',
+              background: 'linear-gradient(to top, var(--bg-html) 0%, transparent 50%)',
+              opacity: 0.4,
               pointerEvents: 'none'
             }} />
           </div>
 
           <div style={{ padding: '1.25rem' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
-              <span className="eyebrow" style={{ color: '#fff' }}>Interactive Workflow</span>
-              <div className="status-pill status-foundation" style={{ fontSize: '0.65rem' }}>Live Preview</div>
+              <span className="eyebrow" style={{ color: 'var(--text-primary)' }}>Interactive Analysis</span>
+              <div className="status-pill status-foundation" style={{ fontSize: '0.65rem' }}>Active Engine</div>
             </div>
-            <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
+            <p style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
               The Sigmora engine deconstructs retention signals and generates video variants in one unified loop.
             </p>
           </div>

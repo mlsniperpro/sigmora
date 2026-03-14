@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Navbar } from '@/components/navbar';
 
+import { AuthProvider } from '@/context/AuthContext';
+
 export const metadata: Metadata = {
     title: 'Sign Up',
     robots: {
@@ -11,9 +13,9 @@ export const metadata: Metadata = {
 
 export default function SignupLayout({ children }: { children: React.ReactNode }) {
     return (
-        <>
+        <AuthProvider>
             <Navbar />
             {children}
-        </>
+        </AuthProvider>
     );
 }

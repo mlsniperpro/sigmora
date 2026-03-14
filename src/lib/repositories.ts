@@ -71,8 +71,13 @@ async function getCollectionRecords<K extends keyof RepositoryCollectionMap>(
   collectionName: K,
 ): Promise<RepositoryCollectionMap[K][]> {
   if (hasAdminConfig && adminDb) {
-    const snapshot = await adminDb.collection(collectionName).get();
-    return snapshot.docs.map((doc) => toRecord<RepositoryCollectionMap[K]>(doc));
+    try {
+      const snapshot = await adminDb.collection(collectionName).get();
+      return snapshot.docs.map((doc) => toRecord<RepositoryCollectionMap[K]>(doc));
+    } catch (error) {
+      console.error(`Firebase fetch error for ${collectionName}:`, error);
+      // Fall through to mock data
+    }
   }
 
   return (mockDatabase[collectionName] ?? []) as RepositoryCollectionMap[K][];

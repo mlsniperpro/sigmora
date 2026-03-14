@@ -1,5 +1,5 @@
 import { AppShell } from '@/components/app-shell';
-import { createTrendSnapshotAction } from '@/app/workspaces/[workspaceSlug]/actions';
+import { createTrendSnapshotAction } from '../actions';
 import { TrendChart } from '@/components/trend-chart';
 import { hasAdminConfig } from '@/lib/firebase-admin';
 import { getTrendSnapshots, getWorkspaceBySlug } from '@/lib/repositories';

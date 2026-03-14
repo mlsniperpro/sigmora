@@ -3,7 +3,7 @@ import { AppShell } from '@/components/app-shell';
 import { AssetUploadPanel } from '@/components/asset-upload-panel';
 import { CollectionTable } from '@/components/collection-table';
 import { MetricCard } from '@/components/metric-card';
-import { createAssetAction, importAssetFromUrlAction } from '@/app/workspaces/[workspaceSlug]/actions';
+import { createAssetAction, importAssetFromUrlAction } from '../actions';
 import { getAssets, getAssetFolders, getWorkspaceBySlug } from '@/lib/repositories';
 import { hasAdminConfig } from '@/lib/firebase-admin';
 import { workspaceAssetPath } from '@/lib/workspace-routing';

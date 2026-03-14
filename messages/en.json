@@ -1,0 +1,276 @@
+{
+  "HomePage": {
+    "hero": {
+      "eyebrow": "Retention Intelligence for Short-Form",
+      "benefits": {
+        "scripts": "Unlimited scripts free.",
+        "remixing": "Instant video remixing."
+      },
+      "analysis": {
+        "title": "Interactive Analysis",
+        "badge": "Active Engine",
+        "description": "The Sigmora engine deconstructs retention signals and generates video variants in one unified loop."
+      }
+    },
+    "title": "Turn winning videos into predictable outcomes",
+    "description": "Import one video, inspect the retention structure, and go from scripting to video generation before you spend on a subscription.",
+    "buttons": {
+      "start": "Start Scripting Free",
+      "watch": "Watch Demo"
+    },
+    "howItWorks": {
+      "heading": {
+        "eyebrow": "How Sigmora Works",
+        "title": "From reference to publishable concept"
+      },
+      "features": {
+        "remixer": {
+          "title": "AI Content Remixer",
+          "description": "Deconstruct retention signals and generate unlimited scripts from any reference video—completely free. Once your script is ready, use our premium engine to generate the high-retention video variant in seconds.",
+          "button": "Start Scripting Free"
+        },
+        "database": {
+          "title": "Viral UGC Database",
+          "description": "The database is useful because it shortens time to value. Browse high-performing posts, pull one into your workspace, and move directly into analysis instead of just collecting inspiration.",
+          "button": "Import a reference"
+        },
+        "background": {
+          "title": "Built by the Team Behind Hundreds of Millions of Viral Views",
+          "description": "Before building Sigmora, we spent years behind the curtain helping brands generate hundreds of millions of impressions across TikTok, Instagram, and YouTube. Every insight in our viral database and AI remixer tool comes from real campaign insights — not guesswork."
+        }
+      }
+    },
+    "useCases": {
+      "heading": {
+        "eyebrow": "Explore Use Cases",
+        "title": "Built around three search intents",
+        "description": "Explore the public pages targeting the core ways teams evaluate Sigmora."
+      },
+      "cards": [
+        {
+          "eyebrow": "Use Case",
+          "title": "Video Retention Analysis",
+          "description": "Understand where attention drops and what to keep in the hook, proof, and CTA structure."
+        },
+        {
+          "eyebrow": "Use Case",
+          "title": "AI Video Remixer",
+          "description": "Turn a winning reference into a new script or scene plan without starting from a blank page."
+        },
+        {
+          "eyebrow": "Use Case",
+          "title": "Viral Video Database",
+          "description": "Research proven short-form content patterns and move directly into analysis and execution."
+        }
+      ]
+    },
+    "stats": [
+      {
+        "value": "300M+",
+        "label": "Organic Impressions",
+        "subtext": "generated for brands"
+      },
+      {
+        "value": "30x",
+        "label": "Avg MRR Increase",
+        "subtext": "delivered for clients"
+      },
+      {
+        "value": "7M+",
+        "label": "Total Likes",
+        "subtext": "across portfolios"
+      },
+      {
+        "value": "Top 5%",
+        "label": "Content Expertise",
+        "subtext": "elite vetted network"
+      }
+    ],
+    "testimonials": {
+      "heading": {
+        "eyebrow": "Wall of Love",
+        "title": "What teams say about Sigmora"
+      },
+      "items": [
+        {
+          "role": "Marketing Manager",
+          "company": "Tech Startup",
+          "text": "“Highly recommend this platform. The team is very familiar in short-form content & is thus able to produce viral content consistently.”"
+        }
+      ]
+    }
+  },
+  "Navbar": {
+    "links": {
+      "analysis": "Analysis",
+      "process": "Process",
+      "pricing": "Pricing"
+    },
+    "actions": {
+      "signin": "Sign in",
+      "openWorkspace": "Open Workspace",
+      "startFree": "Start Free"
+    }
+  },
+  "Pricing": {
+    "heading": {
+      "eyebrow": "Pricing",
+      "title": "Start free. Pay once the loop works.",
+      "description": "Sigmora should prove value before it asks for commitment. Light users can stay flexible. Heavy users get better economics with a plan."
+    },
+    "tiers": {
+      "activation": {
+        "name": "Activation",
+        "detail": "Perfect for creators to find their hook and script their next winning post for free.",
+        "price": "$0",
+        "period": "/forever",
+        "button": "Start Scripting Free",
+        "features": [
+          "Unlimited Script Generations",
+          "Unlimited Scene Planning",
+          "3 Deep Retention Breakdowns",
+          "1 Premium Video Remix (Trial)",
+          "Full Viral Database Access"
+        ]
+      },
+      "credits": {
+        "name": "Credit Packs",
+        "detail": "Best for occasional operators who want control without a recurring commitment.",
+        "price": "Flexible",
+        "period": "/one-time",
+        "button": "Start with usage",
+        "features": [
+          "Buy credits only when you need more volume",
+          "Keep occasional research and remix workflows alive",
+          "Avoid paying for idle months",
+          "Ideal for sporadic creator and operator use"
+        ]
+      },
+      "growth": {
+        "name": "Growth",
+        "detail": "For teams that already use Sigmora repeatedly and want better unit economics.",
+        "price": "$149",
+        "period": "/month",
+        "button": "Unlock better economics",
+        "features": [
+          "50,000 AI credits each month",
+          "Lower effective cost than repeated credit packs",
+          "Priority analysis and remix throughput",
+          "Team collaboration for five seats",
+          "Billing only makes sense once the habit exists"
+        ]
+      },
+      "enterprise": {
+        "name": "Enterprise",
+        "detail": "For large organizations requiring custom scale and tailored solutions.",
+        "price": "Custom",
+        "button": "Contact Sales",
+        "features": [
+          "Custom Credit Volume",
+          "Unlimited Team Members",
+          "Dedicated Account Manager",
+          "Custom Contracts & Invoicing",
+          "SLA & Priority Support"
+        ]
+      }
+    }
+  },
+  "FAQ": {
+    "heading": {
+      "title": "Sigmora Frequently Asked Questions",
+      "description": "Everything you need to know about scaling your content with Sigmora."
+    },
+    "items": [
+      {
+        "q": "Who is Sigmora for?",
+        "a": "Sigmora is built for creators, social media managers, growth marketers, and agencies who want to scale their short-form organic content systems."
+      },
+      {
+        "q": "Which platforms does the Viral Database cover?",
+        "a": "Sigmora focuses on TikTok, Instagram Reels, and YouTube Shorts for short-form video research and analysis."
+      },
+      {
+        "q": "How does the AI Content Remixer work?",
+        "a": "You upload a video or select a proven reference, then Sigmora analyzes the hook, pacing, and structure to generate a script or scene plan you can adapt."
+      },
+      {
+        "q": "Do I need to be a professional creator or marketer?",
+        "a": "No. Sigmora is designed to make strong short-form creative decisions easier for both first-time operators and experienced growth teams."
+      },
+      {
+        "q": "What is included in the Enterprise plan?",
+        "a": "Enterprise is for larger teams that need custom credit volume, dedicated support, tailored workflows, and deeper operational flexibility."
+      }
+    ]
+  },
+  "Comparison": {
+    "heading": {
+      "eyebrow": "The Competitive Edge",
+      "title": "Sigmora vs. The Competition",
+      "description": "Stop guessing why videos work. Sigmora provides the quantitative layer that TubeMagic, clipping tools, and traditional AI generators miss."
+    },
+    "headers": {
+      "capabilities": "Core Capabilities",
+      "sigmora": "Sigmora",
+      "tubemagic": "TubeMagic",
+      "clipping": "Clipping Tools",
+      "traditional": "Trad. AI"
+    },
+    "items": [
+      {
+        "feature": "End-to-End Generation",
+        "sigmora": "Script to Video",
+        "tubemagic": "Script Only",
+        "clipping": "Clipping Only",
+        "traditional": "Text Only",
+        "description": "Go from initial reference directly to a generated video variant."
+      },
+      {
+        "feature": "Scene-by-scene Retention Analysis",
+        "sigmora": "true",
+        "tubemagic": "false",
+        "clipping": "false",
+        "traditional": "false",
+        "description": "Deconstruct why videos hold attention at every second."
+      },
+      {
+        "feature": "UGC-Specific Benchmark Database",
+        "sigmora": "true",
+        "tubemagic": "Limited",
+        "clipping": "false",
+        "traditional": "false",
+        "description": "Analyze real winning patterns from top performance agencies."
+      },
+      {
+        "feature": "Multimodal Signal Extraction",
+        "sigmora": "true",
+        "tubemagic": "false",
+        "clipping": "Partial",
+        "traditional": "false",
+        "description": "Extracts visual cues, audio energy, and pacing—not just text."
+      },
+      {
+        "feature": "Data-Driven Creative Remixing",
+        "sigmora": "true",
+        "tubemagic": "true",
+        "clipping": "Clipping Only",
+        "traditional": "Basic",
+        "description": "Turn successful benchmarks into usable scripts and scene plans."
+      },
+      {
+        "feature": "Team Playbooks & Guardrails",
+        "sigmora": "true",
+        "tubemagic": "false",
+        "clipping": "Limited",
+        "traditional": "false",
+        "description": "Enforce brand standards and workflow patterns across large teams."
+      }
+    ],
+    "footer": {
+      "title": "Ready to build a better content engine?",
+      "description": "TubeMagic helps you start. Sigmora helps you scale with quantitative precision.",
+      "getStarted": "Get Started Free",
+      "learnMore": "Learn More"
+    }
+  }
+}

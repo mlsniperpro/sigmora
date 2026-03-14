@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { AppShell } from '@/components/app-shell';
 import { CollectionTable } from '@/components/collection-table';
-import { createPlaybookAction } from '@/app/workspaces/[workspaceSlug]/actions';
+import { createPlaybookAction } from '../actions';
 import { hasAdminConfig } from '@/lib/firebase-admin';
 import { getBenchmarkCollections, getPlaybooks, getPromptTemplates, getWorkspaceBySlug } from '@/lib/repositories';
 import { workspacePlaybookPath } from '@/lib/workspace-routing';

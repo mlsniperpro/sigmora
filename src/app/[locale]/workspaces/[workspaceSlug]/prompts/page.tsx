@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { AppShell } from '@/components/app-shell';
 import { CollectionTable } from '@/components/collection-table';
-import { createPromptTemplateAction } from '@/app/workspaces/[workspaceSlug]/actions';
+import { createPromptTemplateAction } from '../actions';
 import { hasAdminConfig } from '@/lib/firebase-admin';
 import { getPromptTemplates, getWorkspaceBySlug } from '@/lib/repositories';
 import { workspacePromptPath } from '@/lib/workspace-routing';

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import './globals.css';
+import '../globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://sigmora.com'),
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     siteName: 'Sigmora',
     images: [
       {
-        url: '/hero-visual.png', // Fallback to hero visual if og-image isn't ready
+        url: '/hero-visual.png',
         width: 1200,
         height: 630,
         alt: 'Sigmora Product Preview',
@@ -64,16 +64,29 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
+
+type Props = {
   children: React.ReactNode;
-}>) {
+  params: Promise<{ locale: string }>;
+};
+
+export default async function RootLayout({
+  children,
+  params
+}: Props) {
+  const { locale } = await params;
+  const messages = await getMessages();
+
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body className="antialiased">
-        {children}
+        <NextIntlClientProvider messages={messages}>
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );
 }
+

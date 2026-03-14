@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { AppShell } from '@/components/app-shell';
-import { runAssetAnalysisAction } from '@/app/workspaces/[workspaceSlug]/actions';
+import { runAssetAnalysisAction } from '../../actions';
 import { getAnalysisResultByAssetId, getAssetById, getWorkspaceBySlug } from '@/lib/repositories';
 import { workspacePath } from '@/lib/workspace-routing';
 

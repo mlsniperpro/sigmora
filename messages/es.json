@@ -1,0 +1,214 @@
+{
+  "HomePage": {
+    "hero": {
+      "eyebrow": "Inteligencia de Retención para Formato Corto",
+      "benefits": {
+        "scripts": "Guiones ilimitados gratis.",
+        "remixing": "Remix de video instantáneo."
+      },
+      "analysis": {
+        "title": "Análisis Interactivo",
+        "badge": "Motor Activo",
+        "description": "El motor Sigmora desglosa señales de retención y genera variantes en un bucle unificado."
+      }
+    },
+    "title": "Convierta videos ganadores en resultados predecibles",
+    "description": "Importe un video, inspeccione la estructura de retención y pase de la escritura a la generación de videos antes de gastar en una suscripción.",
+    "buttons": {
+      "start": "Comience a guionizar gratis",
+      "watch": "Ver demostración"
+    },
+    "howItWorks": {
+      "heading": {
+        "eyebrow": "Cómo funciona Sigmora",
+        "title": "De referencia a concepto publicable"
+      },
+      "features": {
+        "remixer": {
+          "title": "AI Content Remixer",
+          "description": "Desglosa señales de retención y genera guiones de referencia gratis.",
+          "button": "Guionizar Gratis"
+        },
+        "database": {
+          "title": "Base Viral UGC",
+          "description": "Busca posts de alto rendimiento en tu espacio.",
+          "button": "Importar referencia"
+        },
+        "background": {
+          "title": "Creado por el equipo detrás de millones de vistas",
+          "description": "Pasamos años ayudando a marcas a generar impresiones en TikTok e Instagram."
+        }
+      }
+    },
+    "useCases": {
+      "heading": {
+        "eyebrow": "Explora Casos de Uso",
+        "title": "Construido sobre tres intenciones",
+        "description": "Explora las páginas públicas."
+      },
+      "cards": [
+        {
+          "eyebrow": "Caso de Uso",
+          "title": "Análisis de Retención de Video",
+          "description": "Entiende dónde cae la atención."
+        },
+        {
+          "eyebrow": "Caso de Uso",
+          "title": "AI Video Remixer",
+          "description": "Convierte referencia en guiones."
+        },
+        {
+          "eyebrow": "Caso de Uso",
+          "title": "Base Viral Video",
+          "description": "Investiga patrones probados."
+        }
+      ]
+    },
+    "stats": [
+      {
+        "value": "300M+",
+        "label": "Impresiones Orgánicas",
+        "subtext": "generadas para marcas"
+      },
+      {
+        "value": "30x",
+        "label": "Aumento Medio MRR",
+        "subtext": "para clientes"
+      }
+    ],
+    "testimonials": {
+      "heading": {
+        "eyebrow": "Muro del Amor",
+        "title": "Lo que dicen de Sigmora"
+      },
+      "items": [
+        {
+          "role": "Marketing Manager",
+          "company": "Tech Startup",
+          "text": "“Se lo recomiendo altamente.”"
+        }
+      ]
+    }
+  },
+  "Navbar": {
+    "links": {
+      "analysis": "Análisis",
+      "process": "Proceso",
+      "pricing": "Precios"
+    },
+    "actions": {
+      "signin": "Iniciar sesión",
+      "openWorkspace": "Abrir espacio",
+      "startFree": "Empezar gratis"
+    }
+  },
+  "Pricing": {
+    "heading": {
+      "eyebrow": "Precios",
+      "title": "Empieza gratis. Paga cuando funcione.",
+      "description": "Sigmora debe demostrar su valor primero. Usuarios ligeros son flexibles. Usuarios pesados obtienen mejor economía."
+    },
+    "tiers": {
+      "activation": {
+        "name": "Activación",
+        "detail": "Perfecto para creadores que buscan guiones gratis.",
+        "price": "$0",
+        "period": "/siempre",
+        "button": "Guionizar gratis",
+        "features": [
+          "Generación ilimitada de guiones",
+          "Planificación de escenas ilimitada",
+          "3 desgloses de retención profunda",
+          "1 Remix de Video Premium (Prueba)",
+          "Acceso completo a la base viral"
+        ]
+      },
+      "credits": {
+        "name": "Packs de Créditos",
+        "detail": "Mejor para operadores ocasionales sin compromiso recurrente.",
+        "price": "Flexible",
+        "period": "/un-pago",
+        "button": "Empezar con uso",
+        "features": [
+          "Compra créditos solo cuando necesites",
+          "Mantén flujos de investigación vivos",
+          "Evita pagar por meses inactivos",
+          "Ideal para uso esporádico de creadores"
+        ]
+      },
+      "growth": {
+        "name": "Crecimiento",
+        "detail": "Para equipos que usan Sigmora repetidamente.",
+        "price": "$149",
+        "period": "/mes",
+        "button": "Desbloquear mejor economía",
+        "features": [
+          "50,000 créditos IA mensuales",
+          "Menor coste que packs repetidos",
+          "Prioridad en análisis y remixes",
+          "Colaboración para 5 asientos",
+          "Facturación cuando el hábito exista"
+        ]
+      },
+      "enterprise": {
+        "name": "Empresa",
+        "detail": "Para grandes organizaciones con soluciones a medida.",
+        "price": "Personalizado",
+        "button": "Contactar Ventas",
+        "features": [
+          "Volumen de Créditos Personalizado",
+          "Miembros de Equipo Ilimitados",
+          "Gestor de Cuentas Dedicado",
+          "Contratos y Facturación a medida",
+          "SOP y Soporte Prioritario"
+        ]
+      }
+    }
+  },
+  "FAQ": {
+    "heading": {
+      "title": "Preguntas Frecuentes de Sigmora",
+      "description": "Todo lo que necesitas saber sobre el escalado de contenido."
+    },
+    "items": [
+      {
+        "q": "¿Para quién es Sigmora?",
+        "a": "Para creadores, gestores de redes, agencias que quieren escalar sistemas de contenido corto."
+      },
+      {
+        "q": "¿Qué plataformas cubre la base viral?",
+        "a": "Sigmora se enfoca en TikTok, Instagram Reels, y YouTube Shorts."
+      }
+    ]
+  },
+  "Comparison": {
+    "heading": {
+      "eyebrow": "La Ventaja Competitiva",
+      "title": "Sigmora vs. Competencia",
+      "description": "Deja de adivinar por qué los videos funcionan."
+    },
+    "headers": {
+      "capabilities": "Capacidades Core",
+      "sigmora": "Sigmora",
+      "tubemagic": "TubeMagic",
+      "clipping": "Herramientas Clip",
+      "traditional": "IA Trad."
+    },
+    "items": [
+      {
+        "feature": "Generación End-to-End",
+        "sigmora": "Guion a Video",
+        "tubemagic": "Solo Guion",
+        "clipping": "Solo Clips",
+        "traditional": "Solo Texto",
+        "description": "Pasa de referencia directamente al video generado."
+      }
+    ],
+    "footer": {
+      "title": "¿Listo para un mejor motor de contenido?",
+      "description": "Sigmora te ayuda a escalar con precisión cuantitativa.",
+      "getStarted": "Empezar Gratis",
+      "learnMore": "Saber Más"
+    }
+  }
+}

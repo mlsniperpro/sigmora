@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { AppShell } from '@/components/app-shell';
 import { CollectionTable } from '@/components/collection-table';
-import { createCompetitorAccountAction } from '@/app/workspaces/[workspaceSlug]/actions';
+import { createCompetitorAccountAction } from '../actions';
 import { hasAdminConfig } from '@/lib/firebase-admin';
 import { getCompetitorAccounts, getWorkspaceBySlug } from '@/lib/repositories';
 import { workspaceCompetitorPath } from '@/lib/workspace-routing';

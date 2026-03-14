@@ -3,8 +3,11 @@ import Link from 'next/link';
 import { getCurrentWorkspace } from '@/lib/repositories';
 import { workspacePath } from '@/lib/workspace-routing';
 import { ThemeToggle } from '@/components/theme-toggle';
+import { LanguageSwitcher } from '@/components/LanguageSwitcher';
+import { getTranslations } from 'next-intl/server';
 
 export async function Navbar() {
+    const t = await getTranslations('Navbar');
     let workspace = null;
     try {
         workspace = await getCurrentWorkspace();
@@ -37,18 +40,29 @@ export async function Navbar() {
                     <span style={{ fontSize: '1.15rem', fontWeight: 700, letterSpacing: '-0.02em', color: 'var(--text-primary)', fontFamily: 'var(--font-display)' }}>Sigmora</span>
                 </Link>
                 <nav style={{ display: 'flex', gap: '1.5rem' }} className="nav-links hide-on-mobile">
-                    <Link href="/retention-analysis" style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color 0.2s', fontWeight: 500, letterSpacing: '0.05em', textTransform: 'uppercase' }}>Analysis</Link>
-                    <Link href="/#how-it-works" style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color 0.2s', fontWeight: 500, letterSpacing: '0.05em', textTransform: 'uppercase' }}>Process</Link>
-                    <Link href="/#pricing" style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color 0.2s', fontWeight: 500, letterSpacing: '0.05em', textTransform: 'uppercase' }}>Pricing</Link>
+                    <Link href="/retention-analysis" style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color 0.2s', fontWeight: 500, letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+                        {t('links.analysis')}
+                    </Link>
+                    <Link href="/#how-it-works" style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color 0.2s', fontWeight: 500, letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+                        {t('links.process')}
+                    </Link>
+                    <Link href="/#pricing" style={{ fontSize: '0.85rem', color: 'var(--text-secondary)', textDecoration: 'none', transition: 'color 0.2s', fontWeight: 500, letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+                        {t('links.pricing')}
+                    </Link>
                 </nav>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <LanguageSwitcher />
                 <ThemeToggle />
-                <Link href="/login" style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', textDecoration: 'none', fontWeight: 500 }}>Sign in</Link>
+
+                <Link href="/login" style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', textDecoration: 'none', fontWeight: 500 }}>
+                    {t('actions.signin')}
+                </Link>
                 <Link href={workspace ? workspacePath(workspace.slug, 'activate') : '/signup'} className="button" style={{ padding: '0.5rem 1.25rem', fontSize: '0.85rem' }}>
-                    {workspace ? 'Open Workspace' : 'Start Free'}
+                    {workspace ? t('actions.openWorkspace') : t('actions.startFree')}
                 </Link>
             </div>
         </header>
     );
 }
+

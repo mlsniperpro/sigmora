@@ -1,20 +1,25 @@
 'use client';
 
 import { useState } from 'react';
-import { marketingFaqs } from '@/lib/marketing-content';
+import { useMessages, useTranslations } from 'next-intl';
 
 export function FAQSection() {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
+    const messages = useMessages() as any;
+    const t = useTranslations('FAQ');
+    
+    // Fallback to empty array if not defined yet in loaded JSON
+    const faqItems = messages.FAQ?.items || [];
 
     return (
         <section className="section-block animate-fade-in-up" id="faq" style={{ maxWidth: '800px', margin: '0 auto', width: '100%' }}>
             <div className="section-heading" style={{ textAlign: 'center', marginBottom: '3rem' }}>
-                <h2>Sigmora Frequently Asked Questions</h2>
-                <p>Everything you need to know about scaling your content with Sigmora.</p>
+                <h2>{t('heading.title')}</h2>
+                <p>{t('heading.description')}</p>
             </div>
 
             <div style={{ display: 'grid', gap: '1rem' }}>
-                {marketingFaqs.map((faq, idx) => (
+                {faqItems.map((faq: any, idx: number) => (
                     <div
                         key={idx}
                         className="panel"

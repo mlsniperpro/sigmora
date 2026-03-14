@@ -4,7 +4,7 @@ import { CollectionTable } from '@/components/collection-table';
 import {
   createAnalysisJobAction,
   createRemixJobAction,
-} from '@/app/workspaces/[workspaceSlug]/actions';
+} from '../actions';
 import { hasAdminConfig } from '@/lib/firebase-admin';
 import {
   getAnalysisJobs,

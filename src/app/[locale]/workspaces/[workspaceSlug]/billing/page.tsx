@@ -1,7 +1,7 @@
 import { AppShell } from '@/components/app-shell';
 import { billingPlans } from '@/lib/payment-config';
 import { getWorkspaceBySlug } from '@/lib/repositories';
-import { startCheckoutAction } from '@/app/workspaces/[workspaceSlug]/billing/actions';
+import { startCheckoutAction } from './actions';
 
 type BillingParams = {
   params: Promise<{ workspaceSlug: string }>;

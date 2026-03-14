@@ -5,7 +5,7 @@ import {
   createPromptRunAction,
   ratePromptRunAction,
   updatePromptTemplateAction,
-} from '@/app/workspaces/[workspaceSlug]/actions';
+} from '../../actions';
 import { hasAdminConfig } from '@/lib/firebase-admin';
 import { getPromptRunsByPromptId, getPromptTemplateById, getWorkspaceBySlug } from '@/lib/repositories';
 import { workspacePath } from '@/lib/workspace-routing';

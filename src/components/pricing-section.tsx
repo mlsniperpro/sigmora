@@ -2,36 +2,41 @@
 
 import Link from 'next/link';
 import { startGuestCheckoutAction } from '@/app/actions/checkout';
+import { useTranslations } from 'next-intl';
 
 export function PricingSection() {
+    const t = useTranslations('Pricing');
+    
     return (
         <section className="section-block animate-fade-in-up" id="pricing" style={{ paddingTop: '4rem' }}>
             <div className="section-heading" style={{ textAlign: 'center', maxWidth: '600px', margin: '0 auto 3rem' }}>
-                <p className="eyebrow">Pricing</p>
-                <h2 style={{ fontSize: '2.5rem' }}>Start free. Pay once the loop works.</h2>
-                <p>Sigmora should prove value before it asks for commitment. Light users can stay flexible. Heavy users get better economics with a plan.</p>
+                <p className="eyebrow">{t('heading.eyebrow')}</p>
+                <h2 style={{ fontSize: '2.5rem' }}>{t('heading.title')}</h2>
+                <p>{t('heading.description')}</p>
             </div>
 
             <div className="pricing-grid">
                 <div className="panel module-card" style={{ display: 'flex', flexDirection: 'column', background: 'var(--panel-bg)', border: '1px solid var(--panel-border)' }}>
                     <div style={{ marginBottom: '1.5rem' }}>
-                        <h3 style={{ fontSize: '1.3rem', color: 'var(--text-primary)' }}>Activation</h3>
-                        <p style={{ fontSize: '0.9rem', minHeight: '40px', color: 'var(--text-secondary)' }}>Perfect for creators to find their hook and script their next winning post for free.</p>
+                        <h3 style={{ fontSize: '1.3rem', color: 'var(--text-primary)' }}>{t('tiers.activation.name')}</h3>
+                        <p style={{ fontSize: '0.9rem', minHeight: '40px', color: 'var(--text-secondary)' }}>{t('tiers.activation.detail')}</p>
                     </div>
                     <div style={{ marginBottom: '2rem' }}>
-                        <span style={{ fontSize: '2.5rem', fontFamily: 'var(--font-display)', fontWeight: 600, color: 'var(--text-primary)' }}>$0</span>
-                        <span style={{ color: 'var(--text-muted)' }}>/forever</span>
+                        <span style={{ fontSize: '2.5rem', fontFamily: 'var(--font-display)', fontWeight: 600, color: 'var(--text-primary)' }}>{t('tiers.activation.price')}</span>
+                        <span style={{ color: 'var(--text-muted)' }}>{t('tiers.activation.period')}</span>
                     </div>
-                    <Link href="/signup" className="button" style={{ width: '100%', marginBottom: '2rem', textAlign: 'center' }}>Start Scripting Free</Link>
+                    <Link href="/signup" className="button" style={{ width: '100%', marginBottom: '2rem', textAlign: 'center' }}>
+                        {t('tiers.activation.button')}
+                    </Link>
 
                     <div style={{ flex: 1 }}>
                         <p className="eyebrow" style={{ marginBottom: '1rem' }}>The Hook Layer</p>
                         <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '0.75rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> Unlimited Script Generations</li>
-                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> Unlimited Scene Planning</li>
-                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> 3 Deep Retention Breakdowns</li>
-                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> 1 Premium Video Remix (Trial)</li>
-                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> Full Viral Database Access</li>
+                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> {t('tiers.activation.features.0')}</li>
+                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> {t('tiers.activation.features.1')}</li>
+                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> {t('tiers.activation.features.2')}</li>
+                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> {t('tiers.activation.features.3')}</li>
+                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> {t('tiers.activation.features.4')}</li>
                         </ul>
                     </div>
                 </div>
@@ -39,12 +44,12 @@ export function PricingSection() {
                 {/* Starter Plan */}
                 <div className="panel module-card" style={{ display: 'flex', flexDirection: 'column', background: 'var(--panel-bg)', border: '1px solid var(--panel-border)' }}>
                     <div style={{ marginBottom: '1.5rem' }}>
-                        <h3 style={{ fontSize: '1.3rem', color: 'var(--text-primary)' }}>Credit Packs</h3>
-                        <p style={{ fontSize: '0.9rem', minHeight: '40px', color: 'var(--text-secondary)' }}>Best for occasional operators who want control without a recurring commitment.</p>
+                        <h3 style={{ fontSize: '1.3rem', color: 'var(--text-primary)' }}>{t('tiers.credits.name')}</h3>
+                        <p style={{ fontSize: '0.9rem', minHeight: '40px', color: 'var(--text-secondary)' }}>{t('tiers.credits.detail')}</p>
                     </div>
                     <div style={{ marginBottom: '2rem' }}>
-                        <span style={{ fontSize: '2.5rem', fontFamily: 'var(--font-display)', fontWeight: 600, color: 'var(--text-primary)' }}>Flexible</span>
-                        <span style={{ color: 'var(--text-muted)' }}>/one-time</span>
+                        <span style={{ fontSize: '2.5rem', fontFamily: 'var(--font-display)', fontWeight: 600, color: 'var(--text-primary)' }}>{t('tiers.credits.price')}</span>
+                        <span style={{ color: 'var(--text-muted)' }}>{t('tiers.credits.period')}</span>
                     </div>
                     
                     <form action={startGuestCheckoutAction} className="auth-form" style={{ marginBottom: '2rem' }}>
@@ -58,7 +63,7 @@ export function PricingSection() {
                           style={{ padding: '0.75rem 1rem', fontSize: '0.9rem', background: 'var(--glass-bg)', border: '1px solid var(--glass-border)', color: 'var(--text-primary)' }}
                         />
                         <button type="submit" className="button button-secondary" style={{ width: '100%', textAlign: 'center' }}>
-                          Start with usage
+                          {t('tiers.credits.button')}
                         </button>
                       </div>
                     </form>
@@ -66,10 +71,10 @@ export function PricingSection() {
                     <div style={{ flex: 1 }}>
                         <p className="eyebrow" style={{ marginBottom: '1rem' }}>What&apos;s included</p>
                         <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '0.75rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> Buy credits only when you need more volume</li>
-                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> Keep occasional research and remix workflows alive</li>
-                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> Avoid paying for idle months</li>
-                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> Ideal for sporadic creator and operator use</li>
+                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> {t('tiers.credits.features.0')}</li>
+                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> {t('tiers.credits.features.1')}</li>
+                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> {t('tiers.credits.features.2')}</li>
+                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> {t('tiers.credits.features.3')}</li>
                         </ul>
                     </div>
                 </div>
@@ -81,12 +86,12 @@ export function PricingSection() {
                     </div>
 
                     <div style={{ marginBottom: '1.5rem' }}>
-                        <h3 style={{ fontSize: '1.3rem', color: 'var(--text-primary)' }}>Growth</h3>
-                        <p style={{ fontSize: '0.9rem', minHeight: '40px', color: 'var(--text-secondary)' }}>For teams that already use Sigmora repeatedly and want better unit economics.</p>
+                        <h3 style={{ fontSize: '1.3rem', color: 'var(--text-primary)' }}>{t('tiers.growth.name')}</h3>
+                        <p style={{ fontSize: '0.9rem', minHeight: '40px', color: 'var(--text-secondary)' }}>{t('tiers.growth.detail')}</p>
                     </div>
                     <div style={{ marginBottom: '2rem' }}>
-                        <span style={{ fontSize: '2.5rem', fontFamily: 'var(--font-display)', fontWeight: 600, color: 'var(--text-primary)' }}>$149</span>
-                        <span style={{ color: 'var(--text-muted)' }}>/month</span>
+                        <span style={{ fontSize: '2.5rem', fontFamily: 'var(--font-display)', fontWeight: 600, color: 'var(--text-primary)' }}>{t('tiers.growth.price')}</span>
+                        <span style={{ color: 'var(--text-muted)' }}>{t('tiers.growth.period')}</span>
                     </div>
                     
                     <form action={startGuestCheckoutAction} className="auth-form" style={{ marginBottom: '2rem' }}>
@@ -105,7 +110,7 @@ export function PricingSection() {
                           }}
                         />
                         <button type="submit" className="button" style={{ width: '100%', textAlign: 'center' }}>
-                          Unlock better economics
+                          {t('tiers.growth.button')}
                         </button>
                       </div>
                     </form>
@@ -113,11 +118,11 @@ export function PricingSection() {
                     <div style={{ flex: 1 }}>
                         <p className="eyebrow" style={{ marginBottom: '1rem' }}>What&apos;s included</p>
                         <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '0.75rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> 50,000 AI credits each month</li>
-                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> Lower effective cost than repeated credit packs</li>
-                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> Priority analysis and remix throughput</li>
-                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> Team collaboration for five seats</li>
-                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> Billing only makes sense once the habit exists</li>
+                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> {t('tiers.growth.features.0')}</li>
+                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> {t('tiers.growth.features.1')}</li>
+                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> {t('tiers.growth.features.2')}</li>
+                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> {t('tiers.growth.features.3')}</li>
+                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> {t('tiers.growth.features.4')}</li>
                         </ul>
                     </div>
                 </div>
@@ -125,22 +130,24 @@ export function PricingSection() {
                 {/* Enterprise Plan */}
                 <div className="panel module-card" style={{ display: 'flex', flexDirection: 'column', background: 'var(--panel-bg)', border: '1px solid var(--panel-border)' }}>
                     <div style={{ marginBottom: '1.5rem' }}>
-                        <h3 style={{ fontSize: '1.3rem', color: 'var(--text-primary)' }}>Enterprise</h3>
-                        <p style={{ fontSize: '0.9rem', minHeight: '40px', color: 'var(--text-secondary)' }}>For large organizations requiring custom scale and tailored solutions.</p>
+                        <h3 style={{ fontSize: '1.3rem', color: 'var(--text-primary)' }}>{t('tiers.enterprise.name')}</h3>
+                        <p style={{ fontSize: '0.9rem', minHeight: '40px', color: 'var(--text-secondary)' }}>{t('tiers.enterprise.detail')}</p>
                     </div>
                     <div style={{ marginBottom: '2rem' }}>
-                        <span style={{ fontSize: '2.5rem', fontFamily: 'var(--font-display)', fontWeight: 600, color: 'var(--text-primary)' }}>Custom</span>
+                        <span style={{ fontSize: '2.5rem', fontFamily: 'var(--font-display)', fontWeight: 600, color: 'var(--text-primary)' }}>{t('tiers.enterprise.price')}</span>
                     </div>
-                    <Link href="mailto:sales@sigmora.ai" className="button button-secondary" style={{ width: '100%', marginBottom: '2rem', textAlign: 'center' }}>Contact Sales</Link>
+                    <Link href="mailto:sales@sigmora.ai" className="button button-secondary" style={{ width: '100%', marginBottom: '2rem', textAlign: 'center' }}>
+                        {t('tiers.enterprise.button')}
+                    </Link>
 
                     <div style={{ flex: 1 }}>
                         <p className="eyebrow" style={{ marginBottom: '1rem' }}>What&apos;s included</p>
                         <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '0.75rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
-                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> Custom Credit Volume</li>
-                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> Unlimited Team Members</li>
-                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> Dedicated Account Manager</li>
-                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> Custom Contracts & Invoicing</li>
-                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> SLA & Priority Support</li>
+                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> {t('tiers.enterprise.features.0')}</li>
+                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> {t('tiers.enterprise.features.1')}</li>
+                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> {t('tiers.enterprise.features.2')}</li>
+                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> {t('tiers.enterprise.features.3')}</li>
+                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> {t('tiers.enterprise.features.4')}</li>
                         </ul>
                     </div>
                 </div>

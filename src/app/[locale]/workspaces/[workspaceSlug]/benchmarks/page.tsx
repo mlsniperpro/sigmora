@@ -3,7 +3,7 @@ import { AppShell } from '@/components/app-shell';
 import { CollectionTable } from '@/components/collection-table';
 import { MetricCard } from '@/components/metric-card';
 import { ContentGallery } from '@/components/content-gallery';
-import { createBenchmarkCollectionAction } from '@/app/workspaces/[workspaceSlug]/actions';
+import { createBenchmarkCollectionAction } from '../actions';
 import { hasAdminConfig } from '@/lib/firebase-admin';
 import { getAssets, getBenchmarkCollections, getAnalysisResults, getWorkspaceBySlug } from '@/lib/repositories';
 import { workspaceBenchmarkPath } from '@/lib/workspace-routing';

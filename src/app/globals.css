@@ -53,14 +53,17 @@
   }
 
   .mesh-gradient {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
+    width: 100vw;
+    height: 100vh;
     overflow: hidden;
     z-index: -1;
     pointer-events: none;
+    background: 
+      radial-gradient(circle at 50% 50%, transparent 0%, var(--bg-html-radial) 100%),
+      var(--bg-html);
   }
 
   .mesh-gradient::before {
@@ -109,23 +112,23 @@
     box-sizing: border-box;
   }
 
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
   html {
     min-height: 100%;
-    background:
-      radial-gradient(circle at -10% -10%, var(--glow-accent), transparent 45%),
-      radial-gradient(circle at 110% 90%, var(--glow-teal), transparent 45%),
-      radial-gradient(circle at 50% 50%, transparent 0%, var(--bg-html-radial) 100%),
-      var(--bg-html);
+    background: var(--bg-html);
   }
 
   body {
     min-height: 100vh;
-    margin: 0;
     color: var(--text-primary);
     font-family: var(--font-sans);
-    background:
-      linear-gradient(135deg, rgba(255, 255, 255, 0.03), transparent 45%),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0));
+    position: relative;
   }
 
   h1,

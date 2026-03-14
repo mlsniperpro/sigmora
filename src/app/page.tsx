@@ -47,14 +47,17 @@ export default async function Home() {
   }
 
   return (
-    <main className="sigmora-shell" style={{ padding: '0 0 6rem', position: 'relative' }}>
+    <>
       <JsonLd />
-      <Navbar />
       
-      {/* Premium Background Elements */}
+      {/* Premium Background Elements - Full Screen */}
       <div className="mesh-gradient">
         <div className="bg-grid" />
       </div>
+
+      <Navbar />
+
+      <main className="sigmora-shell" style={{ padding: '0 0 6rem', position: 'relative' }}>
 
       {/* 1. Enhanced Hero Section */}
       <section className="hero" style={{ paddingTop: '8rem', paddingBottom: '6rem' }}>
@@ -338,5 +341,6 @@ export default async function Home() {
       </div>
 
     </main>
+    </>
   );
 }

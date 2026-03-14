@@ -73,7 +73,7 @@ function LoginPageContent() {
 
                 <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
                     <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '2.4rem', marginBottom: '0.5rem', letterSpacing: '-0.02em' }}>Welcome back</h1>
-                    <p style={{ color: 'rgba(245, 241, 232, 0.72)' }}>Sign in to continue to your workspace.</p>
+                    <p style={{ color: 'var(--text-secondary)' }}>Sign in to continue to your workspace.</p>
                 </div>
 
                 {errorMsg && <div className="callout warning small" style={{ marginBottom: '1.5rem', textAlign: 'center' }}>{errorMsg}</div>}
@@ -107,10 +107,10 @@ function LoginPageContent() {
                     </button>
                 </form>
 
-                <div style={{ display: 'flex', alignItems: 'center', margin: '2rem 0', color: 'rgba(245, 241, 232, 0.4)' }}>
-                    <div style={{ flex: 1, height: '1px', background: 'rgba(255, 255, 255, 0.1)' }} />
+                <div style={{ display: 'flex', alignItems: 'center', margin: '2rem 0', color: 'var(--text-muted)' }}>
+                    <div style={{ flex: 1, height: '1px', background: 'var(--panel-border)' }} />
                     <span style={{ padding: '0 1rem', fontSize: '0.85rem' }}>or</span>
-                    <div style={{ flex: 1, height: '1px', background: 'rgba(255, 255, 255, 0.1)' }} />
+                    <div style={{ flex: 1, height: '1px', background: 'var(--panel-border)' }} />
                 </div>
 
                 <button type="button" className="button button-secondary" style={{ width: '100%', padding: '1rem', display: 'flex', justifyContent: 'center', gap: '0.75rem', alignItems: 'center' }} onClick={handleGoogleSignIn} disabled={pending}>
@@ -123,8 +123,8 @@ function LoginPageContent() {
                     Continue with Google
                 </button>
 
-                <p style={{ textAlign: 'center', marginTop: '2.5rem', fontSize: '0.9rem', color: 'rgba(245, 241, 232, 0.72)' }}>
-                    Don&apos;t have an account? <Link href="/signup" style={{ color: '#fff', textDecoration: 'none', fontWeight: 600 }}>Create one</Link>
+                <p style={{ textAlign: 'center', marginTop: '2.5rem', fontSize: '0.9rem', color: 'var(--text-muted)' }}>
+                    Don&apos;t have an account? <Link href="/signup" style={{ color: 'var(--color-accent-400)', textDecoration: 'none', fontWeight: 600 }}>Create one</Link>
                 </p>
             </div>
         </main>

@@ -193,15 +193,16 @@
   .panel p,
   .panel li,
   .panel-copy {
-    color: rgba(245, 241, 232, 0.72);
+    color: var(--text-secondary);
     line-height: 1.55;
   }
 
   .eyebrow {
-    color: var(--color-paper-200);
+    color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.18em;
     font-size: 0.75rem;
+    font-weight: 600;
   }
 
   .principles-grid,
@@ -213,13 +214,12 @@
 
   .panel,
   .principle-card {
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+    border: 1px solid var(--panel-border);
+    background: var(--panel-bg);
     backdrop-filter: blur(24px);
     border-radius: 1.5rem;
     box-shadow:
-      0 4px 24px -4px rgba(0, 0, 0, 0.2),
-      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      0 4px 24px -4px var(--glass-shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
   }
 
@@ -227,11 +227,8 @@
   .module-card:hover {
     transform: translateY(-6px);
     box-shadow:
-      0 24px 48px -12px rgba(0, 0, 0, 0.6),
-      0 0 24px -4px rgba(223, 131, 81, 0.15),
-      inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    border-color: rgba(255, 255, 255, 0.2);
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+      0 24px 48px -12px var(--glass-shadow);
+    border-color: var(--color-accent-400);
   }
 
   .principle-card,
@@ -261,7 +258,7 @@
   .sidebar-footer {
     margin-top: auto;
     padding-top: 1.5rem;
-    border-top: 1px solid rgba(245, 241, 232, 0.08);
+    border-top: 1px solid var(--panel-border);
   }
 
   .auth-module {
@@ -302,7 +299,7 @@
     padding: 0.85rem 1rem;
     border-radius: 1rem;
     background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(245, 241, 232, 0.08);
+    border: 1px solid var(--panel-border);
   }
 
   .workspace-badge span {
@@ -328,7 +325,7 @@
   .metric-card p,
   .data-table-row span,
   .table-header p {
-    color: rgba(245, 241, 232, 0.72);
+    color: var(--text-secondary);
   }
 
   .brand-mark {
@@ -499,7 +496,7 @@
     width: 100%;
     padding: 0.95rem 1rem;
     border-radius: 1rem;
-    border: 1px solid rgba(245, 241, 232, 0.12);
+    border: 1px solid var(--panel-border);
     background: rgba(255, 255, 255, 0.04);
     color: var(--color-paper-100);
     outline: none;
@@ -580,7 +577,7 @@
     width: 100%;
     padding: 0.95rem 1rem;
     border-radius: 1rem;
-    border: 1px solid rgba(245, 241, 232, 0.12);
+    border: 1px solid var(--panel-border);
     background: rgba(255, 255, 255, 0.04);
     color: var(--color-paper-100);
     outline: none;
@@ -610,12 +607,12 @@
     display: grid;
     gap: 0.5rem;
     padding: 0.85rem 0;
-    border-bottom: 1px solid rgba(245, 241, 232, 0.08);
+    border-bottom: 1px solid var(--panel-border);
   }
 
   .data-table-head {
     padding-top: 0;
-    border-bottom-color: rgba(245, 241, 232, 0.18);
+    border-bottom-color: var(--panel-border);
   }
 
   .data-table-head span {
@@ -644,7 +641,7 @@
     padding: 1rem;
     border-radius: 1rem;
     background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(245, 241, 232, 0.08);
+    border: 1px solid var(--panel-border);
   }
 
   .recommendation-card h3 {
@@ -673,7 +670,7 @@
     width: 1rem;
     height: 1rem;
     border-radius: 999px;
-    border: 2px solid rgba(245, 241, 232, 0.2);
+    border: 2px solid var(--panel-border);
     border-top-color: var(--color-teal-400);
     animation: spin 0.9s linear infinite;
   }

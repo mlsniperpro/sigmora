@@ -43,7 +43,7 @@ export function FAQSection() {
                                 marginTop: openIndex === idx ? '1rem' : '0'
                             }}
                         >
-                            <p style={{ color: 'rgba(245, 241, 232, 0.72)', fontSize: '0.95rem', lineHeight: 1.6 }}>{faq.a}</p>
+                            <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.6 }}>{faq.a}</p>
                         </div>
                     </div>
                 ))}

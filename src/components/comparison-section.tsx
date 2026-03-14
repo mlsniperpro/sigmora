@@ -93,13 +93,13 @@ export function ComparisonSection() {
                 <th style={{ padding: '2rem', textAlign: 'center', opacity: 0.6 }}>
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <span style={{ fontSize: '1.1rem', fontWeight: 600 }}>TubeMagic</span>
-                    <span style={{ fontSize: '0.7rem', color: 'rgba(245, 241, 232, 0.5)', marginTop: '0.5rem' }}>Strategic</span>
+                    <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>Strategic</span>
                   </div>
                 </th>
                 <th style={{ padding: '2rem', textAlign: 'center', opacity: 0.6 }}>
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <span style={{ fontSize: '1.1rem', fontWeight: 600 }}>Clipping Tools</span>
-                    <span style={{ fontSize: '0.7rem', color: 'rgba(245, 241, 232, 0.5)', marginTop: '0.5rem' }}>Opus/Submagic</span>
+                    <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>Opus/Submagic</span>
                   </div>
                 </th>
                 <th style={{ padding: '2rem', textAlign: 'center', opacity: 0.6 }}>
@@ -135,17 +135,17 @@ export function ComparisonSection() {
                   </td>
                   <td style={{ padding: '1.5rem 2rem', textAlign: 'center' }}>
                     <div style={{ display: 'flex', justifyContent: 'center', opacity: 0.7 }}>
-                      {typeof item.tubemagic === 'boolean' ? (item.tubemagic ? <CheckIcon /> : <CrossIcon />) : <span style={{ fontSize: '0.85rem', color: 'rgba(245, 241, 232, 0.6)' }}>{item.tubemagic}</span>}
+                      {typeof item.tubemagic === 'boolean' ? (item.tubemagic ? <CheckIcon /> : <CrossIcon />) : <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>{item.tubemagic}</span>}
                     </div>
                   </td>
                   <td style={{ padding: '1.5rem 2rem', textAlign: 'center' }}>
                     <div style={{ display: 'flex', justifyContent: 'center', opacity: 0.7 }}>
-                      {typeof item.clipping === 'boolean' ? (item.clipping ? <CheckIcon /> : <CrossIcon />) : <span style={{ fontSize: '0.85rem', color: 'rgba(245, 241, 232, 0.6)' }}>{item.clipping}</span>}
+                      {typeof item.clipping === 'boolean' ? (item.clipping ? <CheckIcon /> : <CrossIcon />) : <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>{item.clipping}</span>}
                     </div>
                   </td>
                   <td style={{ padding: '1.5rem 2rem', textAlign: 'center' }}>
                     <div style={{ display: 'flex', justifyContent: 'center', opacity: 0.7 }}>
-                      {typeof item.traditional === 'boolean' ? (item.traditional ? <CheckIcon /> : <CrossIcon />) : <span style={{ fontSize: '0.85rem', color: 'rgba(245, 241, 232, 0.6)' }}>{item.traditional}</span>}
+                      {typeof item.traditional === 'boolean' ? (item.traditional ? <CheckIcon /> : <CrossIcon />) : <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>{item.traditional}</span>}
                     </div>
                   </td>
                 </tr>

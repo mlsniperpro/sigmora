@@ -205,7 +205,7 @@ export default async function Home() {
           <div className="feature-split">
             <div>
               <h3 style={{ fontSize: '2rem', fontFamily: 'var(--font-display)', marginBottom: '1rem' }}>AI Content Remixer</h3>
-              <p style={{ color: 'rgba(245, 241, 232, 0.72)', fontSize: '1.1rem', lineHeight: 1.6, marginBottom: '2rem' }}>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', lineHeight: 1.6, marginBottom: '2rem' }}>
                 Deconstruct retention signals and generate unlimited scripts from any reference video—completely free. Once your script is ready, use our premium engine to generate the high-retention video variant in seconds.
               </p>
               <Link href="/signup" className="button button-secondary">Start Scripting Free</Link>
@@ -225,7 +225,7 @@ export default async function Home() {
           <div className="feature-split reversed">
             <div>
               <h3 style={{ fontSize: '2rem', fontFamily: 'var(--font-display)', marginBottom: '1rem' }}>Viral UGC Database</h3>
-              <p style={{ color: 'rgba(245, 241, 232, 0.72)', fontSize: '1.1rem', lineHeight: 1.6, marginBottom: '2rem' }}>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', lineHeight: 1.6, marginBottom: '2rem' }}>
                 The database is useful because it shortens time to value. Browse high-performing posts, pull one into your workspace, and move directly into analysis instead of just collecting inspiration.
               </p>
               <Link href="/signup" className="button button-secondary">Import a reference</Link>
@@ -244,7 +244,7 @@ export default async function Home() {
           {/* Background block */}
           <div className="panel" style={{ textAlign: 'center', padding: '4rem 2rem', background: 'radial-gradient(ellipse at top, rgba(214, 100, 40, 0.15), transparent 70%)' }}>
             <h3 style={{ fontSize: '2rem', fontFamily: 'var(--font-display)', marginBottom: '1.5rem' }}>Built by the Team Behind Hundreds of Millions of Viral Views</h3>
-            <p style={{ color: 'rgba(245, 241, 232, 0.72)', fontSize: '1.1rem', maxWidth: '800px', margin: '0 auto', lineHeight: 1.6 }}>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', maxWidth: '800px', margin: '0 auto', lineHeight: 1.6 }}>
               Before building Sigmora, we spent years behind the curtain helping brands generate hundreds of millions of impressions across TikTok, Instagram, and YouTube. Every insight in our viral database and AI remixer tool comes from real campaign insights — not guesswork.
             </p>
           </div>
@@ -320,7 +320,7 @@ export default async function Home() {
                   <p style={{ fontSize: '0.8rem', color: 'rgba(245, 241, 232, 0.5)' }}>Tech Startup</p>
                 </div>
               </div>
-              <p style={{ fontStyle: 'italic', fontSize: '0.95rem', lineHeight: 1.6, color: 'rgba(245, 241, 232, 0.8)' }}>
+              <p style={{ fontStyle: 'italic', fontSize: '0.95rem', lineHeight: 1.6, color: 'var(--text-secondary)' }}>
                 “Highly recommend this platform. The team is very familiar in short-form content & is thus able to produce viral content consistently.”
               </p>
             </div>

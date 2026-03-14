@@ -29,7 +29,7 @@ export function CollectionTable<T>({
       <div className="data-table">
         <div className="data-table-row data-table-head" style={{ borderBottom: '1px solid rgba(255, 255, 255, 0.1)', paddingBottom: '1rem', marginBottom: '0.5rem' }}>
           {columns.map((column) => (
-            <span key={column.key} style={{ color: 'rgba(245, 241, 232, 0.5)', fontSize: '0.8rem', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase' }}>{column.header}</span>
+            <span key={column.key} style={{ color: 'var(--text-muted)', fontSize: '0.8rem', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase' }}>{column.header}</span>
           ))}
         </div>
 
@@ -50,7 +50,7 @@ export function CollectionTable<T>({
           </div>
         ))}
         {items.length === 0 && (
-          <div style={{ padding: '2rem', textAlign: 'center', color: 'rgba(245, 241, 232, 0.4)', fontSize: '0.9rem' }}>
+          <div style={{ padding: '2rem', textAlign: 'center', color: 'var(--text-muted)', fontSize: '0.9rem' }}>
             No records found.
           </div>
         )}

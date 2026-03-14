@@ -112,7 +112,7 @@ export function PricingSection() {
 
                     <div style={{ flex: 1 }}>
                         <p className="eyebrow" style={{ marginBottom: '1rem' }}>What&apos;s included</p>
-                        <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '0.75rem', fontSize: '0.9rem', color: 'rgba(245, 241, 232, 0.9)' }}>
+                        <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '0.75rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
                             <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> 50,000 AI credits each month</li>
                             <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> Lower effective cost than repeated credit packs</li>
                             <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> Priority analysis and remix throughput</li>

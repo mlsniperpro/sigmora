@@ -96,7 +96,7 @@ export function AppSidebar({ workspace }: AppSidebarProps) {
                             fontSize: '0.65rem',
                             fontWeight: 700,
                             letterSpacing: '0.11em',
-                            color: 'rgba(245, 241, 232, 0.25)',
+                            color: 'var(--text-muted)',
                             textTransform: 'uppercase',
                             marginBottom: '0.75rem',
                             paddingLeft: '1rem'

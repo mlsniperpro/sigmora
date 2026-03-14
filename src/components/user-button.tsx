@@ -45,9 +45,9 @@ export function UserButton({ collapsed = false }: UserButtonProps) {
                 alignItems: 'center',
                 justifyContent: collapsed ? 'center' : 'space-between',
                 padding: '0.85rem',
-                background: 'rgba(255, 255, 255, 0.03)',
+                background: 'var(--panel-bg)',
                 borderRadius: '0.75rem',
-                border: '1px solid rgba(255, 255, 255, 0.05)',
+                border: '1px solid var(--panel-border)',
                 marginTop: 'auto',
                 gap: '0.75rem',
                 width: '100%'
@@ -73,10 +73,10 @@ export function UserButton({ collapsed = false }: UserButtonProps) {
                 </div>
                 {!collapsed ? (
                     <div style={{ overflow: 'hidden', minWidth: 0 }}>
-                        <p style={{ fontSize: '0.85rem', fontWeight: 500, color: 'rgba(245, 241, 232, 0.9)', whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>
+                        <p style={{ fontSize: '0.85rem', fontWeight: 500, color: 'var(--text-primary)', whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>
                             {user.displayName || 'Operator'}
                         </p>
-                        <p style={{ fontSize: '0.75rem', color: 'rgba(245, 241, 232, 0.5)', whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>
+                        <p style={{ fontSize: '0.75rem', color: 'var(--text-muted)', whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>
                             {user.email}
                         </p>
                     </div>
@@ -88,7 +88,7 @@ export function UserButton({ collapsed = false }: UserButtonProps) {
                 style={{
                     background: collapsed ? 'transparent' : 'rgba(255, 255, 255, 0.06)',
                     border: collapsed ? 'none' : '1px solid rgba(255, 255, 255, 0.08)',
-                    color: collapsed ? 'rgba(245, 241, 232, 0.6)' : 'rgba(245, 241, 232, 0.92)',
+                    color: collapsed ? 'var(--text-muted)' : 'var(--text-primary)',
                     cursor: 'pointer',
                     padding: collapsed ? '0.5rem' : '0.6rem 0.85rem',
                     display: 'flex',
@@ -108,10 +108,10 @@ export function UserButton({ collapsed = false }: UserButtonProps) {
                     }
                 }}
                 onMouseOut={(e) => {
-                    e.currentTarget.style.color = collapsed ? 'rgba(245, 241, 232, 0.6)' : 'rgba(245, 241, 232, 0.92)';
+                    e.currentTarget.style.color = collapsed ? 'var(--text-muted)' : 'var(--text-primary)';
                     if (!collapsed) {
-                        e.currentTarget.style.background = 'rgba(255, 255, 255, 0.06)';
-                        e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+                        e.currentTarget.style.background = 'var(--panel-bg)';
+                        e.currentTarget.style.borderColor = 'var(--panel-border)';
                     }
                 }}
                 title="Sign Out"

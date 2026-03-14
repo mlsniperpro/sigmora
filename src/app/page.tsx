@@ -62,12 +62,12 @@ export default async function Home() {
               display: 'inline-flex', 
               alignItems: 'center', 
               gap: '10px', 
-              background: 'rgba(255,255,255,0.03)', 
+              background: 'var(--glass-bg)', 
               padding: '8px 20px', 
               borderRadius: '99px', 
-              border: '1px solid rgba(255,255,255,0.08)',
+              border: '1px solid var(--glass-border)',
               backdropFilter: 'blur(10px)',
-              boxShadow: '0 4px 15px rgba(0,0,0,0.1)'
+              boxShadow: '0 4px 15px var(--glass-shadow)'
             }}>
               <span className="animate-pulse" style={{ width: '8px', height: '8px', background: '#37b5ae', borderRadius: '50%', boxShadow: '0 0 12px #37b5ae' }}></span>
               <span style={{ fontWeight: 600, letterSpacing: '0.05em' }}>Retention Intelligence for Short-Form</span>
@@ -96,7 +96,7 @@ export default async function Home() {
             margin: '1.5rem 0 2.5rem', 
             fontWeight: 400,
             lineHeight: 1.6,
-            color: 'rgba(245, 241, 232, 0.8)'
+            color: 'var(--text-secondary)'
           }}>
             Import one video, inspect the retention structure, and go from scripting to video generation before you spend on a subscription.
           </h2>
@@ -115,7 +115,7 @@ export default async function Home() {
             display: 'flex', 
             alignItems: 'center', 
             gap: '1rem', 
-            color: 'rgba(245, 241, 232, 0.6)', 
+            color: 'var(--text-muted)', 
             flexWrap: 'wrap',
             fontSize: '0.85rem'
           }}>
@@ -133,9 +133,9 @@ export default async function Home() {
 
         <div className="panel animate-fade-in-up delay-300" style={{ 
           padding: '0.5rem', 
-          background: 'rgba(255,255,255,0.02)',
-          border: '1px solid rgba(255,255,255,0.1)',
-          boxShadow: '0 40px 100px -20px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05)',
+          background: 'var(--panel-bg)',
+          border: '1px solid var(--panel-border)',
+          boxShadow: '0 40px 100px -20px var(--glass-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.05)',
           position: 'relative',
           overflow: 'visible'
         }}>
@@ -179,7 +179,7 @@ export default async function Home() {
               <span className="eyebrow" style={{ color: '#fff' }}>Interactive Workflow</span>
               <div className="status-pill status-foundation" style={{ fontSize: '0.65rem' }}>Live Preview</div>
             </div>
-            <p style={{ fontSize: '0.9rem', color: 'rgba(245, 241, 232, 0.6)', lineHeight: 1.5 }}>
+            <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
               The Sigmora engine deconstructs retention signals and generates video variants in one unified loop.
             </p>
           </div>

@@ -23,7 +23,33 @@
 
 @layer base {
   :root {
+    --bg-html: #080a0f;
+    --bg-html-radial: #06070a;
+    --text-primary: var(--color-paper-100);
+    --text-secondary: rgba(245, 241, 232, 0.7);
+    --text-muted: rgba(245, 241, 232, 0.5);
+    --glass-bg: rgba(255, 255, 255, 0.04);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-shadow: rgba(0, 0, 0, 0.5);
+    --glow-opacity: 0.3;
+    --panel-bg: rgba(255, 255, 255, 0.02);
+    --panel-border: rgba(255, 255, 255, 0.05);
     color-scheme: dark;
+  }
+
+  [data-theme='light'] {
+    --bg-html: #faf8f5;
+    --bg-html-radial: #f5f2ed;
+    --text-primary: #121418;
+    --text-secondary: #4a4d52;
+    --text-muted: #71767d;
+    --glass-bg: rgba(0, 0, 0, 0.02);
+    --glass-border: rgba(0, 0, 0, 0.06);
+    --glass-shadow: rgba(0, 0, 0, 0.1);
+    --glow-opacity: 0.15;
+    --panel-bg: #fff;
+    --panel-border: rgba(0, 0, 0, 0.08);
+    color-scheme: light;
   }
 
   .mesh-gradient {
@@ -46,6 +72,7 @@
     height: 70%;
     background: radial-gradient(circle, var(--glow-accent) 0%, transparent 70%);
     filter: blur(80px);
+    opacity: var(--glow-opacity);
     animation: pulse-slow 15s infinite alternate;
   }
 
@@ -58,6 +85,7 @@
     height: 60%;
     background: radial-gradient(circle, var(--glow-teal) 0%, transparent 70%);
     filter: blur(80px);
+    opacity: var(--glow-opacity);
     animation: pulse-slow 12s infinite alternate-reverse;
   }
 
@@ -73,16 +101,16 @@
   html {
     min-height: 100%;
     background:
-      radial-gradient(circle at -10% -10%, rgba(214, 100, 40, 0.3), transparent 45%),
-      radial-gradient(circle at 110% 90%, rgba(24, 138, 132, 0.25), transparent 45%),
-      radial-gradient(circle at 50% 50%, rgba(10, 12, 16, 0) 0%, #06070a 100%),
-      #080a0f;
+      radial-gradient(circle at -10% -10%, var(--glow-accent), transparent 45%),
+      radial-gradient(circle at 110% 90%, var(--glow-teal), transparent 45%),
+      radial-gradient(circle at 50% 50%, transparent 0%, var(--bg-html-radial) 100%),
+      var(--bg-html);
   }
 
   body {
     min-height: 100vh;
     margin: 0;
-    color: var(--color-paper-100);
+    color: var(--text-primary);
     font-family: var(--font-sans);
     background:
       linear-gradient(135deg, rgba(255, 255, 255, 0.03), transparent 45%),

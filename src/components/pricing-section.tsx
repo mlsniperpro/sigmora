@@ -13,20 +13,20 @@ export function PricingSection() {
             </div>
 
             <div className="pricing-grid">
-                <div className="panel module-card" style={{ display: 'flex', flexDirection: 'column' }}>
+                <div className="panel module-card" style={{ display: 'flex', flexDirection: 'column', background: 'var(--panel-bg)', border: '1px solid var(--panel-border)' }}>
                     <div style={{ marginBottom: '1.5rem' }}>
-                        <h3 style={{ fontSize: '1.3rem', color: '#fff' }}>Activation</h3>
-                        <p style={{ fontSize: '0.9rem', minHeight: '40px' }}>Perfect for creators to find their hook and script their next winning post for free.</p>
+                        <h3 style={{ fontSize: '1.3rem', color: 'var(--text-primary)' }}>Activation</h3>
+                        <p style={{ fontSize: '0.9rem', minHeight: '40px', color: 'var(--text-secondary)' }}>Perfect for creators to find their hook and script their next winning post for free.</p>
                     </div>
                     <div style={{ marginBottom: '2rem' }}>
-                        <span style={{ fontSize: '2.5rem', fontFamily: 'var(--font-display)', fontWeight: 600 }}>$0</span>
-                        <span style={{ color: 'rgba(245, 241, 232, 0.6)' }}>/forever</span>
+                        <span style={{ fontSize: '2.5rem', fontFamily: 'var(--font-display)', fontWeight: 600, color: 'var(--text-primary)' }}>$0</span>
+                        <span style={{ color: 'var(--text-muted)' }}>/forever</span>
                     </div>
                     <Link href="/signup" className="button" style={{ width: '100%', marginBottom: '2rem', textAlign: 'center' }}>Start Scripting Free</Link>
 
                     <div style={{ flex: 1 }}>
                         <p className="eyebrow" style={{ marginBottom: '1rem' }}>The Hook Layer</p>
-                        <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '0.75rem', fontSize: '0.9rem', color: 'rgba(245, 241, 232, 0.8)' }}>
+                        <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '0.75rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
                             <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> Unlimited Script Generations</li>
                             <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> Unlimited Scene Planning</li>
                             <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> 3 Deep Retention Breakdowns</li>
@@ -37,14 +37,14 @@ export function PricingSection() {
                 </div>
 
                 {/* Starter Plan */}
-                <div className="panel module-card" style={{ display: 'flex', flexDirection: 'column' }}>
+                <div className="panel module-card" style={{ display: 'flex', flexDirection: 'column', background: 'var(--panel-bg)', border: '1px solid var(--panel-border)' }}>
                     <div style={{ marginBottom: '1.5rem' }}>
-                        <h3 style={{ fontSize: '1.3rem', color: '#fff' }}>Credit Packs</h3>
-                        <p style={{ fontSize: '0.9rem', minHeight: '40px' }}>Best for occasional operators who want control without a recurring commitment.</p>
+                        <h3 style={{ fontSize: '1.3rem', color: 'var(--text-primary)' }}>Credit Packs</h3>
+                        <p style={{ fontSize: '0.9rem', minHeight: '40px', color: 'var(--text-secondary)' }}>Best for occasional operators who want control without a recurring commitment.</p>
                     </div>
                     <div style={{ marginBottom: '2rem' }}>
-                        <span style={{ fontSize: '2.5rem', fontFamily: 'var(--font-display)', fontWeight: 600 }}>Flexible</span>
-                        <span style={{ color: 'rgba(245, 241, 232, 0.6)' }}>/one-time</span>
+                        <span style={{ fontSize: '2.5rem', fontFamily: 'var(--font-display)', fontWeight: 600, color: 'var(--text-primary)' }}>Flexible</span>
+                        <span style={{ color: 'var(--text-muted)' }}>/one-time</span>
                     </div>
                     
                     <form action={startGuestCheckoutAction} className="auth-form" style={{ marginBottom: '2rem' }}>
@@ -55,7 +55,7 @@ export function PricingSection() {
                           name="email" 
                           placeholder="your@email.com" 
                           required 
-                          style={{ padding: '0.75rem 1rem', fontSize: '0.9rem' }}
+                          style={{ padding: '0.75rem 1rem', fontSize: '0.9rem', background: 'var(--glass-bg)', border: '1px solid var(--glass-border)', color: 'var(--text-primary)' }}
                         />
                         <button type="submit" className="button button-secondary" style={{ width: '100%', textAlign: 'center' }}>
                           Start with usage
@@ -65,7 +65,7 @@ export function PricingSection() {
 
                     <div style={{ flex: 1 }}>
                         <p className="eyebrow" style={{ marginBottom: '1rem' }}>What&apos;s included</p>
-                        <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '0.75rem', fontSize: '0.9rem', color: 'rgba(245, 241, 232, 0.8)' }}>
+                        <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '0.75rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
                             <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> Buy credits only when you need more volume</li>
                             <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> Keep occasional research and remix workflows alive</li>
                             <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> Avoid paying for idle months</li>
@@ -81,12 +81,12 @@ export function PricingSection() {
                     </div>
 
                     <div style={{ marginBottom: '1.5rem' }}>
-                        <h3 style={{ fontSize: '1.3rem', color: '#fff' }}>Growth</h3>
-                        <p style={{ fontSize: '0.9rem', minHeight: '40px' }}>For teams that already use Sigmora repeatedly and want better unit economics.</p>
+                        <h3 style={{ fontSize: '1.3rem', color: 'var(--text-primary)' }}>Growth</h3>
+                        <p style={{ fontSize: '0.9rem', minHeight: '40px', color: 'var(--text-secondary)' }}>For teams that already use Sigmora repeatedly and want better unit economics.</p>
                     </div>
                     <div style={{ marginBottom: '2rem' }}>
-                        <span style={{ fontSize: '2.5rem', fontFamily: 'var(--font-display)', fontWeight: 600 }}>$149</span>
-                        <span style={{ color: 'rgba(245, 241, 232, 0.6)' }}>/month</span>
+                        <span style={{ fontSize: '2.5rem', fontFamily: 'var(--font-display)', fontWeight: 600, color: 'var(--text-primary)' }}>$149</span>
+                        <span style={{ color: 'var(--text-muted)' }}>/month</span>
                     </div>
                     
                     <form action={startGuestCheckoutAction} className="auth-form" style={{ marginBottom: '2rem' }}>
@@ -123,19 +123,19 @@ export function PricingSection() {
                 </div>
 
                 {/* Enterprise Plan */}
-                <div className="panel module-card" style={{ display: 'flex', flexDirection: 'column' }}>
+                <div className="panel module-card" style={{ display: 'flex', flexDirection: 'column', background: 'var(--panel-bg)', border: '1px solid var(--panel-border)' }}>
                     <div style={{ marginBottom: '1.5rem' }}>
-                        <h3 style={{ fontSize: '1.3rem', color: '#fff' }}>Enterprise</h3>
-                        <p style={{ fontSize: '0.9rem', minHeight: '40px' }}>For large organizations requiring custom scale and tailored solutions.</p>
+                        <h3 style={{ fontSize: '1.3rem', color: 'var(--text-primary)' }}>Enterprise</h3>
+                        <p style={{ fontSize: '0.9rem', minHeight: '40px', color: 'var(--text-secondary)' }}>For large organizations requiring custom scale and tailored solutions.</p>
                     </div>
                     <div style={{ marginBottom: '2rem' }}>
-                        <span style={{ fontSize: '2.5rem', fontFamily: 'var(--font-display)', fontWeight: 600 }}>Custom</span>
+                        <span style={{ fontSize: '2.5rem', fontFamily: 'var(--font-display)', fontWeight: 600, color: 'var(--text-primary)' }}>Custom</span>
                     </div>
                     <Link href="mailto:sales@sigmora.ai" className="button button-secondary" style={{ width: '100%', marginBottom: '2rem', textAlign: 'center' }}>Contact Sales</Link>
 
                     <div style={{ flex: 1 }}>
                         <p className="eyebrow" style={{ marginBottom: '1rem' }}>What&apos;s included</p>
-                        <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '0.75rem', fontSize: '0.9rem', color: 'rgba(245, 241, 232, 0.8)' }}>
+                        <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '0.75rem', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
                             <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> Custom Credit Volume</li>
                             <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> Unlimited Team Members</li>
                             <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> Dedicated Account Manager</li>

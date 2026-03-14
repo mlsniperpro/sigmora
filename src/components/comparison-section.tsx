@@ -10,7 +10,7 @@ const CheckIcon = () => (
 );
 
 const CrossIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'rgba(255, 255, 255, 0.2)' }}>
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'var(--text-muted)' }}>
     <line x1="18" y1="6" x2="6" y2="18"></line>
     <line x1="6" y1="6" x2="18" y2="18"></line>
   </svg>
@@ -78,15 +78,15 @@ export function ComparisonSection() {
         </p>
       </div>
 
-      <div className="panel" style={{ padding: '0', overflow: 'hidden', background: 'rgba(255,255,255,0.02)' }}>
+      <div className="panel" style={{ padding: '0', overflow: 'hidden', background: 'var(--panel-bg)', border: '1px solid var(--panel-border)' }}>
         <div style={{ overflowX: 'auto' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', minWidth: '940px' }}>
             <thead>
-              <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
-                <th style={{ padding: '2rem', fontSize: '0.85rem', color: 'rgba(245, 241, 232, 0.5)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Core Capabilities</th>
+              <tr style={{ borderBottom: '1px solid var(--panel-border)' }}>
+                <th style={{ padding: '2rem', fontSize: '0.85rem', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Core Capabilities</th>
                 <th style={{ padding: '2rem', textAlign: 'center' }}>
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    <span style={{ color: '#fff', fontSize: '1.2rem', fontWeight: 700, fontFamily: 'var(--font-display)' }}>Sigmora</span>
+                    <span style={{ color: 'var(--text-primary)', fontSize: '1.2rem', fontWeight: 700, fontFamily: 'var(--font-display)' }}>Sigmora</span>
                     <span className="status-pill status-foundation" style={{ fontSize: '0.6rem', marginTop: '0.5rem' }}>Full Stack</span>
                   </div>
                 </th>
@@ -104,8 +104,8 @@ export function ComparisonSection() {
                 </th>
                 <th style={{ padding: '2rem', textAlign: 'center', opacity: 0.6 }}>
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    <span style={{ fontSize: '1.1rem', fontWeight: 600 }}>Trad. AI</span>
-                    <span style={{ fontSize: '0.7rem', color: 'rgba(245, 241, 232, 0.5)', marginTop: '0.5rem' }}>Text Focus</span>
+                    <span style={{ fontSize: '1.1rem', fontWeight: 600, color: 'var(--text-primary)' }}>Trad. AI</span>
+                    <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>Text Focus</span>
                   </div>
                 </th>
               </tr>
@@ -113,13 +113,13 @@ export function ComparisonSection() {
             <tbody>
               {comparisonData.map((item, idx) => (
                 <tr key={idx} style={{ 
-                  borderBottom: idx === comparisonData.length - 1 ? 'none' : '1px solid rgba(255,255,255,0.05)',
+                  borderBottom: idx === comparisonData.length - 1 ? 'none' : '1px solid var(--panel-border)',
                   transition: 'background 0.2s ease'
                 }} className="table-row-hover">
                   <td style={{ padding: '1.5rem 2rem' }}>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.25rem' }}>
-                      <span style={{ fontWeight: 600, color: '#fff', fontSize: '1rem' }}>{item.feature}</span>
-                      <span style={{ fontSize: '0.85rem', color: 'rgba(245, 241, 232, 0.5)', lineHeight: 1.4 }}>{item.description}</span>
+                      <span style={{ fontWeight: 600, color: 'var(--text-primary)', fontSize: '1rem' }}>{item.feature}</span>
+                      <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)', lineHeight: 1.4 }}>{item.description}</span>
                     </div>
                   </td>
                   <td style={{ 
@@ -158,7 +158,7 @@ export function ComparisonSection() {
       <div className="panel" style={{ marginTop: '2rem', padding: '2.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '2rem', background: 'linear-gradient(135deg, rgba(214, 100, 40, 0.1), rgba(24, 138, 132, 0.05))', flexWrap: 'wrap' }}>
         <div style={{ maxWidth: '600px' }}>
           <h3 style={{ fontSize: '1.8rem', fontFamily: 'var(--font-display)', marginBottom: '0.5rem' }}>Ready to build a better content engine?</h3>
-          <p style={{ color: 'rgba(245, 241, 232, 0.7)' }}>TubeMagic helps you start. Sigmora helps you scale with quantitative precision.</p>
+          <p style={{ color: 'var(--text-secondary)' }}>TubeMagic helps you start. Sigmora helps you scale with quantitative precision.</p>
         </div>
         <div style={{ display: 'flex', gap: '1rem' }}>
           <Link href="/signup" className="button">Get Started Free</Link>

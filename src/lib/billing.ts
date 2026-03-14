@@ -49,13 +49,16 @@ export const getBillingContext = cache(async (): Promise<{ workspace: Workspace;
 });
 
 export async function createCheckoutSession(input: {
-  workspaceId: string;
-  userId: string;
+  workspaceId?: string;
+  userId?: string;
   email: string;
   planKey: BillingPlanKey;
-  workspaceSlug: string;
+  workspaceSlug?: string;
   userName?: string;
 }) {
+  const workspaceId = input.workspaceId || 'GHOST_WORKSPACE';
+  const userId = input.userId || 'GHOST_USER';
+  const workspaceSlug = input.workspaceSlug || 'activate';
   const plan = getBillingPlan(input.planKey);
   const txRef = paymentAttemptId();
   const createdAt = timestamp();
@@ -66,8 +69,8 @@ export async function createCheckoutSession(input: {
     id: txRef,
     createdAt,
     updatedAt: createdAt,
-    workspaceId: input.workspaceId,
-    userId: input.userId,
+    workspaceId,
+    userId,
     provider: paystackPreferred ? 'paystack' : 'polar',
     txRef,
     amount: plan.amount,
@@ -86,10 +89,10 @@ export async function createCheckoutSession(input: {
         amount: plan.amount,
         currency: plan.currency,
         txRef,
-        callbackUrl: `${callbackBase}/workspaces/${input.workspaceSlug}/billing/callback?provider=paystack`,
+        callbackUrl: `${callbackBase}/workspaces/${workspaceSlug}/billing/callback?provider=paystack`,
         metadata: {
-          workspaceId: input.workspaceId,
-          userId: input.userId,
+          workspaceId,
+          userId,
           planKey: input.planKey,
         },
       });
@@ -118,12 +121,12 @@ export async function createCheckoutSession(input: {
     const polar = await createPolarCheckout({
       clientReference: txRef,
       productId: polarProductId,
-      successUrl: `${callbackBase}/workspaces/${input.workspaceSlug}/billing/callback?provider=polar`,
+      successUrl: `${callbackBase}/workspaces/${workspaceSlug}/billing/callback?provider=polar`,
       customerEmail: input.email,
       customerName: input.userName,
       metadata: {
-        workspaceId: input.workspaceId,
-        userId: input.userId,
+        workspaceId,
+        userId,
         planKey: input.planKey,
       },
     });
@@ -153,12 +156,12 @@ export async function createCheckoutSession(input: {
   const polar = await createPolarCheckout({
     clientReference: txRef,
     productId: polarProductId,
-    successUrl: `${callbackBase}/workspaces/${input.workspaceSlug}/billing/callback?provider=polar`,
+    successUrl: `${callbackBase}/workspaces/${workspaceSlug}/billing/callback?provider=polar`,
     customerEmail: input.email,
     customerName: input.userName,
     metadata: {
-      workspaceId: input.workspaceId,
-      userId: input.userId,
+      workspaceId,
+      userId,
       planKey: input.planKey,
     },
   });

@@ -13,11 +13,57 @@
   --color-accent-400: #ea8551;
   --color-teal-500: #188a84;
   --color-teal-400: #37b5ae;
+
+  /* Premium Design Tokens */
+  --glow-accent: rgba(214, 100, 40, 0.35);
+  --glow-teal: rgba(55, 181, 174, 0.25);
+  --glass-bg: rgba(255, 255, 255, 0.04);
+  --glass-border: rgba(255, 255, 255, 0.08);
 }
 
 @layer base {
   :root {
     color-scheme: dark;
+  }
+
+  .mesh-gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .mesh-gradient::before {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: -10%;
+    width: 70%;
+    height: 70%;
+    background: radial-gradient(circle, var(--glow-accent) 0%, transparent 70%);
+    filter: blur(80px);
+    animation: pulse-slow 15s infinite alternate;
+  }
+
+  .mesh-gradient::after {
+    content: '';
+    position: absolute;
+    bottom: -10%;
+    left: -5%;
+    width: 60%;
+    height: 60%;
+    background: radial-gradient(circle, var(--glow-teal) 0%, transparent 70%);
+    filter: blur(80px);
+    animation: pulse-slow 12s infinite alternate-reverse;
+  }
+
+  @keyframes pulse-slow {
+    0% { transform: scale(1); opacity: 0.5; }
+    100% { transform: scale(1.1); opacity: 0.8; }
   }
 
   * {

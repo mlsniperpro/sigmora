@@ -7,6 +7,7 @@ import { FAQSection } from '@/components/faq-section';
 import { PricingSection } from '@/components/pricing-section';
 import { Navbar } from '@/components/navbar';
 import { JsonLd } from '@/components/json-ld';
+import { ComparisonSection } from '@/components/comparison-section';
 import { homeDescription, homeTitle } from '@/lib/marketing-content';
 
 export const metadata: Metadata = {
@@ -46,59 +47,112 @@ export default async function Home() {
   }
 
   return (
-    <main className="sigmora-shell" style={{ padding: '0 0 6rem' }}>
+    <main className="sigmora-shell" style={{ padding: '0 0 6rem', position: 'relative' }}>
       <JsonLd />
       <Navbar />
+      
+      {/* Premium Background Elements */}
+      <div className="mesh-gradient" />
+
       {/* 1. Enhanced Hero Section */}
-      <section className="hero" style={{ paddingTop: '6rem', paddingBottom: '4rem', alignItems: 'center' }}>
+      <section className="hero" style={{ paddingTop: '10rem', paddingBottom: '6rem', alignItems: 'center' }}>
         <div className="hero-copy" style={{ maxWidth: '680px' }}>
-          <p className="eyebrow animate-fade-in-up" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,255,255,0.05)', padding: '6px 16px', borderRadius: '99px', border: '1px solid rgba(255,255,255,0.1)' }}>
-            <span style={{ width: '8px', height: '8px', background: '#37b5ae', borderRadius: '50%', boxShadow: '0 0 10px #37b5ae' }}></span>
-            Retention analysis and remixing for short-form teams
-          </p>
-          <h1 className="animate-fade-in-up delay-100" style={{ fontSize: 'clamp(3.5rem, 6vw, 5.5rem)', maxWidth: 'none', lineHeight: 1.1, marginTop: '1rem' }}>
-            Turn winning videos into{' '}
-            <span style={{ background: 'linear-gradient(to right, #ea8551, #d66428)', WebkitBackgroundClip: 'text', color: 'transparent' }}>repeatable creative decisions.</span>
+          <div className="animate-fade-in-up" style={{ marginBottom: '1.5rem' }}>
+            <p className="eyebrow" style={{ 
+              display: 'inline-flex', 
+              alignItems: 'center', 
+              gap: '10px', 
+              background: 'rgba(255,255,255,0.03)', 
+              padding: '8px 20px', 
+              borderRadius: '99px', 
+              border: '1px solid rgba(255,255,255,0.08)',
+              backdropFilter: 'blur(10px)',
+              boxShadow: '0 4px 15px rgba(0,0,0,0.1)'
+            }}>
+              <span className="animate-pulse" style={{ width: '8px', height: '8px', background: '#37b5ae', borderRadius: '50%', boxShadow: '0 0 12px #37b5ae' }}></span>
+              <span style={{ fontWeight: 600, letterSpacing: '0.05em' }}>Retention Intelligence for Short-Form</span>
+            </p>
+          </div>
+          
+          <h1 className="animate-fade-in-up delay-100" style={{ 
+            fontSize: 'clamp(3.5rem, 6.5vw, 6rem)', 
+            maxWidth: 'none', 
+            lineHeight: 1, 
+            marginTop: '0.5rem',
+            letterSpacing: '-0.04em'
+          }}>
+            Turn winning videos into<br />
+            <span style={{ 
+              background: 'linear-gradient(135deg, #ea8551 0%, #d66428 100%)', 
+              WebkitBackgroundClip: 'text', 
+              color: 'transparent',
+              filter: 'drop-shadow(0 0 20px rgba(214, 100, 40, 0.2))'
+            }}>predictable outcomes.</span>
           </h1>
-          <h2 className="hero-summary animate-fade-in-up delay-200" style={{ fontSize: '1.2rem', maxWidth: '600px', margin: '1rem 0 2rem', fontWeight: 400 }}>
-            Import one video, inspect the retention structure, and generate your next script or scene plan before you spend on a subscription.
+          
+          <h2 className="hero-summary animate-fade-in-up delay-200" style={{ 
+            fontSize: '1.25rem', 
+            maxWidth: '580px', 
+            margin: '1.5rem 0 2.5rem', 
+            fontWeight: 400,
+            lineHeight: 1.6,
+            color: 'rgba(245, 241, 232, 0.8)'
+          }}>
+            Import one video, inspect the retention structure, and go from scripting to video generation before you spend on a subscription.
           </h2>
 
-          <div className="hero-actions animate-fade-in-up delay-300" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-            <Link href="/signup" className="button" style={{ padding: '1rem 2.5rem', fontSize: '1.1rem' }}>
-              Start Free Activation
+          <div className="hero-actions animate-fade-in-up delay-300" style={{ display: 'flex', gap: '1.25rem', flexWrap: 'wrap' }}>
+            <Link href="/signup" className="button" style={{ padding: '1.1rem 2.8rem', fontSize: '1.1rem' }}>
+              Start Scripting Free
             </Link>
-            <Link href="/#how-it-works" className="button button-secondary" style={{ padding: '1rem 2.5rem', fontSize: '1.1rem' }}>
-              See How It Works
+            <Link href="/#how-it-works" className="button button-secondary" style={{ padding: '1.1rem 2.5rem', fontSize: '1.1rem' }}>
+              Watch Demo
             </Link>
           </div>
-          <div className="animate-fade-in-up delay-400" style={{ marginTop: '1rem', display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'rgba(245, 241, 232, 0.7)', flexWrap: 'wrap' }}>
-            <span style={{ fontSize: '0.85rem' }}>Start with one asset, one analysis, and one remix.</span>
-            <span style={{ fontSize: '0.85rem' }}>Upgrade only after the workflow sticks.</span>
+          
+          <div className="animate-fade-in-up delay-400" style={{ 
+            marginTop: '2rem', 
+            display: 'flex', 
+            alignItems: 'center', 
+            gap: '1rem', 
+            color: 'rgba(245, 241, 232, 0.6)', 
+            flexWrap: 'wrap',
+            fontSize: '0.85rem'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <span style={{ color: '#37b5ae' }}>⚡</span>
+              <span>Script unlimited viral hooks for free.</span>
+            </div>
+            <div style={{ width: '1px', height: '14px', background: 'rgba(255,255,255,0.1)' }} className="hide-on-mobile" />
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <span style={{ color: '#37b5ae' }}>✨</span>
+              <span>Generate video variants instantly.</span>
+            </div>
           </div>
-          <p className="animate-fade-in-up delay-500" style={{ marginTop: '1rem', fontSize: '0.85rem', color: 'rgba(245, 241, 232, 0.52)' }}>
-            Study proven posts, extract the hook, and move faster from inspiration to production.
-          </p>
-          {workspace ? (
-            <p className="animate-fade-in-up delay-500" style={{ marginTop: '0.35rem', fontSize: '0.82rem', color: 'rgba(245, 241, 232, 0.42)' }}>
-              Returning user?{' '}
-              <Link href={workspacePath(workspace.slug, 'activate')} style={{ color: '#ea8551', textDecoration: 'none' }}>
-                Open your workspace
-              </Link>
-              .
-            </p>
-          ) : null}
         </div>
 
-        <div className="panel animate-fade-in-up delay-300" style={{ padding: '0.75rem', gap: '0.75rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '1rem', padding: '0.75rem 0.75rem 0 0.75rem', flexWrap: 'wrap' }}>
-            <div>
-              <p className="eyebrow" style={{ marginBottom: '0.35rem' }}>Product Preview</p>
-              <h3 style={{ fontSize: '1.25rem' }}>See the Sigmora workflow before you commit</h3>
-            </div>
-            <div className="status-pill status-next">Activation Flow</div>
-          </div>
-          <div style={{ position: 'relative', overflow: 'hidden', borderRadius: '1rem', border: '1px solid rgba(255,255,255,0.08)' }}>
+        <div className="panel animate-fade-in-up delay-300" style={{ 
+          padding: '0.5rem', 
+          background: 'rgba(255,255,255,0.02)',
+          border: '1px solid rgba(255,255,255,0.1)',
+          boxShadow: '0 40px 100px -20px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.05)',
+          position: 'relative',
+          overflow: 'visible'
+        }}>
+          {/* Decorative Glow */}
+          <div style={{ 
+            position: 'absolute', 
+            top: '-20px', 
+            right: '-20px', 
+            width: '100px', 
+            height: '100px', 
+            background: 'var(--color-accent-500)', 
+            filter: 'blur(60px)', 
+            opacity: 0.2,
+            zIndex: -1 
+          }} />
+
+          <div style={{ position: 'relative', overflow: 'hidden', borderRadius: '1.1rem', border: '1px solid rgba(255,255,255,0.08)' }}>
             <Image
               src="/hero-visual.png"
               alt="Sigmora workspace showing short-form video analysis and creative planning"
@@ -106,17 +160,27 @@ export default async function Home() {
               height={1200}
               priority
               className="hero-visual"
-              style={{ aspectRatio: '4 / 3', height: 'auto', border: 0, borderRadius: '1rem' }}
+              style={{ aspectRatio: '4 / 3', height: 'auto', border: 0, borderRadius: '1.1rem' }}
             />
+            {/* Overlay Gradient */}
+            <div style={{ 
+              position: 'absolute', 
+              top: 0, 
+              left: 0, 
+              right: 0, 
+              bottom: 0, 
+              background: 'linear-gradient(to top, rgba(10,12,16,0.4) 0%, transparent 40%)',
+              pointerEvents: 'none'
+            }} />
           </div>
-          <div style={{ display: 'grid', gap: '0.65rem', padding: '0 0.75rem 0.75rem' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap' }}>
-              <span className="eyebrow" style={{ color: '#fff' }}>1. Import a winner</span>
-              <span className="eyebrow" style={{ color: '#fff' }}>2. Analyze retention</span>
-              <span className="eyebrow" style={{ color: '#fff' }}>3. Remix into a script</span>
+
+          <div style={{ padding: '1.25rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
+              <span className="eyebrow" style={{ color: '#fff' }}>Interactive Workflow</span>
+              <div className="status-pill status-foundation" style={{ fontSize: '0.65rem' }}>Live Preview</div>
             </div>
-            <p style={{ fontSize: '0.92rem', color: 'rgba(245, 241, 232, 0.68)' }}>
-              Visitors now get the product context in the first screen instead of only reading headline copy.
+            <p style={{ fontSize: '0.9rem', color: 'rgba(245, 241, 232, 0.6)', lineHeight: 1.5 }}>
+              The Sigmora engine deconstructs retention signals and generates video variants in one unified loop.
             </p>
           </div>
         </div>
@@ -135,9 +199,9 @@ export default async function Home() {
             <div>
               <h3 style={{ fontSize: '2rem', fontFamily: 'var(--font-display)', marginBottom: '1rem' }}>AI Content Remixer</h3>
               <p style={{ color: 'rgba(245, 241, 232, 0.72)', fontSize: '1.1rem', lineHeight: 1.6, marginBottom: '2rem' }}>
-                Start with a real reference, not a blank canvas. Upload any video or pull one from the database, then let Sigmora explain the structure and turn it into a usable execution asset.
+                Deconstruct retention signals and generate unlimited scripts from any reference video—completely free. Once your script is ready, use our premium engine to generate the high-retention video variant in seconds.
               </p>
-              <Link href="/signup" className="button button-secondary">Try the first loop</Link>
+              <Link href="/signup" className="button button-secondary">Start Scripting Free</Link>
             </div>
             <div className="panel" style={{ height: '400px', background: 'rgba(255,255,255,0.02)', position: 'relative', overflow: 'hidden', padding: 0 }}>
               <Image
@@ -256,6 +320,9 @@ export default async function Home() {
           ))}
         </div>
       </section>
+
+      {/* 4.5. Comparison Section */}
+      <ComparisonSection />
 
       {/* 5. Pricing */}
       <PricingSection />

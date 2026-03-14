@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { startGuestCheckoutAction } from '@/app/actions/checkout';
 
 export function PricingSection() {
     return (
@@ -15,21 +16,22 @@ export function PricingSection() {
                 <div className="panel module-card" style={{ display: 'flex', flexDirection: 'column' }}>
                     <div style={{ marginBottom: '1.5rem' }}>
                         <h3 style={{ fontSize: '1.3rem', color: '#fff' }}>Activation</h3>
-                        <p style={{ fontSize: '0.9rem', minHeight: '40px' }}>Best for first-time users proving the workflow with one asset, one analysis, and one remix.</p>
+                        <p style={{ fontSize: '0.9rem', minHeight: '40px' }}>Perfect for creators to find their hook and script their next winning post for free.</p>
                     </div>
                     <div style={{ marginBottom: '2rem' }}>
                         <span style={{ fontSize: '2.5rem', fontFamily: 'var(--font-display)', fontWeight: 600 }}>$0</span>
-                        <span style={{ color: 'rgba(245, 241, 232, 0.6)' }}>/to start</span>
+                        <span style={{ color: 'rgba(245, 241, 232, 0.6)' }}>/forever</span>
                     </div>
-                    <Link href="/signup" className="button" style={{ width: '100%', marginBottom: '2rem', textAlign: 'center' }}>Reach first value</Link>
+                    <Link href="/signup" className="button" style={{ width: '100%', marginBottom: '2rem', textAlign: 'center' }}>Start Scripting Free</Link>
 
                     <div style={{ flex: 1 }}>
-                        <p className="eyebrow" style={{ marginBottom: '1rem' }}>What you unlock</p>
+                        <p className="eyebrow" style={{ marginBottom: '1rem' }}>The Hook Layer</p>
                         <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '0.75rem', fontSize: '0.9rem', color: 'rgba(245, 241, 232, 0.8)' }}>
-                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> Import or upload one real video</li>
-                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> Run structured retention analysis</li>
-                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> Generate one script or scene plan</li>
-                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> Keep your workspace and outputs</li>
+                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> Unlimited Script Generations</li>
+                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> Unlimited Scene Planning</li>
+                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> 3 Deep Retention Breakdowns</li>
+                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> 1 Premium Video Remix (Trial)</li>
+                            <li style={{ display: 'flex', gap: '0.5rem' }}><span>✓</span> Full Viral Database Access</li>
                         </ul>
                     </div>
                 </div>
@@ -44,7 +46,22 @@ export function PricingSection() {
                         <span style={{ fontSize: '2.5rem', fontFamily: 'var(--font-display)', fontWeight: 600 }}>Flexible</span>
                         <span style={{ color: 'rgba(245, 241, 232, 0.6)' }}>/one-time</span>
                     </div>
-                    <Link href="/signup" className="button button-secondary" style={{ width: '100%', marginBottom: '2rem', textAlign: 'center' }}>Start with usage</Link>
+                    
+                    <form action={startGuestCheckoutAction} className="auth-form" style={{ marginBottom: '2rem' }}>
+                      <input type="hidden" name="planKey" value="credits_pack" />
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                        <input 
+                          type="email" 
+                          name="email" 
+                          placeholder="your@email.com" 
+                          required 
+                          style={{ padding: '0.75rem 1rem', fontSize: '0.9rem' }}
+                        />
+                        <button type="submit" className="button button-secondary" style={{ width: '100%', textAlign: 'center' }}>
+                          Start with usage
+                        </button>
+                      </div>
+                    </form>
 
                     <div style={{ flex: 1 }}>
                         <p className="eyebrow" style={{ marginBottom: '1rem' }}>What&apos;s included</p>
@@ -71,7 +88,27 @@ export function PricingSection() {
                         <span style={{ fontSize: '2.5rem', fontFamily: 'var(--font-display)', fontWeight: 600 }}>$149</span>
                         <span style={{ color: 'rgba(245, 241, 232, 0.6)' }}>/month</span>
                     </div>
-                    <Link href="/signup" className="button" style={{ width: '100%', marginBottom: '2rem', textAlign: 'center' }}>Unlock better economics</Link>
+                    
+                    <form action={startGuestCheckoutAction} className="auth-form" style={{ marginBottom: '2rem' }}>
+                      <input type="hidden" name="planKey" value="growth_monthly" />
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                        <input 
+                          type="email" 
+                          name="email" 
+                          placeholder="your@email.com" 
+                          required 
+                          style={{ 
+                            padding: '0.75rem 1rem', 
+                            fontSize: '0.9rem',
+                            border: '1px solid rgba(214, 100, 40, 0.2)',
+                            background: 'rgba(214, 100, 40, 0.05)'
+                          }}
+                        />
+                        <button type="submit" className="button" style={{ width: '100%', textAlign: 'center' }}>
+                          Unlock better economics
+                        </button>
+                      </div>
+                    </form>
 
                     <div style={{ flex: 1 }}>
                         <p className="eyebrow" style={{ marginBottom: '1rem' }}>What&apos;s included</p>

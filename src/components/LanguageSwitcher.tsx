@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import { useRouter, usePathname } from 'next/navigation';
+import { useRouter, usePathname } from '@/navigation';
 import { useParams } from 'next/navigation';
 
 export function LanguageSwitcher() {
@@ -33,19 +33,8 @@ export function LanguageSwitcher() {
 
   const selectLanguage = (code: string) => {
     setIsOpen(false);
-    
-    // Manual path splitting to safely replace the locale prefix
-    const segments = pathname.split('/');
-    const supportedLocales = ['en', 'es', 'hi'];
-    
-    if (segments.length > 1 && supportedLocales.includes(segments[1])) {
-      segments[1] = code; // Replace existing locale
-    } else {
-      segments.splice(1, 0, code); // Insert if missing (e.g., fallback root)
-    }
-    
-    const nextPath = segments.join('/') || '/';
-    router.replace(nextPath); // Use absolute link replacing
+    // @ts-ignore - next-intl router types can be strict with path params
+    router.replace(pathname, { locale: code });
   };
 
   return (

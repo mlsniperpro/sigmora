@@ -3,6 +3,7 @@ import { ActivationChecklist } from '@/components/activation-checklist';
 import { AppShell } from '@/components/app-shell';
 import { CollectionTable } from '@/components/collection-table';
 import { MetricCard } from '@/components/metric-card';
+import { WelcomeModalWrapper } from '@/components/welcome-modal-wrapper';
 import { getActivationSnapshot } from '@/lib/activation';
 import { getAnalysisResults, getDashboardSnapshotBySlug } from '@/lib/repositories';
 import { workspaceAssetPath, workspacePath, workspacePromptPath } from '@/lib/workspace-routing';
@@ -32,6 +33,7 @@ export default async function WorkspaceDashboardPage({ params }: DashboardParams
       title="Workspace dashboard"
       description="Operating surface for the active workspace. Reach first value fast, then monitor asset throughput, reference database coverage, and generation performance."
     >
+      <WelcomeModalWrapper />
       {!activation.isActivated ? (
         <ActivationChecklist
           title="Complete the first value loop"

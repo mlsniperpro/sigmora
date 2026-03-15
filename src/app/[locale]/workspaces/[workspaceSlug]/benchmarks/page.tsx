@@ -120,6 +120,33 @@ export default async function WorkspaceBenchmarksPage({ params, searchParams }: 
             Search
           </button>
         </form>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: '1rem', alignItems: 'center' }}>
+          <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>Try:</span>
+          {[
+            'TikTok talking head', 
+            'Videos with 100k+ views', 
+            'Beauty niche trending', 
+            'Instagram carousel recipes'
+          ].map((suggestion) => (
+            <Link 
+              key={suggestion}
+              href={`/workspaces/${workspaceSlug}/benchmarks?q=${encodeURIComponent(suggestion)}`}
+              style={{
+                fontSize: '0.7rem',
+                background: 'rgba(255,255,255,0.04)',
+                border: '1px solid rgba(255,255,255,0.05)',
+                borderRadius: '99px',
+                padding: '0.35rem 0.75rem',
+                color: 'rgba(255,255,255,0.6)',
+                textDecoration: 'none',
+                transition: 'all 0.2s'
+              }}
+              className="hover:bg-white/10 hover:text-white"
+            >
+              {suggestion}
+            </Link>
+          ))}
+        </div>
       </section>
 
       <section className="panel form-panel">
@@ -172,6 +199,85 @@ export default async function WorkspaceBenchmarksPage({ params, searchParams }: 
           </div>
         </div>
         <ContentGallery collections={collections} workspaceSlug={workspaceSlug} />
+      </section>
+
+      <section style={{ marginTop: '4rem' }}>
+        <div className="table-header" style={{ marginBottom: '2rem' }}>
+          <div>
+            <h2 style={{ fontSize: '1.8rem' }}>{filters.q ? 'Search results' : 'Popular content'}</h2>
+            <p>{filters.q ? `Showing content matching "${filters.q}"` : 'High-engagement breakout videos from around the web. Search with natural language above to find answers.'}</p>
+          </div>
+        </div>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.5rem' }}>
+          {(() => {
+            const allVideos = [
+              {
+                desc: 'MISS JENNIE KIM YOU NEVER MISS 🌹 @JENNIE Beats Solo 4 by @Beats by Dre unboxing! Available September 5th at Apple.com and select Apple stores. #jennieblackpink #jennierubyjane',
+                stats: { views: '856.9K', likes: '77.8K', comments: '483' },
+                tags: ['Gadgets', 'Talking Head', 'Product Placement'],
+                platform: 'TikTok'
+              },
+              {
+                desc: 'Such a cool toy! Amazing gift you can buy on amazon https://amzn.to/3MRnQPI #asmr #toy #amaxing #fyp #gifted',
+                stats: { views: '1.3M', likes: '76.3K', comments: '261' },
+                tags: ['Toys & Games', 'Hook + Demo', 'Product Placement'],
+                platform: 'TikTok'
+              },
+              {
+                desc: 'New skincare routine dropping tonight! Use code SIGMORA for 20% off. #skincare #beauty #morningroutine',
+                stats: { views: '93.6K', likes: '12.4K', comments: '740' },
+                tags: ['Fashion/Beauty/Skincare', 'Talking Head'],
+                platform: 'Instagram'
+              },
+              {
+                desc: 'TikTok fitness motivation: 5am workout routine for maximum energy. #gym #fitness #workout',
+                stats: { views: '450K', likes: '45K', comments: '1.2K' },
+                tags: ['Health and Fitness', 'Vlog'],
+                platform: 'TikTok'
+              },
+              {
+                desc: 'Amazing travel vlog to Switzerland, full guide to scenic routes. #travel #vlog #swiss',
+                stats: { views: '220K', likes: '18K', comments: '330' },
+                tags: ['Travel', 'Cinematic'],
+                platform: 'YouTube'
+              }
+            ];
+
+            const query = filters.q?.toLowerCase();
+
+            const filtered = query 
+              ? allVideos.filter(v => v.desc.toLowerCase().includes(query) || v.tags.some(t => t.toLowerCase().includes(query)))
+              : allVideos.slice(0, 2); // Show only 2 initially
+
+            if (filtered.length === 0) {
+              return <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>No matching videos found.</p>;
+            }
+
+            return filtered.map((video, idx) => (
+              <div key={idx} className="panel" style={{ padding: '1.25rem', display: 'flex', flexDirection: 'column', gap: '1rem', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '1rem' }}>
+                <p style={{ fontSize: '0.85rem', color: 'var(--color-paper-100)', lineHeight: '1.4', flex: 1 }}>{video.desc}</p>
+                
+                <div style={{ display: 'flex', gap: '1rem', fontSize: '0.75rem', color: 'var(--color-paper-200)' }}>
+                  <span>👁️ {video.stats.views}</span>
+                  <span>❤️ {video.stats.likes}</span>
+                  <span>💬 {video.stats.comments}</span>
+                </div>
+
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.35rem' }}>
+                  {video.tags.map(tag => (
+                    <span key={tag} style={{ fontSize: '0.65rem', background: 'rgba(255,255,255,0.04)', padding: '0.2rem 0.5rem', borderRadius: '4px', color: 'var(--text-secondary)' }}>{tag}</span>
+                  ))}
+                </div>
+
+                <div style={{ display: 'flex', gap: '0.5rem', paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+                  <Link href={`/workspaces/${workspaceSlug}/studio`} className="button button-secondary" style={{ flex: 1, padding: '0.5rem', fontSize: '0.75rem', textAlign: 'center', textDecoration: 'none' }}>Content Studio</Link>
+                  <Link href="#" className="button" style={{ flex: 1, padding: '0.5rem', fontSize: '0.75rem', textAlign: 'center', textDecoration: 'none' }}>View on {video.platform}</Link>
+                </div>
+              </div>
+            ));
+          })()}
+        </div>
       </section>
     </AppShell>
   );

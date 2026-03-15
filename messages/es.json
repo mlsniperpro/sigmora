@@ -26,17 +26,17 @@
       "features": {
         "remixer": {
           "title": "AI Content Remixer",
-          "description": "Desglosa señales de retención y genera guiones de referencia gratis.",
+          "description": "Desglosa señales de retención y genera guiones ilimitados desde cualquier video de referencia—completamente gratis. Una vez listo el guion, usa nuestro motor premium para generar la variante de video en segundos.",
           "button": "Guionizar Gratis"
         },
         "database": {
           "title": "Base Viral UGC",
-          "description": "Busca posts de alto rendimiento en tu espacio.",
+          "description": "La base de datos es útil porque reduce el tiempo hasta el valor. Explora posts de alto rendimiento, impórtalos a tu espacio y pasa directamente al análisis en lugar de solo recopilar inspiración.",
           "button": "Importar referencia"
         },
         "background": {
-          "title": "Creado por el equipo detrás de millones de vistas",
-          "description": "Pasamos años ayudando a marcas a generar impresiones en TikTok e Instagram."
+          "title": "Creado por el equipo detrás de cientos de millones de vistas virales",
+          "description": "Antes de construir Sigmora, pasamos años detrás del telón ayudando a marcas a generar cientos de millones de impresiones en TikTok, Instagram y YouTube. Cada insight en nuestra base viral y herramienta de remix proviene de campañas reales, no de suposiciones."
         }
       }
     },
@@ -44,23 +44,23 @@
       "heading": {
         "eyebrow": "Explora Casos de Uso",
         "title": "Construido sobre tres intenciones",
-        "description": "Explora las páginas públicas."
+        "description": "Explora las páginas públicas que abordan las principales formas en que los equipos evalúan Sigmora."
       },
       "cards": [
         {
           "eyebrow": "Caso de Uso",
           "title": "Análisis de Retención de Video",
-          "description": "Entiende dónde cae la atención."
+          "description": "Entiende dónde cae la atención y qué conservar en la estructura de gancho, prueba y CTA."
         },
         {
           "eyebrow": "Caso de Uso",
           "title": "AI Video Remixer",
-          "description": "Convierte referencia en guiones."
+          "description": "Convierte una referencia ganadora en un nuevo guion o plan de escena sin empezar desde cero."
         },
         {
           "eyebrow": "Caso de Uso",
           "title": "Base Viral Video",
-          "description": "Investiga patrones probados."
+          "description": "Investiga patrones de contenido corto probados y pasa directamente al análisis y la ejecución."
         }
       ]
     },
@@ -74,6 +74,16 @@
         "value": "30x",
         "label": "Aumento Medio MRR",
         "subtext": "para clientes"
+      },
+      {
+        "value": "7M+",
+        "label": "Total de Likes",
+        "subtext": "en portfolios"
+      },
+      {
+        "value": "Top 5%",
+        "label": "Experiencia en Contenido",
+        "subtext": "red de élite verificada"
       }
     ],
     "testimonials": {
@@ -85,7 +95,7 @@
         {
           "role": "Marketing Manager",
           "company": "Tech Startup",
-          "text": "“Se lo recomiendo altamente.”"
+          "text": "\u201cRecomiendo ampliamente esta plataforma. El equipo conoce muy bien el contenido de formato corto y es capaz de producir contenido viral de forma consistente.\u201d"
         }
       ]
     }
@@ -178,6 +188,18 @@
       {
         "q": "¿Qué plataformas cubre la base viral?",
         "a": "Sigmora se enfoca en TikTok, Instagram Reels, y YouTube Shorts."
+      },
+      {
+        "q": "¿Cómo funciona el AI Content Remixer?",
+        "a": "Subes un video o seleccionas una referencia probada, luego Sigmora analiza el gancho, el ritmo y la estructura para generar un guion o plan de escena que puedes adaptar."
+      },
+      {
+        "q": "¿Necesito ser un creador o marketero profesional?",
+        "a": "No. Sigmora está diseñado para facilitar decisiones creativas sólidas de formato corto tanto para operadores principiantes como para equipos de crecimiento experimentados."
+      },
+      {
+        "q": "¿Qué incluye el plan Enterprise?",
+        "a": "Enterprise es para equipos más grandes que necesitan volumen de créditos personalizado, soporte dedicado, flujos de trabajo a medida y mayor flexibilidad operativa."
       }
     ]
   },
@@ -185,7 +207,7 @@
     "heading": {
       "eyebrow": "La Ventaja Competitiva",
       "title": "Sigmora vs. Competencia",
-      "description": "Deja de adivinar por qué los videos funcionan."
+      "description": "Deja de adivinar por qué los videos funcionan. Sigmora proporciona la capa cuantitativa que TubeMagic, las herramientas de clipping y los generadores de IA tradicionales no ofrecen."
     },
     "headers": {
       "capabilities": "Capacidades Core",
@@ -202,13 +224,66 @@
         "clipping": "Solo Clips",
         "traditional": "Solo Texto",
         "description": "Pasa de referencia directamente al video generado."
+      },
+      {
+        "feature": "Análisis de Retención por Escena",
+        "sigmora": "true",
+        "tubemagic": "false",
+        "clipping": "false",
+        "traditional": "false",
+        "description": "Desglosa por qué los videos mantienen la atención en cada segundo."
+      },
+      {
+        "feature": "Base de Benchmarks UGC Específica",
+        "sigmora": "true",
+        "tubemagic": "Limitado",
+        "clipping": "false",
+        "traditional": "false",
+        "description": "Analiza patrones ganadores reales de las mejores agencias de rendimiento."
+      },
+      {
+        "feature": "Extracción de Señales Multimodal",
+        "sigmora": "true",
+        "tubemagic": "false",
+        "clipping": "Parcial",
+        "traditional": "false",
+        "description": "Extrae señales visuales, energía de audio y ritmo, no solo texto."
+      },
+      {
+        "feature": "Remixing Creativo Basado en Datos",
+        "sigmora": "true",
+        "tubemagic": "true",
+        "clipping": "Solo Clips",
+        "traditional": "Básico",
+        "description": "Convierte benchmarks exitosos en guiones y planes de escena utilizables."
+      },
+      {
+        "feature": "Playbooks y Guardarraíles de Equipo",
+        "sigmora": "true",
+        "tubemagic": "false",
+        "clipping": "Limitado",
+        "traditional": "false",
+        "description": "Aplica estándares de marca y patrones de flujo de trabajo en equipos grandes."
       }
     ],
     "footer": {
       "title": "¿Listo para un mejor motor de contenido?",
-      "description": "Sigmora te ayuda a escalar con precisión cuantitativa.",
+      "description": "TubeMagic te ayuda a empezar. Sigmora te ayuda a escalar con precisión cuantitativa.",
       "getStarted": "Empezar Gratis",
       "learnMore": "Saber Más"
+    }
+  },
+  "Metadata": {
+    "layout": {
+      "title": {
+        "default": "Sigmora | Análisis de Retención y Remix de Video para Equipos de Formato Corto",
+        "template": "%s | Sigmora"
+      },
+      "description": "Importa un video corto ganador, inspecciona por qué retiene la atención y convierte el patrón en tu próximo guion con Sigmora."
+    },
+    "homepage": {
+      "title": "Sigmora | Analiza la retención y remezcla lo que funciona",
+      "description": "Importa un video, inspecciona la estructura de retención y pasa de la escritura a la generación de videos antes de gastar en una suscripción."
     }
   }
 }

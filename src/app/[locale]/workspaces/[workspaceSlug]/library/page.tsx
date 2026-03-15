@@ -56,7 +56,59 @@ export default async function WorkspaceLibraryPage({ params, searchParams }: Lib
       title="Asset library"
       description="All uploads, imports, and saved references. Filter by platform, status, or tag. Click an asset for transcript, analysis, and recommendations."
     >
-      <section className="metric-grid">
+      <div style={{ display: 'flex', gap: '1rem', borderBottom: '1px solid rgba(255,255,255,0.05)', paddingBottom: '1rem', marginBottom: '2rem' }}>
+        {[
+          { id: 'all', label: 'Library' },
+          { id: 'spy', label: 'Content Spy' },
+          { id: 'liked', label: 'Liked Posts' },
+          { id: 'collections', label: 'Collections' }
+        ].map((tab) => {
+          const isActive = (filters as any).tab === tab.id || (!(filters as any).tab && tab.id === 'all');
+          return (
+            <Link
+              key={tab.id}
+              href={`/workspaces/${workspaceSlug}/library?tab=${tab.id}`}
+              style={{
+                fontSize: '0.85rem',
+                fontWeight: isActive ? 600 : 450,
+                color: isActive ? 'var(--color-paper-100)' : 'var(--color-paper-200)',
+                textDecoration: 'none',
+                padding: '0.5rem 0.75rem',
+                borderRadius: '8px',
+                background: isActive ? 'rgba(255,255,255,0.04)' : 'transparent',
+                transition: 'all 0.15s ease'
+              }}
+            >
+              {tab.label}
+            </Link>
+          );
+        })}
+      </div>
+
+      {(filters as any).tab === 'spy' ? (
+        <section className="panel" style={{ padding: '3rem', textAlign: 'center', background: 'linear-gradient(rgba(20,20,25,0.8), rgba(10,10,15,0.9)), url(/hero-visual.png)', backgroundSize: 'cover', backgroundPosition: 'center', border: '1px solid rgba(214,100,40,0.15)', borderRadius: '1.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '1.5rem', minHeight: '400px' }}>
+          <span style={{ fontSize: '3rem' }}>🔒</span>
+          <div>
+            <span style={{ fontSize: '0.65rem', fontWeight: 'bold', background: 'rgba(214,100,40,0.2)', color: 'var(--color-accent-400)', padding: '0.25rem 0.75rem', borderRadius: '99px', letterSpacing: '0.05em' }}>PRO FEATURE</span>
+            <h2 style={{ fontSize: '1.8rem', marginTop: '0.5rem', marginBottom: '0.25rem' }}>Track Your Competitors</h2>
+            <p style={{ fontSize: '0.85rem', color: 'var(--color-paper-200)', maxWidth: '400px', margin: '0 auto' }}>Get insights into what's working for top creators in your niche and steal winning content strategies.</p>
+          </div>
+          <ul style={{ listStyle: 'none', padding: 0, margin: 0, fontSize: '0.85rem', color: 'var(--color-paper-100)', textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+            <li>✅ Spy on your competitors</li>
+            <li>✅ Steal winning content strategies</li>
+            <li>✅ Get alerted when your competitors go viral</li>
+            <li>✅ Remix their hits into your own content</li>
+          </ul>
+          <button className="button" style={{ padding: '0.75rem 2rem', fontSize: '0.9rem' }}>Upgrade to Pro</button>
+          <p style={{ fontSize: '0.7rem', color: 'var(--text-muted)' }}>7-day refund policy, no questions asked • Secure payment via Stripe</p>
+        </section>
+      ) : (filters as any).tab === 'liked' || (filters as any).tab === 'collections' ? (
+        <section className="panel" style={{ padding: '3rem', textAlign: 'center', color: 'var(--text-secondary)' }}>
+          <p>No {(filters as any).tab} found. Add items to see them here.</p>
+        </section>
+      ) : (
+        <>
+          <section className="metric-grid">
         <MetricCard label="Total assets" value={String(allAssets.length)} detail="Across all sources." />
         <MetricCard label="Ready" value={String(readyCount)} detail="Available for analysis." />
         <MetricCard label="With transcript" value={String(withTranscript)} detail="Transcript extracted." />
@@ -254,6 +306,8 @@ export default async function WorkspaceLibraryPage({ params, searchParams }: Lib
           { key: 'duration', header: 'Duration', render: (asset) => `${asset.durationSeconds}s` },
         ]}
       />
+        </>
+      )}
     </AppShell>
   );
 }

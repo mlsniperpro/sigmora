@@ -12,6 +12,8 @@ export const metadata: Metadata = {
 
 import { AuthProvider } from '@/context/AuthContext';
 
+import { ShortcutWrapper } from '@/components/shortcut-wrapper';
+
 export default async function WorkspaceLayout({
     children,
     params,
@@ -25,6 +27,7 @@ export default async function WorkspaceLayout({
     return (
         <AuthProvider>
             <main className="app-shell animate-fade-in-up">
+                <ShortcutWrapper />
                 <RequireAuth>
                     <AppSidebar workspace={workspace} />
                     <section className="workspace-main animate-fade-in-up delay-200" style={{ paddingBottom: '4rem' }}>

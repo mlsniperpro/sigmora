@@ -272,5 +272,18 @@
       "getStarted": "Get Started Free",
       "learnMore": "Learn More"
     }
+  },
+  "Metadata": {
+    "layout": {
+      "title": {
+        "default": "Sigmora | Retention Analysis and Video Remixing for Short-Form Teams",
+        "template": "%s | Sigmora"
+      },
+      "description": "Import a winning short-form video, inspect why it retains attention, and turn the pattern into your next script or scene plan with Sigmora."
+    },
+    "homepage": {
+      "title": "Sigmora | Analyze retention and remix what works",
+      "description": "Import one video, inspect the retention structure, and go from scripting to video generation before you spend on a subscription."
+    }
   }
 }

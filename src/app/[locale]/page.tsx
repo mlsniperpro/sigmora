@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
 import { getCurrentWorkspace } from '@/lib/repositories';
 import { workspacePath } from '@/lib/workspace-routing';
 import { FAQSection } from '@/components/faq-section';
@@ -10,34 +11,39 @@ import { JsonLd } from '@/components/json-ld';
 import { ComparisonSection } from '@/components/comparison-section';
 import { homeDescription, homeTitle } from '@/lib/marketing-content';
 
-export const metadata: Metadata = {
-  title: homeTitle,
-  description: homeDescription,
-  alternates: {
-    canonical: '/',
-  },
-  openGraph: {
-    title: 'Sigmora | Analyze retention and remix what works',
-    description: homeDescription,
-    url: '/',
-    images: [
-      {
-        url: '/opengraph-image',
-        width: 1200,
-        height: 630,
-        alt: 'Sigmora retention analysis and video remixing',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Sigmora | Analyze retention and remix what works',
-    description: homeDescription,
-    images: ['/twitter-image'],
-  },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'Metadata.homepage' });
 
-import { getTranslations, getMessages } from 'next-intl/server';
+  return {
+    title: t('title'),
+    description: t('description'),
+    alternates: {
+      canonical: '/',
+    },
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+      url: '/',
+      images: [
+        {
+          url: '/opengraph-image',
+          width: 1200,
+          height: 630,
+          alt: 'Sigmora retention analysis and video remixing',
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t('title'),
+      description: t('description'),
+      images: ['/twitter-image'],
+    },
+  };
+}
+
+import { getMessages } from 'next-intl/server';
 
 export default async function Home() {
   const t = await getTranslations('HomePage');

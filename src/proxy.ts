@@ -1,12 +1,7 @@
 import createMiddleware from 'next-intl/middleware';
+import { routing } from './i18n/routing';
 
-export default createMiddleware({
-  // A list of all locales that are supported
-  locales: ['en', 'es', 'hi'],
-
-  // Used when no locale matches
-  defaultLocale: 'en'
-});
+export default createMiddleware(routing);
 
 export const config = {
   // Exclude static assets, api, and internal bundles from being rewritten

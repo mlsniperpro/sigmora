@@ -6,14 +6,17 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signInWithPopup,
+  getAdditionalUserInfo
 } from 'firebase/auth';
 import { useAuth } from '@/context/AuthContext';
 import { auth, isConfigValid } from '@/lib/firebase';
+import { useRouter } from '@/navigation';
 
 type AuthMode = 'login' | 'register';
 
 export function AuthPanel() {
   const { user, loading, logout } = useAuth();
+  const router = useRouter();
   const [mode, setMode] = useState<AuthMode>('login');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -51,14 +54,20 @@ export function AuthPanel() {
     await runAuthTask(() =>
       mode === 'login'
         ? signInWithEmailAndPassword(auth!, email, password).then(() => undefined)
-        : createUserWithEmailAndPassword(auth!, email, password).then(() => undefined),
+        : createUserWithEmailAndPassword(auth!, email, password).then(() => {
+            router.push('/onboarding');
+          }),
     );
   };
 
   const handleGoogleSignIn = async () => {
     await runAuthTask(async () => {
       const provider = new GoogleAuthProvider();
-      await signInWithPopup(auth!, provider);
+      const result = await signInWithPopup(auth!, provider);
+      const additionalInfo = getAdditionalUserInfo(result);
+      if (additionalInfo?.isNewUser) {
+        router.push('/onboarding');
+      }
     });
   };
 

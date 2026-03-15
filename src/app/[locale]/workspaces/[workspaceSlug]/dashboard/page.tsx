@@ -124,7 +124,7 @@ export default async function WorkspaceDashboardPage({ params }: DashboardParams
                     <span className="status-pill status-later" style={{ background: 'rgba(255,255,255,0.05)' }}>{trend.category}</span>
                   </div>
                   <h3 style={{ fontSize: '1.15rem', color: 'var(--text-primary)', marginBottom: '0.75rem' }}>{trend.title}</h3>
-                  <p style={{ fontSize: '0.9rem', color: 'rgba(245, 241, 232, 0.8)', flex: 1 }}>{trend.recommendedAction}</p>
+                  <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', flex: 1 }}>{trend.recommendedAction}</p>
                 </article>
               ))}
           </div>
@@ -146,7 +146,7 @@ export default async function WorkspaceDashboardPage({ params }: DashboardParams
                 </Link>
               ),
             },
-            { key: 'platform', header: 'Platform', render: (asset) => <span style={{ color: 'rgba(245, 241, 232, 0.7)' }}>{asset.platform}</span> },
+            { key: 'platform', header: 'Platform', render: (asset) => <span style={{ color: 'var(--text-secondary)' }}>{asset.platform}</span> },
             { key: 'status', header: 'Status', render: (asset) => <span className={`status-pill status-${asset.status}`}>{asset.status}</span> },
             { key: 'duration', header: 'Duration', render: (asset) => <span style={{ fontFamily: 'var(--font-mono)' }}>{asset.durationSeconds}s</span> },
           ]}
@@ -168,7 +168,7 @@ export default async function WorkspaceDashboardPage({ params }: DashboardParams
                 </Link>
               ),
             },
-            { key: 'objective', header: 'Objective', render: (prompt) => <span style={{ color: 'rgba(245, 241, 232, 0.7)' }}>{prompt.objective}</span> },
+            { key: 'objective', header: 'Objective', render: (prompt) => <span style={{ color: 'var(--text-secondary)' }}>{prompt.objective}</span> },
             { key: 'version', header: 'Version', render: (prompt) => <span style={{ fontFamily: 'var(--font-mono)' }}>v{prompt.version}</span> },
             { key: 'outcome', header: 'Last Outcome', render: (prompt) => <span>{prompt.lastOutcome}</span> },
           ]}

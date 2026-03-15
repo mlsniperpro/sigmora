@@ -14,7 +14,7 @@ export function AppShell({ title, subtitle, description, children }: AppShellPro
       <header className="studio-header" style={{ marginBottom: '2rem' }}>
         <p className="eyebrow">{subtitle || 'Sigmora Studio'}</p>
         <h1>{title}</h1>
-        <p style={{ fontSize: '1.1rem', maxWidth: '800px', color: 'var(--color-paper-200)' }}>{description}</p>
+        <p style={{ fontSize: '1.1rem', maxWidth: '800px', color: 'var(--text-secondary)' }}>{description}</p>
       </header>
 
       <div style={{ display: 'grid', gap: '2rem' }}>

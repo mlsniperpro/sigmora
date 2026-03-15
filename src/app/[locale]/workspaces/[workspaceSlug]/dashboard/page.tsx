@@ -8,6 +8,8 @@ import { getActivationSnapshot } from '@/lib/activation';
 import { getAnalysisResults, getDashboardSnapshotBySlug } from '@/lib/repositories';
 import { workspaceAssetPath, workspacePath, workspacePromptPath } from '@/lib/workspace-routing';
 
+import { DismissibleTip } from '@/components/dismissible-tip';
+
 type DashboardParams = {
   params: Promise<{ workspaceSlug: string }>;
 };
@@ -34,6 +36,14 @@ export default async function WorkspaceDashboardPage({ params }: DashboardParams
       description="Operating surface for the active workspace. Reach first value fast, then monitor asset throughput, reference database coverage, and generation performance."
     >
       <WelcomeModalWrapper />
+      
+      <DismissibleTip 
+        id="dashboard_welcome" 
+        title="Welcome to your Workspace Dashboard!" 
+        description="Monitor your activation checklist to reach first value fast. Track assets, rising trends, and generation outputs in one view."
+        icon="🚀"
+      />
+
       {!activation.isActivated ? (
         <ActivationChecklist
           title="Complete the first value loop"

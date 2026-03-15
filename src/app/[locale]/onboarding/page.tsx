@@ -401,7 +401,10 @@ export default function OnboardingPage() {
                 </div>
 
                 <div>
-                  <label className="text-xs uppercase font-bold text-[var(--text-muted)] block mb-2">Promo Code</label>
+                  <label className="text-xs uppercase font-bold text-[var(--text-muted)] flex items-center gap-1 mb-2">
+                    Promo Code
+                    <Tooltip text="Enter a referral or campaign code for bonus starting analysis credits." />
+                  </label>
                   <p className="text-xs text-[var(--text-muted)] mb-2">Have a promo code? Enter it below for bonus credits.</p>
                   <input 
                     type="text" 
@@ -491,8 +494,13 @@ export default function OnboardingPage() {
                 </div>
               </div>
 
-              <div className="flex justify-between pt-2">
+              <div className="flex justify-between pt-4 border-t border-white/5 mt-4">
                 <button onClick={handleBack} className="button-secondary px-6">Previous</button>
+                {brandProfileProgress === 100 ? (
+                  <button onClick={handleSubmit} className="button px-8">Finish Onboarding</button>
+                ) : (
+                  <button onClick={handleSubmit} className="button-secondary px-6 text-xs text-white/60">Skip to Dashboard</button>
+                )}
               </div>
             </div>
           )}
@@ -518,6 +526,17 @@ function InputWrapper({ label, error, children }: { label: string, error?: strin
       <label className="text-xs font-semibold block mb-1 text-[var(--text-secondary)]">{label}</label>
       {children}
       {error && <p className="text-xs text-red-500 mt-1">{error}</p>}
+    </div>
+  );
+}
+
+function Tooltip({ text }: { text: string }) {
+  return (
+    <div className="group relative inline-block ml-1">
+      <span className="cursor-help text-white/30 hover:text-white transition-colors text-xs">ⓘ</span>
+      <div className="opacity-0 group-hover:opacity-100 transition-opacity bg-zinc-900 border border-white/10 text-[10px] text-zinc-100 p-2 rounded-lg absolute bottom-full left-1/2 transform -translate-x-1/2 mb-1 w-40 backdrop-blur-md pointer-events-none z-50 shadow-xl">
+        {text}
+      </div>
     </div>
   );
 }

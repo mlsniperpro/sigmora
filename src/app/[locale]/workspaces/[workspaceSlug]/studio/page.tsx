@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { AppShell } from '@/components/app-shell';
 import { useParams } from 'next/navigation';
 
+import { DismissibleTip } from '@/components/dismissible-tip';
+
 export default function ContentStudioPage() {
   const params = useParams();
   const workspaceSlug = params.workspaceSlug as string;
@@ -14,6 +16,13 @@ export default function ContentStudioPage() {
       subtitle="Creation Cockpit"
       description="Select content from your database or upload your own to get started with AI Remixer or Coaching loops."
     >
+      <DismissibleTip 
+        id="studio_cockpit" 
+        title="Welcome to the Content Studio!" 
+        description="This is your central creation cockpit. Select content from the grid below or from your database to launch an AI Remixer session."
+        icon="🎬"
+      />
+
       {/* Top Header Status */}
       <div className="flex justify-between items-center bg-white/5 border border-white/5 rounded-2xl p-4">
         <div>
